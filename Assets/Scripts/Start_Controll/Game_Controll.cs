@@ -8,7 +8,7 @@ public class Game_Controll : MonoBehaviour
 
     public static Game_Controll Instance;
     public bool game, pause;
-    [SerializeField] GameObject lose_panel;
+    [SerializeField] GameObject lose_panel, win_panel;
 
     public Slider load_slider;
     public Text load_text;
@@ -58,6 +58,11 @@ public class Game_Controll : MonoBehaviour
     {
         game = false;
         lose_panel.SetActive(true);
+    }
+    public void Win()
+    {
+        game = false;
+        win_panel.SetActive(true);
     }
     public void Load_level(string name)
     {

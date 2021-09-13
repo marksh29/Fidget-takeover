@@ -5,11 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Attack
-  - Block
-  - Laser
-  - Barell
-  - Ground
+  - Gate
+  - Button
   layers:
   - Default
   - TransparentFX

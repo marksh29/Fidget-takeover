@@ -5,10 +5,19 @@ using UnityEngine.UI;
 
 public class Bust_controll : MonoBehaviour
 {
+    public static Bust_controll Instance;
     [SerializeField] GameObject button;
+
+    public int bust_count;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
     void Start()
     {
-        button.GetComponent<Button>().
+        
     }
 
     // Update is called once per frame
@@ -16,6 +25,7 @@ public class Bust_controll : MonoBehaviour
     {
         
     }
+
     public void Add(int id)
     {
 
