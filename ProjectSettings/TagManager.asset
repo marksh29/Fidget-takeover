@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Gate
   - Button
+  - Pfinish
+  - EnemyGate
   layers:
   - Default
   - TransparentFX

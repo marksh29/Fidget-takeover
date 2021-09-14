@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Controll : MonoBehaviour
+public class Gate_controll : MonoBehaviour
 {
-    public static Controll Instance;
+    public static Gate_controll Instance;
     [SerializeField] Text count_text;
     [SerializeField] GameObject player_prefab;
-    [SerializeField] int xx, count; 
-
+    public int xx, count; 
     [SerializeField] Material[] mat;
     private void Awake()
     {
@@ -18,28 +17,9 @@ public class Controll : MonoBehaviour
     }
     void Start()
     {
-        Set_text(8);
-    }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
-                {
-                    Set_text(hit.collider.gameObject.GetComponent<Button>().count);
-                    hit.collider.gameObject.GetComponent<Button>().Off();
-                }
-            }
-        }
-    }
-
-
-    public void Set_text(int id)
+        //Set_text(8);
+    }   
+    public void Set_text(  int id)
     {
         count = id;
         count_text.text = "+" + count;
@@ -52,9 +32,7 @@ public class Controll : MonoBehaviour
         count = 0;
         count_text.text = "";
         GetComponent<MeshRenderer>().material = mat[0];        
-    }
-   
-    
+    }  
     IEnumerator Spawn(int id)
     {
         for (int i = 0; i < id; i++)

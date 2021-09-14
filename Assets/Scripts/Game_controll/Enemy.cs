@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] bool move;
+    public bool move, battle;
+    public Transform target;
     
     void Start()
     {
@@ -13,29 +14,45 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        if (move)
+        if(!battle)
         {
-            gameObject.transform.Translate(-Vector3.forward * speed * Time.deltaTime);
-        }
+            if (move)
+            {
+                gameObject.transform.Translate(-Vector3.forward * speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            }
+        }        
+    }
+    public void Set_battle()
+    {
+        move = false;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy_gate")
+        if (other.gameObject.tag == "EnemyGate" && other.gameObject.GetComponent<Gate_controll>().count > 0)
         {
-            Controll.Instance.Set_spawn();
+            other.gameObject.GetComponent<Gate_controll>().Set_spawn();
+            //Enemy_controll.Instance.Gate_on();
         }
-        //if (other.gameObject.tag == "Finish")
-        //{
-        //    Enemy_controll.Instance.Damage();
-        //    Destroy(gameObject);
-        //}
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Pfinish")
         {
-            Destroy(collision.gameObject);
+            Player_controll.Instance.Damage();
             Destroy(gameObject);
         }
+    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        Destroy(collision.gameObject);
+    //        Destroy(gameObject);
+    //    }
+    //}
+    public void Attack()
+    {
+        battle = true;
     }
 }

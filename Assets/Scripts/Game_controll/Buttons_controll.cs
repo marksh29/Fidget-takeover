@@ -4,28 +4,36 @@ using UnityEngine;
 
 public class Buttons_controll : MonoBehaviour
 {
+    public static Buttons_controll Instance;
     [SerializeField] float timer, time;
     [SerializeField] GameObject[] buttons;
+    public GameObject best;
+    [SerializeField] List<GameObject> list;
     void Start()
     {
+        if (Instance == null)
+            Instance = this;
         timer = 3;
     }
-
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
-            timer = 6;
+            timer = time;
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].GetComponent<Button>().Off();
+            }
+            best = null;
             Buttons_on();
         }
     }
     void Buttons_on()
     {
-        int ct = Random.Range(3, 5);
-        List<GameObject> list = new List<GameObject>(buttons);
-        for (int i = 0; i < list.Count - ct; i++)
+        list.Clear();
+        list = new List<GameObject>(buttons);
+        for (int i = 0; i < buttons.Length - Random.Range(2, 4); i++)
         {
             list.Remove(list[Random.Range(0, list.Count)]);
         }
@@ -33,5 +41,22 @@ public class Buttons_controll : MonoBehaviour
         {
             list[i].GetComponent<Button>().On_true();
         }
+        Enemy_controll.Instance.Start_select();
+    }
+    public void Remove_button(GameObject obj)
+    {
+        list.Remove(obj);
+    }
+    public GameObject Best()
+    {
+        best = null;        
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (best == null || best != null && best.GetComponent<Button>().count < list[i].GetComponent<Button>().count)
+            {
+                best = list[i];
+            }
+        }
+        return best;
     }
 }
