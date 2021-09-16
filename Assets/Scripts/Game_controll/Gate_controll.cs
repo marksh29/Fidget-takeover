@@ -7,7 +7,7 @@ public class Gate_controll : MonoBehaviour
 {
     public static Gate_controll Instance;
     [SerializeField] Text count_text;
-    [SerializeField] GameObject player_prefab;
+    [SerializeField] GameObject player_prefab, gate_wall;
     public int xx, count; 
     [SerializeField] Material[] mat;
     private void Awake()
@@ -23,7 +23,8 @@ public class Gate_controll : MonoBehaviour
     {
         count = id;
         count_text.text = "+" + count;
-        GetComponent<MeshRenderer>().material = mat[1];
+        gate_wall.SetActive(true);
+        //GetComponent<MeshRenderer>().material = mat[1];
     }
 
     public void Set_spawn()
@@ -31,7 +32,8 @@ public class Gate_controll : MonoBehaviour
         StartCoroutine(Spawn(count));
         count = 0;
         count_text.text = "";
-        GetComponent<MeshRenderer>().material = mat[0];        
+        gate_wall.SetActive(false);
+        //GetComponent<MeshRenderer>().material = mat[0];        
     }  
     IEnumerator Spawn(int id)
     {

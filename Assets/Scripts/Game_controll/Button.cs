@@ -17,7 +17,7 @@ public class Button : MonoBehaviour
     }
     public void On_true()
     {
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, 1.7f, transform.localPosition.z);
         count_txt.gameObject.SetActive(true);
         count = Random.Range(1, 15);
         count_txt.text = "+" + count.ToString();
@@ -36,7 +36,7 @@ public class Button : MonoBehaviour
     public void Off()
     {        
         count_txt.gameObject.SetActive(false);
-        transform.position = new Vector3(transform.position.x, -5, transform.position.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, 0.7f, transform.localPosition.z);
         if(count != 0)
             Buttons_controll.Instance.Remove_button(gameObject);
         count = 0;

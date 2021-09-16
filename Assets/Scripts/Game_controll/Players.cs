@@ -11,6 +11,7 @@ public class Players : MonoBehaviour
     void Start()
     {
         move = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
     }
     private void Update()
     {
@@ -70,12 +71,13 @@ public class Players : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().Attack();
             Attack();            
 
-            Destroy(collision.gameObject, 1);
-            Destroy(gameObject, 1);
+            Destroy(collision.gameObject, 3);
+            Destroy(gameObject, 3);
         }
     }
     void Attack()
     {
         battle = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
     }
 }

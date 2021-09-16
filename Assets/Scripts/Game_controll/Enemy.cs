@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         move = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
     }
     private void Update()
     {
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
         {
             if (move)
             {
-                gameObject.transform.Translate(-Vector3.forward * speed * Time.deltaTime);
+                gameObject.transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
             else
             {
@@ -54,5 +55,6 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         battle = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
     }
 }
