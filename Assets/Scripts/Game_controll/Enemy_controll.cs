@@ -54,8 +54,9 @@ public class Enemy_controll : MonoBehaviour
         StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
     }
     void Spawn()
-    {
-        Instantiate(obj, new Vector3(0, 0, transform.position.z - 5), transform.rotation);        
+    {        
+        GameObject sp = Instantiate(obj, new Vector3(0, 0, transform.position.z - 5), transform.rotation) as GameObject;
+        sp.GetComponent<Enemy>().spawn = true;        
     }
     public void Damage()
     {

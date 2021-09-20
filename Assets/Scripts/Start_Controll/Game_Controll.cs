@@ -14,6 +14,8 @@ public class Game_Controll : MonoBehaviour
     public Text load_text;
     public GameObject load_panel;
 
+    public Transform[] all_buttons;
+
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -22,7 +24,7 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-        game = true;        
+        game = true;         
     }
     private void Update()
     {

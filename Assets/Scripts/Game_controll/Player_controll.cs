@@ -12,15 +12,17 @@ public class Player_controll : MonoBehaviour
 
     [Header("Не трогать")]
     [SerializeField] Gate_controll gate;
-    [SerializeField] GameObject obj;
+    [SerializeField] GameObject obj, hand;
     [SerializeField] Image freez_image;
     bool freez_on;
     float timer;
+    Vector3 hand_pos;
 
     void Start()
     {
         if (Instance == null)
             Instance = this;
+        hand_pos = hand.transform.position;
     }
 
     void Update()
@@ -36,9 +38,10 @@ public class Player_controll : MonoBehaviour
                 {
                     if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
                     {
-                        gate.Set_text(hit.collider.gameObject.GetComponent<Button>().count);
-                        hit.collider.gameObject.GetComponent<Button>().Off();
-                        StartCoroutine(Freez_timer());
+                        StartCoroutine(DoMove(0.5f, hit.collider.gameObject));
+                        //gate.Set_text(hit.collider.gameObject.GetComponent<Button>().count);
+                        //hit.collider.gameObject.GetComponent<Button>().Off();
+                        //StartCoroutine(Freez_timer());
                     }
                 }
             }
@@ -67,6 +70,31 @@ public class Player_controll : MonoBehaviour
     }
     void Spawn()
     {
-        Instantiate(obj, transform.position, transform.rotation);   
-    }   
+        GameObject sp = Instantiate(obj, transform.position, transform.rotation) as GameObject;
+        sp.GetComponent<Players>().spawn = true;
+    }
+
+    void Hand_move()
+    {
+       
+    }
+    private IEnumerator DoMove(float time, GameObject target)
+    {
+        Vector3 startPosition = hand.transform.position;
+        float startTime = Time.realtimeSinceStartup;
+        float fraction = 0f;
+        while (fraction < 1f)
+        {
+            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
+            hand.transform.position = Vector3.Lerp(startPosition, target.transform.position, fraction);
+            yield return null;
+        }
+        hand.transform.position = hand_pos;
+        if (target.GetComponent<Button>().count != 0)
+        {
+            gate.Set_text(target.GetComponent<Button>().count);
+            target.GetComponent<Button>().Off();
+            StartCoroutine(Freez_timer());
+        }
+    }
 }

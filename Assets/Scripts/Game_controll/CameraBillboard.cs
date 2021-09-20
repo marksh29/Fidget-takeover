@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class CameraBillboard : MonoBehaviour
 {
+    public Camera cam;
     public bool BillboardX = true;
     public bool BillboardY = true;
     public bool BillboardZ = true;
@@ -19,7 +20,7 @@ public class CameraBillboard : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GetComponent<Canvas>().worldCamera = Camera.main;
+        GetComponent<Canvas>().worldCamera = cam;//Camera.main;
         localStartPosition = transform.localPosition;
     }
 

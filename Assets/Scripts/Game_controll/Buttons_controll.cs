@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buttons_controll : MonoBehaviour
 {
@@ -9,11 +10,19 @@ public class Buttons_controll : MonoBehaviour
     [SerializeField] GameObject[] buttons;
     public GameObject best;
     [SerializeField] List<GameObject> list;
+
+    [SerializeField] Font nide_font;
+
     void Start()
     {
         if (Instance == null)
             Instance = this;
         timer = 3;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().font = nide_font;
+        }
     }
     void Update()
     {
