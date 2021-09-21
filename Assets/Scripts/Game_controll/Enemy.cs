@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     public bool move, battle, spawn;
     public Transform target;
-    
+
     void Start()
     {
         move = true;

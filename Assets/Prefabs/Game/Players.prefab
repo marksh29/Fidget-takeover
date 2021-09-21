@@ -105,7 +105,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7ca4ee92f12d222409f4740db3dc5152, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,6 +173,9 @@ MonoBehaviour:
   battle: 0
   spawn: 0
   target: {fileID: 0}
+  blood:
+  - {fileID: 2049488372798087454, guid: c6b470372221dd84480beb2f42cfa90b, type: 3}
+  - {fileID: 2163748968650808809, guid: 51c43e020dde6d548943ae457285eba6, type: 3}
 --- !u!136 &377514521584473548
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -233,7 +236,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 99882a72831481749b3891ba5aadc679, type: 2}
+      objectReference: {fileID: 2100000, guid: 7ca4ee92f12d222409f4740db3dc5152, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f82bbeadbdf2b4f9eea4901ada418e, type: 3}
 --- !u!1 &2158408942834866256 stripped

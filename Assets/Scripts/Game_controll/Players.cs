@@ -8,7 +8,7 @@ public class Players : MonoBehaviour
     [SerializeField] float speed;
     public bool move, battle, spawn;
     [SerializeField] Transform target;
-
+    [SerializeField] GameObject[] blood;
     void Start()
     {
         move = true;
@@ -63,7 +63,6 @@ public class Players : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
         if(other.gameObject.tag == "Gate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn)
         {
             other.gameObject.GetComponent<Gate_controll>().Set_spawn();
@@ -77,6 +76,8 @@ public class Players : MonoBehaviour
         }
         if (target != null && other.gameObject == target.gameObject)
         {
+            Blood();
+
             Destroy(gameObject);
             Destroy(target.gameObject);
 
@@ -91,5 +92,10 @@ public class Players : MonoBehaviour
     {
         battle = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");        
+    }
+    void Blood()
+    {
+        Instantiate(blood[0], new Vector3(transform.position.x, 0.01f, transform.position.z), blood[0].transform.rotation);
+        Instantiate(blood[1], new Vector3(target.transform.position.x, 0.01f, target.transform.position.z), blood[0].transform.rotation);
     }
 }

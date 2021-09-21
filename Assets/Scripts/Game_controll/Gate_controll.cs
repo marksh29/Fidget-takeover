@@ -60,7 +60,7 @@ public class Gate_controll : MonoBehaviour
     {
         for (int i = 0; i < id; i++)
         {
-            Instantiate(player_prefab, new Vector3(Random.Range(-xx, xx), 0, transform.position.z + 1), transform.rotation);
+            Instantiate(player_prefab, new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3)), transform.rotation);
             yield return new WaitForSeconds(0.1f);
         }
     }   
