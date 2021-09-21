@@ -51,7 +51,7 @@ public class Players : MonoBehaviour
     public void Set_target(Transform obj)
     {
         GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<SphereCollider>().isTrigger = true;
+        GetComponent<CapsuleCollider>().isTrigger = true;
         target = obj;
         target.GetComponent<Enemy>().Set_battle(gameObject.transform);
         move = false;
@@ -77,30 +77,19 @@ public class Players : MonoBehaviour
         }
         if (target != null && other.gameObject == target.gameObject)
         {
-            print("1");
-            other.gameObject.GetComponent<Enemy>().Attack();
-            Attack();
+            Destroy(gameObject);
+            Destroy(target.gameObject);
 
-            Destroy(other.gameObject, 3);
-            Destroy(gameObject, 3);
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy" && target != null && collision.gameObject == target.gameObject)
-        {
-            collision.gameObject.GetComponent<Enemy>().Attack();
-            Attack();            
+            //other.gameObject.GetComponent<Enemy>().Attack();
+            //Attack();
 
-            Destroy(collision.gameObject, 3);
-            Destroy(gameObject, 3);
+            //Destroy(other.gameObject, 3);
+            //Destroy(gameObject, 3);
         }
-    }  
+    }   
     void Attack()
     {
         battle = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
-        //GetComponent<Rigidbody>().isKinematic = true;
-        //GetComponent<SphereCollider>().enabled = false;        
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");        
     }
 }

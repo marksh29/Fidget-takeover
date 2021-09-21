@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     public void Set_battle(Transform obj)
     {
         GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<SphereCollider>().isTrigger = true;
+        GetComponent<CapsuleCollider>().isTrigger = true;
         gameObject.tag = "Untagged";
         target = obj;
         move = false;
@@ -49,15 +49,7 @@ public class Enemy : MonoBehaviour
             Player_controll.Instance.Damage();
             Destroy(gameObject);
         }
-    }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        Destroy(collision.gameObject);
-    //        Destroy(gameObject);
-    //    }
-    //}
+    }   
     public void Attack()
     {
         battle = true;
