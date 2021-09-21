@@ -22,6 +22,7 @@ public class Buttons_controll : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().font = nide_font;
+            buttons[i].transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 50);
         }
     }
     void Update()
