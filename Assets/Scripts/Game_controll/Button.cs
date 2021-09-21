@@ -15,11 +15,11 @@ public class Button : MonoBehaviour
     {
         
     }
-    public void On_true()
+    public void On_true(int ct)
     {
         transform.localPosition = new Vector3(transform.localPosition.x, 1.7f, transform.localPosition.z);
         count_txt.gameObject.SetActive(true);
-        count = Random.Range(1, 15);
+        count = ct;
         count_txt.text = "+" + count.ToString();
         //StartCoroutine(Timer_off());
     }

@@ -777,6 +777,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3433684995655022140, guid: cab3209dde953d14dae373d8b11f107f,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 827578f3a03771447886331889bded1a,
+        type: 3}
+    - target: {fileID: 3915773980540936033, guid: cab3209dde953d14dae373d8b11f107f,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 827578f3a03771447886331889bded1a,
+        type: 3}
     - target: {fileID: 4339569146092231955, guid: cab3209dde953d14dae373d8b11f107f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -907,6 +919,12 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.8666667
       objectReference: {fileID: 0}
+    - target: {fileID: 4710791252282197959, guid: cab3209dde953d14dae373d8b11f107f,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 827578f3a03771447886331889bded1a,
+        type: 3}
     - target: {fileID: 5442433758409963610, guid: cab3209dde953d14dae373d8b11f107f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1574,7 +1592,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4959a3d0a84f61e4da527559451435ec, type: 3}
+    m_Font: {fileID: 12800000, guid: 827578f3a03771447886331889bded1a, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1990,7 +2008,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 4959a3d0a84f61e4da527559451435ec,
+      objectReference: {fileID: 12800000, guid: 827578f3a03771447886331889bded1a,
         type: 3}
     - target: {fileID: 2112935016696601693, guid: ada7b15458f66b844b13e422063b5db7,
         type: 3}

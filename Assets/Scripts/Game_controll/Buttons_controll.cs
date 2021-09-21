@@ -10,6 +10,7 @@ public class Buttons_controll : MonoBehaviour
     [SerializeField] GameObject[] buttons;
     public GameObject best;
     [SerializeField] List<GameObject> list;
+    [SerializeField] int[] count;
 
     [SerializeField] Font nide_font;
 
@@ -43,13 +44,16 @@ public class Buttons_controll : MonoBehaviour
     {
         list.Clear();
         list = new List<GameObject>(buttons);
+        List<int> count_list = new List<int>(count);
         for (int i = 0; i < buttons.Length - Random.Range(2, 4); i++)
         {
             list.Remove(list[Random.Range(0, list.Count)]);
         }
         for (int i = 0; i < list.Count; i++)
         {
-            list[i].GetComponent<Button>().On_true();
+            int r = Random.Range(0, count_list.Count);
+            list[i].GetComponent<Button>().On_true(count_list[r]);
+            count_list.Remove(count_list[r]);
         }
         Enemy_controll.Instance.Start_select();
     }

@@ -11,7 +11,7 @@ public class Blood : MonoBehaviour
     }
     private void OnEnable()
     {
-        GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        //GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
     }
 
     // Update is called once per frame
