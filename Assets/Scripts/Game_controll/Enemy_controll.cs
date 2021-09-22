@@ -17,11 +17,19 @@ public class Enemy_controll : MonoBehaviour
     Vector3 hand_pos;
     float timer, select_timer;
 
+    [SerializeField] Image flag_img;
+    [SerializeField] Sprite[] all_sprt;
+    [SerializeField] Text en_name;
+    [SerializeField] string[] all_name;
+
     void Start()
     {
         if (Instance == null)
             Instance = this;
         hand_pos = hand.transform.position;
+
+        flag_img.sprite = all_sprt[Random.Range(0, all_sprt.Length)];
+        en_name.text = all_name[Random.Range(0, all_name.Length)];
     }
     void Update()
     {
@@ -50,13 +58,19 @@ public class Enemy_controll : MonoBehaviour
     }
     void Hand_move()
     {
-        select = false;
-        StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
+        if(gate.count < Buttons_controll.Instance.Best().GetComponent<Button>().count)
+        {
+            select = false;
+            StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
+        }        
     }
     void Spawn()
-    {        
-        GameObject sp = Instantiate(obj, new Vector3(0, 0, transform.position.z - 5), transform.rotation) as GameObject;
-        sp.GetComponent<Enemy>().spawn = true;        
+    {
+        GameObject sp = PoolControll.Instance.Spawn_enemy();
+        sp.transform.position = new Vector3(0, 0, transform.position.z - 5);
+        sp.transform.rotation = transform.rotation;
+        sp.GetComponent<Enemy>().spawn = true;
+        //GameObject sp = Instantiate(obj, new Vector3(0, 0, transform.position.z - 5), transform.rotation) as GameObject;
     }
     public void Damage()
     {
@@ -89,9 +103,13 @@ public class Enemy_controll : MonoBehaviour
     }
     IEnumerator Freez_timer()
     {
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 150);
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(231, 0, 0, 150);
         frize_on = true;
         yield return new WaitForSeconds(freez_timer);
         frize_on = false;
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 255);
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(231, 0, 0, 255);
     }     
 }
 

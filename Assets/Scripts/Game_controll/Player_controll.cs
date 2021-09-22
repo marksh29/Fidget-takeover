@@ -12,8 +12,7 @@ public class Player_controll : MonoBehaviour
 
     [Header("Не трогать")]
     [SerializeField] Gate_controll gate;
-    [SerializeField] GameObject obj, hand;
-    [SerializeField] Image freez_image;
+    [SerializeField] GameObject hand;
     bool freez_on;
     float timer;
     Vector3 hand_pos;
@@ -38,10 +37,7 @@ public class Player_controll : MonoBehaviour
                 {
                     if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
                     {
-                        StartCoroutine(DoMove(0.5f, hit.collider.gameObject));
-                        //gate.Set_text(hit.collider.gameObject.GetComponent<Button>().count);
-                        //hit.collider.gameObject.GetComponent<Button>().Off();
-                        //StartCoroutine(Freez_timer());
+                        StartCoroutine(DoMove(0.5f, hit.collider.gameObject));                       
                     }
                 }
             }
@@ -57,10 +53,12 @@ public class Player_controll : MonoBehaviour
     IEnumerator Freez_timer()
     {
         freez_on = true;
-        freez_image.color = new Color32(255, 255, 255, 100);
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 150);
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(14, 114, 224, 150);
         yield return new WaitForSeconds(freez_timer);
         freez_on = false;
-        freez_image.color = new Color32(255, 255, 255, 255);
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 255);
+        hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(14, 114, 224, 255);
     }
     public void Damage()
     {
@@ -70,13 +68,11 @@ public class Player_controll : MonoBehaviour
     }
     void Spawn()
     {
-        GameObject sp = Instantiate(obj, transform.position, transform.rotation) as GameObject;
+        GameObject sp = PoolControll.Instance.Spawn_player();
+        sp.transform.position = transform.position;
+        sp.transform.rotation = transform.rotation;        
         sp.GetComponent<Players>().spawn = true;
-    }
-
-    void Hand_move()
-    {
-       
+        //GameObject sp = Instantiate(obj, transform.position, transform.rotation) as GameObject;
     }
     private IEnumerator DoMove(float time, GameObject target)
     {

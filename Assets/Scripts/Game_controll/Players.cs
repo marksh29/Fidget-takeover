@@ -8,11 +8,14 @@ public class Players : MonoBehaviour
     [SerializeField] float speed;
     public bool move, battle, spawn;
     [SerializeField] Transform target;
-    [SerializeField] GameObject[] blood;
-    void Start()
+    void OnEnable()
     {
         move = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().isTrigger = false;
+        target = null;
     }
     private void Update()
     {
@@ -56,10 +59,10 @@ public class Players : MonoBehaviour
         target.GetComponent<Enemy>().Set_battle(gameObject.transform);
         move = false;
     }
-    bool Dist(GameObject obj)
-    {
-        return (transform.position - obj.transform.position).sqrMagnitude < (transform.position - target.transform.position).sqrMagnitude ? true : false;
-    }
+    //bool Dist(GameObject obj)
+    //{
+    //    return (transform.position - obj.transform.position).sqrMagnitude < (transform.position - target.transform.position).sqrMagnitude ? true : false;
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -76,26 +79,25 @@ public class Players : MonoBehaviour
         }
         if (target != null && other.gameObject == target.gameObject)
         {
-            Blood();
-
-            Destroy(gameObject);
-            Destroy(target.gameObject);
-
-            //other.gameObject.GetComponent<Enemy>().Attack();
-            //Attack();
-
-            //Destroy(other.gameObject, 3);
-            //Destroy(gameObject, 3);
+            Attack();
+            other.gameObject.GetComponent<Enemy>().Attack();
         }
     }   
     void Attack()
     {
-        battle = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");        
+        //battle = true;
+        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
+        Blood();
+        StartCoroutine(Disable(0));
     }
     void Blood()
     {
-        Instantiate(blood[0], new Vector3(transform.position.x, 0.01f, transform.position.z), blood[0].transform.rotation);
-        Instantiate(blood[1], new Vector3(target.transform.position.x, 0.01f, target.transform.position.z), blood[0].transform.rotation);
+        GameObject bl = PoolControll.Instance.Spawn_blood(0);
+        bl.transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
+    }
+    IEnumerator Disable(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
     }
 }

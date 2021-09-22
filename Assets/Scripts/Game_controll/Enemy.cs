@@ -8,10 +8,15 @@ public class Enemy : MonoBehaviour
     public bool move, battle, spawn;
     public Transform target;
 
-    void Start()
+    void OnEnable()
     {
         move = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+       
+        gameObject.tag = "Enemy";
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().isTrigger = false;
+        target = null;
     }
     private void Update()
     {
@@ -42,7 +47,6 @@ public class Enemy : MonoBehaviour
         {
             other.gameObject.GetComponent<Gate_controll>().Set_spawn();
             spawn = false;
-            //Enemy_controll.Instance.Gate_on();
         }
         if (other.gameObject.tag == "Pfinish")
         {
@@ -52,7 +56,19 @@ public class Enemy : MonoBehaviour
     }   
     public void Attack()
     {
-        battle = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");       
+        //battle = true;
+        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");   
+        Blood();
+        StartCoroutine(Disable(0));
+    }
+    void Blood()
+    {
+        GameObject bl = PoolControll.Instance.Spawn_blood(1);
+        bl.transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
+    }
+    IEnumerator Disable(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        gameObject.SetActive(false);
     }
 }

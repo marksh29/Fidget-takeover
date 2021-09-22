@@ -6,39 +6,43 @@ using UnityEngine.UI;
 public class Button : MonoBehaviour
 {
     public int count;
+    [SerializeField] SkinnedMeshRenderer mesh;
     [SerializeField] Text count_txt;
     void Start()
     {
-        Off();
-    }
-    void Update()
-    {
-        
+        mesh = transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>();
+        count_txt.gameObject.SetActive(false);
+        count = 0;
     }
     public void On_true(int ct)
     {
-        //transform.localPosition = new Vector3(transform.localPosition.x, 1.7f, transform.localPosition.z);
         count_txt.gameObject.SetActive(true);
         count = ct;
         count_txt.text = "+" + count.ToString();
-        //StartCoroutine(Timer_off());
     }
     IEnumerator Timer_off()
     {
-        yield return new WaitForSeconds(3);
-        Off();
+        while(mesh.GetBlendShapeWeight(0) > 0)
+        {
+            mesh.SetBlendShapeWeight(0, (mesh.GetBlendShapeWeight(0) - 1f));
+            yield return null;
+        }        
     }
-
     public bool On()
     {
         return count_txt.gameObject.activeSelf;
     }
     public void Off()
-    {        
+    {
+        mesh.SetBlendShapeWeight(0, 70);
+        Drop();
+    }
+    public void Drop()
+    {
         count_txt.gameObject.SetActive(false);
-        //transform.localPosition = new Vector3(transform.localPosition.x, 0.7f, transform.localPosition.z);
-        if(count != 0)
+        if (count != 0)
             Buttons_controll.Instance.Remove_button(gameObject);
         count = 0;
+        StartCoroutine(Timer_off());
     }
 }

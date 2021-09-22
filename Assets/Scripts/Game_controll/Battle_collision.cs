@@ -5,12 +5,10 @@ using UnityEngine;
 public class Battle_collision : MonoBehaviour
 {
     bool on;
-    void Start()
+    private void OnEnable()
     {
-        
+        on = false;
     }
-
-    // Update is called once per frame
     void Update()
     {
         

@@ -52,7 +52,6 @@ GameObject:
   - component: {fileID: 5585417307304591027}
   - component: {fileID: 5585417307304591026}
   - component: {fileID: 5585417307304591037}
-  - component: {fileID: 5585417307304591036}
   - component: {fileID: 5585417307304591039}
   - component: {fileID: -5582938037056289269}
   - component: {fileID: 377514521584473548}
@@ -127,19 +126,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5585417307304591036
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5585417307304591038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0.21, z: 0.5}
 --- !u!54 &5585417307304591039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,9 +159,6 @@ MonoBehaviour:
   battle: 0
   spawn: 0
   target: {fileID: 0}
-  blood:
-  - {fileID: 2049488372798087454, guid: c6b470372221dd84480beb2f42cfa90b, type: 3}
-  - {fileID: 2163748968650808809, guid: 51c43e020dde6d548943ae457285eba6, type: 3}
 --- !u!136 &377514521584473548
 CapsuleCollider:
   m_ObjectHideFlags: 0
