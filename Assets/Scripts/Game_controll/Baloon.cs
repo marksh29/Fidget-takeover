@@ -11,7 +11,7 @@ public class Baloon : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(-Vector3.forward * speed * Time.deltaTime);
         if (transform.position.y > xx)
         {
             transform.position = new Vector3(Random.Range(4, 14), -100, transform.position.z);
