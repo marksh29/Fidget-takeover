@@ -113,11 +113,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7dab7e1c7ddc74bae5b23bacbfe900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  life: 1
+  start_life: 1
   speed: 5
+  target: {fileID: 0}
   move: 0
   battle: 0
   spawn: 0
-  target: {fileID: 0}
 --- !u!136 &4034743307197195064
 CapsuleCollider:
   m_ObjectHideFlags: 0

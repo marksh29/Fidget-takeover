@@ -60,9 +60,9 @@ public class Player_controll : MonoBehaviour
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 255);
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(14, 114, 224, 255);
     }
-    public void Damage()
+    public void Damage(int id)
     {
-        life--;
+        life -= id;
         if (life <= 0)
             Game_Controll.Instance.Lose();
     }
@@ -72,7 +72,6 @@ public class Player_controll : MonoBehaviour
         sp.transform.position = transform.position;
         sp.transform.rotation = transform.rotation;        
         sp.GetComponent<Players>().spawn = true;
-        //GameObject sp = Instantiate(obj, transform.position, transform.rotation) as GameObject;
     }
     private IEnumerator DoMove(float time, GameObject target)
     {

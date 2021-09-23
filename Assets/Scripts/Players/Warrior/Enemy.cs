@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Настраиваемое")]
+    public int damage;
+    public int start_life;   
     [SerializeField] float speed;
-    public bool move, battle, spawn;
+
+    [Header("Не трогать")]
     public Transform target;
+    public int life;
+    public bool move, battle, spawn;
+   
 
     void OnEnable()
     {
-        move = true;
+        life = start_life;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
-       
-        gameObject.tag = "Enemy";
-        GetComponent<Rigidbody>().useGravity = true;
-        GetComponent<CapsuleCollider>().isTrigger = false;
-        target = null;
+        Enable_param(); 
     }
     private void Update()
     {
@@ -28,10 +31,24 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-                transform.LookAt(target.position, Vector3.up);
+                if(target != null)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                    transform.LookAt(target.position, Vector3.up);
+                }               
             }
         }        
+    }
+
+    void Enable_param()
+    {        
+        gameObject.tag = "Enemy";
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().isTrigger = false;
+        target = null;
+        move = true;
+        battle = false;
     }
     public void Set_battle(Transform obj)
     {
@@ -42,7 +59,7 @@ public class Enemy : MonoBehaviour
         move = false;
     }
     private void OnTriggerEnter(Collider other)
-    {
+    {       
         if (other.gameObject.tag == "EnemyGate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn)
         {
             other.gameObject.GetComponent<Gate_controll>().Set_spawn();
@@ -50,17 +67,27 @@ public class Enemy : MonoBehaviour
         }
         if (other.gameObject.tag == "Pfinish")
         {
-            Player_controll.Instance.Damage();
-            Destroy(gameObject);
+            Player_controll.Instance.Damage(damage);
+            gameObject.SetActive(false);
+        }
+    }
+    public void Attack(int id)
+    {
+        battle = true;
+        life -= id;
+        if (life <= 0)
+        {
+            Blood();
+            StartCoroutine(Disable(0));
+        }
+        else
+        {
+            if(target != null)
+            {
+                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
+            }            
         }
     }   
-    public void Attack()
-    {
-        //battle = true;
-        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");   
-        Blood();
-        StartCoroutine(Disable(0));
-    }
     void Blood()
     {
         GameObject bl = PoolControll.Instance.Spawn_blood(1);
@@ -70,5 +97,10 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         gameObject.SetActive(false);
+    }
+    public void Continue()
+    {
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        Enable_param();
     }
 }

@@ -82,8 +82,8 @@ ModelImporter:
       name: Attack
       takeName: Armature.004|Fight
       internalID: 0
-      firstFrame: 20
-      lastFrame: 140
+      firstFrame: 65
+      lastFrame: 91
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

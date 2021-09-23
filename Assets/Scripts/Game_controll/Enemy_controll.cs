@@ -8,12 +8,12 @@ public class Enemy_controll : MonoBehaviour
     public static Enemy_controll Instance;
     [Header("Настраиваемое")]
     [SerializeField] int life;
-    [SerializeField] float spawn_time, freez_timer;
+    [SerializeField] float spawn_time, freez_timer, hand_move_speed;
 
     [Header("Не трогать")]
     [SerializeField] Gate_controll gate;
-    [SerializeField] GameObject obj, hand;
-    bool select, frize_on;
+    [SerializeField] GameObject hand, target;
+    bool select, frize_on, move;
     Vector3 hand_pos;
     float timer, select_timer;
 
@@ -21,6 +21,7 @@ public class Enemy_controll : MonoBehaviour
     [SerializeField] Sprite[] all_sprt;
     [SerializeField] Text en_name;
     [SerializeField] string[] all_name;
+
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class Enemy_controll : MonoBehaviour
                 timer = spawn_time;
                 Spawn();
             }
+           
             if(select && !frize_on)
             {
                 select_timer -= Time.deltaTime;
@@ -48,7 +50,33 @@ public class Enemy_controll : MonoBehaviour
                 {
                     Hand_move();
                 }
-            }          
+            }  
+            
+            if(move)
+            {
+                if(target.GetComponent<Button>().count != 0)
+                {
+                    hand.transform.position = Vector3.MoveTowards(hand.transform.position, target.transform.position, hand_move_speed * Time.deltaTime);
+                    if(hand.transform.position == target.transform.position)
+                    {
+                        hand.transform.position = hand_pos;
+                        gate.Set_text(target.GetComponent<Button>().count);
+                        target.GetComponent<Button>().Off();
+                        StartCoroutine(Freez_timer());
+                        move = false;
+                    }
+                }
+                else
+                {
+                    target = Buttons_controll.Instance.Best();
+                    if(target.GetComponent<Button>().count < gate.count)
+                    {
+                        move = false;
+                        select = true;
+                        hand.transform.position = hand_pos;
+                    }
+                }
+            }
         }        
     }
     public void Start_select()
@@ -60,8 +88,10 @@ public class Enemy_controll : MonoBehaviour
     {
         if(gate.count < Buttons_controll.Instance.Best().GetComponent<Button>().count)
         {
+            target = Buttons_controll.Instance.Best();
             select = false;
-            StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
+            move = true;
+            //StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
         }        
     }
     void Spawn()
@@ -70,37 +100,36 @@ public class Enemy_controll : MonoBehaviour
         sp.transform.position = new Vector3(0, 0, transform.position.z - 5);
         sp.transform.rotation = transform.rotation;
         sp.GetComponent<Enemy>().spawn = true;
-        //GameObject sp = Instantiate(obj, new Vector3(0, 0, transform.position.z - 5), transform.rotation) as GameObject;
     }
-    public void Damage()
+    public void Damage(int id)
     {
-        life--;
+        life -=id;
         if (life <= 0)
             Game_Controll.Instance.Win();
     }
-    private IEnumerator DoMove(float time, GameObject target)
-    {
-        Vector3 startPosition = hand.transform.position;
-        float startTime = Time.realtimeSinceStartup;
-        float fraction = 0f;
-        while (fraction < 1f)
-        {
-            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
-            hand.transform.position = Vector3.Lerp(startPosition, target.transform.position, fraction);
-            yield return null;
-        }
-        hand.transform.position = hand_pos;
-        if (target.GetComponent<Button>().count != 0)
-        {
-            gate.Set_text(target.GetComponent<Button>().count);
-            target.GetComponent<Button>().Off();          
-            StartCoroutine(Freez_timer());
-        }
-        else
-        {
-            Hand_move();
-        }
-    }
+    //private IEnumerator DoMove(float time, GameObject target)
+    //{
+    //    Vector3 startPosition = hand.transform.position;
+    //    float startTime = Time.realtimeSinceStartup;
+    //    float fraction = 0f;
+    //    while (fraction < 1f)
+    //    {
+    //        fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
+    //        hand.transform.position = Vector3.Lerp(startPosition, target.transform.position, fraction);
+    //        yield return null;
+    //    }
+    //    hand.transform.position = hand_pos;
+    //    if (target.GetComponent<Button>().count != 0)
+    //    {
+    //        gate.Set_text(target.GetComponent<Button>().count);
+    //        target.GetComponent<Button>().Off();          
+    //        StartCoroutine(Freez_timer());
+    //    }
+    //    else
+    //    {
+    //        Hand_move();
+    //    }
+    //}
     IEnumerator Freez_timer()
     {
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 150);

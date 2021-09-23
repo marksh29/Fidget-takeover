@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Battle_collision : MonoBehaviour
 {
-    bool on;
+    public bool on;
     private void OnEnable()
     {
         on = false;
