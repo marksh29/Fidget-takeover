@@ -8,20 +8,21 @@ public class Player_controll : MonoBehaviour
     public static Player_controll Instance;
     [Header("Настраиваемое")]
     [SerializeField] int life;
-    [SerializeField] float spawn_time, freez_timer;
+    [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer;
 
     [Header("Не трогать")]
     [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand;
     bool freez_on;
-    float timer;
+    float timer, gaint_timer;
     Vector3 hand_pos;
-
+    GameObject sp;
     void Start()
     {
         if (Instance == null)
             Instance = this;
         hand_pos = hand.transform.position;
+        gaint_timer = gaint_spawn_timer;
     }
 
     void Update()
@@ -46,7 +47,13 @@ public class Player_controll : MonoBehaviour
             if (timer <= 0)
             {
                 timer = spawn_time;
-                Spawn();
+                Spawn(0);
+            }
+            gaint_timer -= Time.deltaTime;
+            if (gaint_timer <= 0)
+            {
+                gaint_timer = gaint_spawn_timer;
+                Spawn(1);
             }
         }
     }
@@ -66,11 +73,19 @@ public class Player_controll : MonoBehaviour
         if (life <= 0)
             Game_Controll.Instance.Lose();
     }
-    void Spawn()
+    void Spawn(int id)
     {
-        GameObject sp = PoolControll.Instance.Spawn_player();
-        sp.transform.position = transform.position;
-        sp.transform.rotation = transform.rotation;        
+        switch(id)
+        {
+            case (0):
+                sp = PoolControll.Instance.Spawn("pl_warrior", 0);
+                break;
+            case (1):
+                sp = PoolControll.Instance.Spawn("pl_gaint", 0);
+                break;
+        }
+        sp.transform.position = new Vector3(transform.position.x + Random.Range(-5,5), 0, transform.position.z);
+        sp.transform.rotation = transform.rotation;
         sp.GetComponent<Players>().spawn = true;
     }
     private IEnumerator DoMove(float time, GameObject target)

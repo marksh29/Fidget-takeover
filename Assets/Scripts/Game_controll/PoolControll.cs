@@ -5,9 +5,9 @@ using UnityEngine;
 public class PoolControll : MonoBehaviour
 {
     public static PoolControll Instance;
-    [SerializeField] private GameObject enemy_prefab, player_prefab, blood_prefab;
-    [SerializeField] private List<GameObject> enemy_stack, player_stack, blood_stack;
-    GameObject new_en, new_pl, new_blood;
+    [SerializeField] private GameObject enemy_prefab, player_prefab, blood_prefab, pl_gaint, en_gaint, arrow_prefab;
+    [SerializeField] private List<GameObject> enemy_stack, player_stack, blood_stack, pl_gaints_stack, en_gaints_stack, arrow_stack;
+    GameObject new_obj, new_blood;
 
     private void Awake()
     {
@@ -18,72 +18,53 @@ public class PoolControll : MonoBehaviour
     {
 
     }
-    public GameObject Spawn_enemy()
+    public GameObject Spawn(string name, int color_id)
     {
-        bool not_empty = false;       
-        for (int i = 0; i < enemy_stack.Count; i++)
+        switch (name)
         {
-            if (!enemy_stack[i].activeSelf)
+            case ("blood"):
+                new_obj = Spawn(blood_stack, blood_prefab);
+                new_obj.GetComponent<Blood>().Set_color(color_id);
+                break;
+            case ("pl_warrior"):
+                new_obj = Spawn(player_stack, player_prefab);
+                break;
+            case ("en_warrior"):
+                new_obj = Spawn(enemy_stack, enemy_prefab);
+                break;
+            case ("pl_gaint"):
+                new_obj = Spawn(pl_gaints_stack, pl_gaint);
+                break;
+            case ("en_gaint"):
+                new_obj = Spawn(en_gaints_stack, en_gaint);
+                break;
+            case ("arrow"):
+                new_obj = Spawn(arrow_stack, arrow_prefab);
+                new_obj.GetComponent<Arrow>().enemy = (color_id == 0 ? false : true);
+                break;
+        }
+        return new_obj;
+    }
+    GameObject Spawn(List<GameObject> list, GameObject prefab)
+    {
+        bool not_empty = false;
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (!list[i].activeSelf)
             {
-                enemy_stack[i].SetActive(true);
+                list[i].SetActive(true);
                 not_empty = true;
-                new_en = enemy_stack[i];
+                new_blood = list[i];
                 break;
             }
         }
         if (not_empty == false)
         {
-            GameObject new_enemy = Instantiate(enemy_prefab) as GameObject;
-            new_enemy.SetActive(true);
-            enemy_stack.Add(new_enemy);
-            new_en = new_enemy;
+            GameObject new_obj = Instantiate(prefab) as GameObject;
+            new_obj.SetActive(true);
+            list.Add(new_obj);
+            new_blood = new_obj;
         }
-        return new_en;
-    }
-    public GameObject Spawn_player()
-    {
-        bool not_empty2 = false;
-        for (int i = 0; i < player_stack.Count; i++)
-        {
-            if (!player_stack[i].activeSelf)
-            {
-                player_stack[i].SetActive(true);
-                not_empty2 = true;
-                new_pl = player_stack[i];
-                break;
-            }
-        }
-        if (not_empty2 == false)
-        {
-            GameObject new_player = Instantiate(player_prefab) as GameObject;
-            new_player.SetActive(true);
-            player_stack.Add(new_player);
-            new_pl = new_player;
-        }
-        return new_pl;
-    }
-
-    public GameObject Spawn_blood(int id)
-    {
-        bool not_empty3 = false;
-        for (int i = 0; i < blood_stack.Count; i++)
-        {
-            if (!blood_stack[i].activeSelf)
-            {
-                blood_stack[i].SetActive(true);
-                not_empty3 = true;
-                new_blood = blood_stack[i];
-                break;
-            }
-        }
-        if (not_empty3 == false)
-        {
-            GameObject new_bl = Instantiate(blood_prefab) as GameObject;
-            new_bl.SetActive(true);
-            blood_stack.Add(new_bl);
-            new_blood = new_bl;
-        }
-        new_blood.GetComponent<Blood>().Set_color(id);
         return new_blood;
-    }
+    }  
 }

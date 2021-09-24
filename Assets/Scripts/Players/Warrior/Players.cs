@@ -52,10 +52,11 @@ public class Players : MonoBehaviour
     }
     public void Set_target(Transform obj)
     {
-        GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<CapsuleCollider>().isTrigger = true;
         target = obj;
-        target.GetComponent<Enemy>().Set_battle(gameObject.transform);
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<CapsuleCollider>().isTrigger = true;   
+        if(target.GetComponent<Enemy>() != null)
+            target.GetComponent<Enemy>().Set_battle(gameObject.transform);        
         move = false;
     }
     private void OnTriggerEnter(Collider other)
@@ -67,6 +68,7 @@ public class Players : MonoBehaviour
         }
         if(other.gameObject.tag == "Finish")
         {
+            GetComponent<BoxCollider>().enabled = false;
             Enemy_controll.Instance.Damage(damage);
             gameObject.SetActive(false);
         }
@@ -74,10 +76,13 @@ public class Players : MonoBehaviour
         {
             battle = true;
             other.gameObject.GetComponent<Enemy>().Attack(damage);
-            Attack(target.GetComponent<Enemy>().damage);            
+            if(target.GetComponent<Enemy>() != null)
+                Attack(target.GetComponent<Enemy>().damage);
+            if (target.GetComponent<Archer>() != null)
+                Attack(target.GetComponent<Archer>().damage);
         }
     }   
-    void Attack(int id)
+    public void Attack(int id)
     {        
         life -= id;
         if(life <= 0)
@@ -98,8 +103,16 @@ public class Players : MonoBehaviour
         yield return new WaitForSeconds(timer);
         if (target != null)
         {
-            target.GetComponent<Enemy>().Attack(damage);
-            Attack(target.GetComponent<Enemy>().damage);
+            if (target.gameObject.activeSelf)
+            {
+                target.GetComponent<Enemy>().Attack(damage);
+                Attack(target.GetComponent<Enemy>().damage);
+            }
+            else
+            {
+                Enable_param();
+                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+            }                      
         }
         else
         {
@@ -109,12 +122,21 @@ public class Players : MonoBehaviour
     }
     void Blood()
     {
-        GameObject bl = PoolControll.Instance.Spawn_blood(0);
+        GameObject bl = PoolControll.Instance.Spawn("blood", 0);
         bl.transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
     }
     IEnumerator Disable(float time)
     {
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
-    }  
+    }
+    public void Damage(int id)
+    {
+        life -= id;
+        if (life <= 0)
+        {
+            Blood();
+            StartCoroutine(Disable(0));
+        }
+    }
 }

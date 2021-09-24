@@ -8,29 +8,22 @@ public class Enemy_controll : MonoBehaviour
     public static Enemy_controll Instance;
     [Header("Настраиваемое")]
     [SerializeField] int life;
-    [SerializeField] float spawn_time, freez_timer, hand_move_speed;
+    [SerializeField] float spawn_time, freez_timer, hand_move_speed, gaint_spawn_timer;
 
     [Header("Не трогать")]
     [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand, target;
     bool select, frize_on, move;
     Vector3 hand_pos;
-    float timer, select_timer;
-
-    [SerializeField] Image flag_img;
-    [SerializeField] Sprite[] all_sprt;
-    [SerializeField] Text en_name;
-    [SerializeField] string[] all_name;
-
+    float timer, select_timer, gaint_timer;
+    GameObject sp;
 
     void Start()
     {
         if (Instance == null)
             Instance = this;
         hand_pos = hand.transform.position;
-
-        flag_img.sprite = all_sprt[Random.Range(0, all_sprt.Length)];
-        en_name.text = all_name[Random.Range(0, all_name.Length)];
+        gaint_timer = gaint_spawn_timer;
     }
     void Update()
     {
@@ -40,10 +33,16 @@ public class Enemy_controll : MonoBehaviour
             if (timer <= 0)
             {
                 timer = spawn_time;
-                Spawn();
+                Spawn(0);
             }
-           
-            if(select && !frize_on)
+            gaint_timer -= Time.deltaTime;
+            if (gaint_timer <= 0)
+            {
+                gaint_timer = gaint_spawn_timer;
+                Spawn(1);
+            }
+
+            if (select && !frize_on)
             {
                 select_timer -= Time.deltaTime;
                 if(select_timer <= 0)
@@ -94,13 +93,22 @@ public class Enemy_controll : MonoBehaviour
             //StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
         }        
     }
-    void Spawn()
+
+    void Spawn(int id)
     {
-        GameObject sp = PoolControll.Instance.Spawn_enemy();
-        sp.transform.position = new Vector3(0, 0, transform.position.z - 5);
+        switch (id)
+        {
+            case (0):
+                sp = PoolControll.Instance.Spawn("en_warrior", 0);
+                break;
+            case (1):
+                sp = PoolControll.Instance.Spawn("en_gaint", 0);
+                break;
+        }
+        sp.transform.position = new Vector3(transform.position.x + Random.Range(-5, 5), 0, transform.position.z -5);
         sp.transform.rotation = transform.rotation;
         sp.GetComponent<Enemy>().spawn = true;
-    }
+    }  
     public void Damage(int id)
     {
         life -=id;
