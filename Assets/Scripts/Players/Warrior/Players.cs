@@ -11,7 +11,7 @@ public class Players : MonoBehaviour
 
     [Header("Не трогать")]
     [SerializeField] int life;
-    [SerializeField] Transform target;
+    public Transform target;
     public bool spawn, move, battle;    
    
     void OnEnable()
@@ -68,27 +68,38 @@ public class Players : MonoBehaviour
         }
         if(other.gameObject.tag == "Finish")
         {
-            GetComponent<BoxCollider>().enabled = false;
             Enemy_controll.Instance.Damage(damage);
             gameObject.SetActive(false);
         }
         if (target != null && other.gameObject == target.gameObject)
         {
             battle = true;
-            other.gameObject.GetComponent<Enemy>().Attack(damage);
             if(target.GetComponent<Enemy>() != null)
-                Attack(target.GetComponent<Enemy>().damage);
+                Attack(target.GetComponent<Enemy>().damage, "warrior");
             if (target.GetComponent<Archer>() != null)
-                Attack(target.GetComponent<Archer>().damage);
+                Attack(target.GetComponent<Archer>().damage, "archer");
         }
-    }   
-    public void Attack(int id)
-    {        
+    }
+    public void Attack(int id, string target_type)
+    {
+        print("damg");
         life -= id;
+        switch(target_type)
+        {
+            case ("warrior"):
+                target.GetComponent<Enemy>().Attack(damage);
+                break;
+            case ("archer"):
+                target.GetComponent<Archer>().Damage();
+                break;
+        }
+
         if(life <= 0)
         {
-            if (target != null)
+            if (target != null && target.gameObject.GetComponent<Enemy>() != null)
+            {
                 target.gameObject.GetComponent<Enemy>().Continue();
+            }
             Blood();
             StartCoroutine(Disable(0));
         }
@@ -98,21 +109,12 @@ public class Players : MonoBehaviour
             StartCoroutine(Move_on(0.8f));
         }
     }
-    IEnumerator Move_on(float timer)
+    IEnumerator Move_on(float attack_timer)
     {
-        yield return new WaitForSeconds(timer);
+        yield return new WaitForSeconds(attack_timer);
         if (target != null)
         {
-            if (target.gameObject.activeSelf)
-            {
-                target.GetComponent<Enemy>().Attack(damage);
-                Attack(target.GetComponent<Enemy>().damage);
-            }
-            else
-            {
-                Enable_param();
-                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
-            }                      
+            Attack(target.GetComponent<Enemy>().damage, "warrior");                             
         }
         else
         {
@@ -127,7 +129,7 @@ public class Players : MonoBehaviour
     }
     IEnumerator Disable(float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time);        
         gameObject.SetActive(false);
     }
     public void Damage(int id)
@@ -138,5 +140,20 @@ public class Players : MonoBehaviour
             Blood();
             StartCoroutine(Disable(0));
         }
+    }
+
+    public void Win()
+    {
+        battle = true;
+
+    }
+    public void Lose()
+    {
+        battle = true;
+
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }

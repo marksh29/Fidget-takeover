@@ -41,6 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327d90d7e05d75a429023b76f5fa7aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: 0
 --- !u!1 &5585417307304591038
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,12 +156,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  life: 1
+  start_life: 0
   speed: 5
+  life: 1
+  target: {fileID: 0}
+  spawn: 1
   move: 0
   battle: 0
-  spawn: 0
-  target: {fileID: 0}
 --- !u!136 &377514521584473548
 CapsuleCollider:
   m_ObjectHideFlags: 0

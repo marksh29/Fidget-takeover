@@ -28,17 +28,20 @@ public class Buttons_controll : MonoBehaviour
     }
     void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0)
+        if (Game_Controll.Instance.game)
         {
-            timer = time;
-            for (int i = 0; i < buttons.Length; i++)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
-                buttons[i].GetComponent<Button>().Drop();
+                timer = time;
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].GetComponent<Button>().Drop();
+                }
+                best = null;
+                Buttons_on();
             }
-            best = null;
-            Buttons_on();
-        }
+        }       
     }
     void Buttons_on()
     {

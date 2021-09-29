@@ -5,8 +5,10 @@ using UnityEngine;
 public class PoolControll : MonoBehaviour
 {
     public static PoolControll Instance;
-    [SerializeField] private GameObject enemy_prefab, player_prefab, blood_prefab, pl_gaint, en_gaint, arrow_prefab;
-    [SerializeField] private List<GameObject> enemy_stack, player_stack, blood_stack, pl_gaints_stack, en_gaints_stack, arrow_stack;
+    [SerializeField] private GameObject pl_warrior, pl_gaint, pl_archer, blood_prefab,  arrow_prefab;
+    [SerializeField] private GameObject en_warrior, en_gaint, en_archer;
+    [SerializeField] private List<GameObject> player_stack, pl_gaints_stack, pl_archer_stack, arrow_stack, blood_stack;
+    [SerializeField] private List<GameObject> enemy_stack, en_gaints_stack, en_archer_stack;
     GameObject new_obj, new_blood;
 
     private void Awake()
@@ -27,10 +29,10 @@ public class PoolControll : MonoBehaviour
                 new_obj.GetComponent<Blood>().Set_color(color_id);
                 break;
             case ("pl_warrior"):
-                new_obj = Spawn(player_stack, player_prefab);
+                new_obj = Spawn(player_stack, pl_warrior);
                 break;
             case ("en_warrior"):
-                new_obj = Spawn(enemy_stack, enemy_prefab);
+                new_obj = Spawn(enemy_stack, en_warrior);
                 break;
             case ("pl_gaint"):
                 new_obj = Spawn(pl_gaints_stack, pl_gaint);
@@ -41,6 +43,12 @@ public class PoolControll : MonoBehaviour
             case ("arrow"):
                 new_obj = Spawn(arrow_stack, arrow_prefab);
                 new_obj.GetComponent<Arrow>().enemy = (color_id == 0 ? false : true);
+                break;
+            case ("pl_archer"):
+                new_obj = Spawn(pl_archer_stack, pl_archer);
+                break;
+            case ("en_archer"):
+                new_obj = Spawn(en_archer_stack, en_archer);
                 break;
         }
         return new_obj;
@@ -66,5 +74,14 @@ public class PoolControll : MonoBehaviour
             new_blood = new_obj;
         }
         return new_blood;
-    }  
+    } 
+
+    public void Win()
+    {
+
+    }
+    public void Lose()
+    {
+
+    }
 }

@@ -12,9 +12,9 @@ public class Game_Controll : MonoBehaviour
 
     public Slider load_slider;
     public Text load_text;
-    public GameObject load_panel;
+    public GameObject load_panel, start_panel, game_panel;
 
-    public Transform[] all_buttons;
+    //public Transform[] all_buttons;
 
     private void Awake()
     {
@@ -24,11 +24,19 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-        game = true;         
+       
     }
     private void Update()
     {
-       
+       if(!game && Input.GetMouseButtonDown(0))
+        {
+            game = true;
+            start_panel.SetActive(false);
+            game_panel.SetActive(true);
+
+            Player_controll.Instance.Set_level();
+            Enemy_controll.Instance.Set_level();
+        }
     }      
     public void Pause()
     {
@@ -66,13 +74,13 @@ public class Game_Controll : MonoBehaviour
         game = false;
         win_panel.SetActive(true);
     }
+
     public void Load_level(string name)
     {
         Time.timeScale = 1;
         load_panel.SetActive(true);
         StartCoroutine(Load(name));
     }
-
     IEnumerator Load(string name)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);

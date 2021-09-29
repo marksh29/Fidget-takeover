@@ -11,40 +11,72 @@ public class Archer : MonoBehaviour
     [SerializeField] float start_fire_timer, speed, attack_dist;
 
     [Header("Не трогать")]
-    float fire_time;
-    [SerializeField] bool end, attack;
+    [SerializeField] float fire_time;
+    [SerializeField] bool end, attack, move;
+    [SerializeField] Vector3 move_pos;
     GameObject target;
 
     void OnEnable()
     {
         fire_time = 3;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        Set_move_pos();       
+    }
+    public void Set_move_pos()
+    {
+        float xx = Random.Range(8, 13);
+        float zz = enemy != true ? -43 : 40;
+        move_pos = new Vector3(xx, 0, zz);       
+        move = true;
+    }
+    private void Start()
+    {
+        
+
     }
     void Update()
     {
         if(!end)
         {
-            fire_time -= Time.deltaTime;
-            if(fire_time <= 0)
+            if (move)
             {
-                StartCoroutine(Fire(0.2f));
-                fire_time = start_fire_timer;
+                transform.position = Vector3.MoveTowards(transform.position, move_pos, speed * Time.deltaTime);
+                transform.LookAt(move_pos, Vector3.up);
+
+                if (transform.position == move_pos)
+                {
+                    transform.rotation = Quaternion.Euler(0, enemy == true ? 180 : 0, 0);
+                    move = false;
+                }                   
             }
+            else
+            {
+                fire_time -= Time.deltaTime;
+                if (fire_time <= 0)
+                {
+                    StartCoroutine(Fire(0.2f));
+                    fire_time = start_fire_timer;
+                }
+            }            
         }
     }   
     IEnumerator Fire(float time)
     {
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
         yield return new WaitForSeconds(time);
+        GameObject[] list = GameObject.FindGameObjectsWithTag(enemy == false ? "Enemy" : "Player");
 
-        GameObject[] list = GameObject.FindGameObjectsWithTag("Enemy");
         List<GameObject> add_list = new List<GameObject>();
         for (int i = 0; i < list.Length; i++)
         {
-            if(list[i].transform.position.z - transform.position.z > attack_dist)
+            if(!enemy && list[i].transform.position.z - transform.position.z > attack_dist)
             {
                 add_list.Add(list[i]);
-            }            
+            }
+            else if(enemy && transform.position.z - list[i].transform.position.z > attack_dist)
+            {
+                add_list.Add(list[i]);
+            }
         }
         if (add_list.Count > 0)
         {
@@ -68,7 +100,7 @@ public class Archer : MonoBehaviour
             else if (attack && other.gameObject == target)
             {
                 other.gameObject.GetComponent<Enemy>().Attack(damage);
-                other.gameObject.GetComponent<Enemy>().Continue();
+                //other.gameObject.GetComponent<Enemy>().Continue();
                 Blood();
                 StartCoroutine(Disable(0));
             }
@@ -96,6 +128,12 @@ public class Archer : MonoBehaviour
     IEnumerator Disable(float time)
     {
         yield return new WaitForSeconds(time);
+        target.GetComponent<Players>().target = null;
         gameObject.SetActive(false);
+    }
+
+    public void Win()
+    {
+        end = true;
     }
 }

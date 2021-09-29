@@ -3,43 +3,80 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public struct Stage
+{
+    public float spawn_timer;
+    public float move_speed;
+    public bool warrior;
+    public bool gaint;
+    public bool archer;
+}
+
 public class Enemy_controll : MonoBehaviour
 {
     public static Enemy_controll Instance;
-    [Header("Настраиваемое")]
+    [Header("Настраиваемое")]    
     [SerializeField] int life;
     [SerializeField] float spawn_time, freez_timer, hand_move_speed, gaint_spawn_timer;
+    public List<Stage> stages;
 
     [Header("Не трогать")]
     [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand, target;
+    [SerializeField] bool warrior, gaint, archer;
+    int level;
     bool select, frize_on, move;
     Vector3 hand_pos;
     float timer, select_timer, gaint_timer;
     GameObject sp;
 
-    void Start()
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
+    }
+    void Start()
+    {        
+    }
+
+    public void Set_level()
+    {
+        level = PlayerPrefs.GetInt("level", 0);
+
+        warrior = stages[level].warrior;
+        gaint = stages[level].gaint;
+        archer = stages[level].archer;
+
+       
         hand_pos = hand.transform.position;
         gaint_timer = gaint_spawn_timer;
+
+        if (archer)
+            Spawn(2);
     }
     void Update()
     {
         if (Game_Controll.Instance.game)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            if (warrior)
             {
-                timer = spawn_time;
-                Spawn(0);
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = spawn_time;
+                    Spawn(0);
+                }
             }
-            gaint_timer -= Time.deltaTime;
-            if (gaint_timer <= 0)
+
+            if (gaint)
             {
-                gaint_timer = gaint_spawn_timer;
-                Spawn(1);
+                gaint_timer -= Time.deltaTime;
+                if (gaint_timer <= 0)
+                {
+                    gaint_timer = gaint_spawn_timer;
+                    Spawn(1);
+                }
             }
 
             if (select && !frize_on)
@@ -78,6 +115,7 @@ public class Enemy_controll : MonoBehaviour
             }
         }        
     }
+   
     public void Start_select()
     {
         select_timer = Random.Range(1, 2);
@@ -90,7 +128,6 @@ public class Enemy_controll : MonoBehaviour
             target = Buttons_controll.Instance.Best();
             select = false;
             move = true;
-            //StartCoroutine(DoMove(0.5f, Buttons_controll.Instance.Best()));
         }        
     }
 
@@ -104,40 +141,22 @@ public class Enemy_controll : MonoBehaviour
             case (1):
                 sp = PoolControll.Instance.Spawn("en_gaint", 0);
                 break;
+            case (2):
+                sp = PoolControll.Instance.Spawn("en_archer", 0);
+                break;
         }
+
         sp.transform.position = new Vector3(transform.position.x + Random.Range(-5, 5), 0, transform.position.z -5);
-        sp.transform.rotation = transform.rotation;
-        sp.GetComponent<Enemy>().spawn = true;
+        sp.transform.rotation = transform.rotation;        
+        if(sp.GetComponent<Enemy>() != null)
+            sp.GetComponent<Enemy>().spawn = true;
     }  
     public void Damage(int id)
     {
         life -=id;
         if (life <= 0)
             Game_Controll.Instance.Win();
-    }
-    //private IEnumerator DoMove(float time, GameObject target)
-    //{
-    //    Vector3 startPosition = hand.transform.position;
-    //    float startTime = Time.realtimeSinceStartup;
-    //    float fraction = 0f;
-    //    while (fraction < 1f)
-    //    {
-    //        fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
-    //        hand.transform.position = Vector3.Lerp(startPosition, target.transform.position, fraction);
-    //        yield return null;
-    //    }
-    //    hand.transform.position = hand_pos;
-    //    if (target.GetComponent<Button>().count != 0)
-    //    {
-    //        gate.Set_text(target.GetComponent<Button>().count);
-    //        target.GetComponent<Button>().Off();          
-    //        StartCoroutine(Freez_timer());
-    //    }
-    //    else
-    //    {
-    //        Hand_move();
-    //    }
-    //}
+    }   
     IEnumerator Freez_timer()
     {
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 150);

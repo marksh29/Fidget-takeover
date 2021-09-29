@@ -30,7 +30,6 @@ public class Gate_controll : MonoBehaviour
             if(timer <= 0)
             {
                 time_on = false;
-                StartCoroutine(Spawn(count));
                 count = 0;
                 count_text.text = "";
                 gate_wall.SetActive(false);

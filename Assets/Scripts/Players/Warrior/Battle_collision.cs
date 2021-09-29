@@ -12,15 +12,7 @@ public class Battle_collision : MonoBehaviour
     void Update()
     {
         
-    }
-    //private void OnCollisionEnter(Collision coll)
-    //{
-    //    if(coll.gameObject.tag == "Enemy" && !on)
-    //    {
-    //        transform.parent.gameObject.GetComponent<Players>().Set_target(coll.gameObject.transform);
-    //        on = true;
-    //    }
-    //}
+    }   
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy" && !on)

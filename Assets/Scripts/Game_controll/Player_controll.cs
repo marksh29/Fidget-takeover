@@ -11,20 +11,38 @@ public class Player_controll : MonoBehaviour
     [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer;
 
     [Header("Не трогать")]
-    [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand;
+    [SerializeField] bool warrior, gaint, archer;
+    [SerializeField] Gate_controll gate;    
     bool freez_on;
     float timer, gaint_timer;
     Vector3 hand_pos;
     GameObject sp;
-    void Start()
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
-        hand_pos = hand.transform.position;
-        gaint_timer = gaint_spawn_timer;
+    }
+    void Start()
+    {                   
     }
 
+    public void Set_level()
+    {
+        hand_pos = hand.transform.position;
+        gaint_timer = gaint_spawn_timer;
+
+        if (PlayerPrefs.GetInt("level") != 100)
+        {
+            warrior = true;
+        }
+        gaint = PlayerPrefs.GetInt("buy_gaint") == 1 ? true : false;
+
+        if (PlayerPrefs.GetInt("buy_archer") == 1 || archer)
+        {
+            Spawn(2);
+        }
+    }
     void Update()
     {
         if (Game_Controll.Instance.game)
@@ -42,21 +60,26 @@ public class Player_controll : MonoBehaviour
                     }
                 }
             }
-
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            if (warrior)
             {
-                timer = spawn_time;
-                Spawn(0);
-            }
-            gaint_timer -= Time.deltaTime;
-            if (gaint_timer <= 0)
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = spawn_time;
+                    Spawn(0);
+                }
+            }            
+            if (gaint)
             {
-                gaint_timer = gaint_spawn_timer;
-                Spawn(1);
-            }
+                gaint_timer -= Time.deltaTime;
+                if (gaint_timer <= 0)
+                {
+                    gaint_timer = gaint_spawn_timer;
+                    Spawn(1);
+                }
+            }            
         }
-    }
+    }   
     IEnumerator Freez_timer()
     {
         freez_on = true;
@@ -83,10 +106,15 @@ public class Player_controll : MonoBehaviour
             case (1):
                 sp = PoolControll.Instance.Spawn("pl_gaint", 0);
                 break;
+            case (2):
+                sp = PoolControll.Instance.Spawn("pl_archer", 0);
+                break;
         }
         sp.transform.position = new Vector3(transform.position.x + Random.Range(-5,5), 0, transform.position.z);
         sp.transform.rotation = transform.rotation;
-        sp.GetComponent<Players>().spawn = true;
+        
+        //if(sp.GetComponent<Players>() != null)
+        //    sp.GetComponent<Players>().spawn = true;
     }
     private IEnumerator DoMove(float time, GameObject target)
     {
@@ -106,5 +134,9 @@ public class Player_controll : MonoBehaviour
             target.GetComponent<Button>().Off();
             StartCoroutine(Freez_timer());
         }
+    }
+    public void Archer_off()
+    {
+
     }
 }

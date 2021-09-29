@@ -78,20 +78,17 @@ public class Enemy : MonoBehaviour
         if (life <= 0)
         {
             Blood();
-            //gameObject.SetActive(false);
             StartCoroutine(Disable(0));
         }
         else
         {
             if(target != null)
             {
-                if (target.gameObject.activeSelf)
-                    transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
-                else
-                    target = null;
+                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
             }            
         }
-    }   
+    }
+    
     void Blood()
     {
         GameObject bl = PoolControll.Instance.Spawn("blood", 1);
@@ -100,10 +97,18 @@ public class Enemy : MonoBehaviour
     IEnumerator Disable(float timer)
     {
         yield return new WaitForSeconds(timer);
+        if(target != null)
+            target.GetComponent<Players>().target = null;
         gameObject.SetActive(false);
     }
+
     public void Continue()
     {
+        StartCoroutine(Move_on(1));        
+    }
+    IEnumerator Move_on(float attack_timer)
+    {
+        yield return new WaitForSeconds(attack_timer);
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         Enable_param();
     }
@@ -114,6 +119,15 @@ public class Enemy : MonoBehaviour
         {
             Blood();
             StartCoroutine(Disable(0));
-        }        
+        }
+    }
+
+    public void Win()
+    {
+        battle = true;
+    }
+    public void Lose()
+    {
+        battle = true;
     }
 }
