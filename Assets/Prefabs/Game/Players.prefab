@@ -160,7 +160,7 @@ MonoBehaviour:
   speed: 5
   life: 1
   target: {fileID: 0}
-  spawn: 1
+  spawn: 0
   move: 0
   battle: 0
 --- !u!136 &377514521584473548

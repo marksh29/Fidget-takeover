@@ -137,6 +137,7 @@ public class Enemy_controll : MonoBehaviour
         {
             case (0):
                 sp = PoolControll.Instance.Spawn("en_warrior", 0);
+                sp.GetComponent<Enemy>().spawn = true;
                 break;
             case (1):
                 sp = PoolControll.Instance.Spawn("en_gaint", 0);

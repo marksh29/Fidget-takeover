@@ -102,6 +102,7 @@ public class Player_controll : MonoBehaviour
         {
             case (0):
                 sp = PoolControll.Instance.Spawn("pl_warrior", 0);
+                sp.GetComponent<Players>().spawn = true;
                 break;
             case (1):
                 sp = PoolControll.Instance.Spawn("pl_gaint", 0);

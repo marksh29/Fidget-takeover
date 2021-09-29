@@ -3245,8 +3245,8 @@ MonoBehaviour:
   stages:
   - spawn_timer: 2
     move_speed: 5
-    warrior: 0
-    gaint: 1
+    warrior: 1
+    gaint: 0
     archer: 0
   - spawn_timer: 0
     move_speed: 0
@@ -17451,7 +17451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1089877665
 Transform:
   m_ObjectHideFlags: 0
@@ -18822,7 +18822,7 @@ MonoBehaviour:
   life: 5
   spawn_time: 2
   freez_timer: 5
-  gaint_spawn_timer: 10
+  gaint_spawn_timer: 5
   hand: {fileID: 1478724283}
   warrior: 0
   gaint: 0
