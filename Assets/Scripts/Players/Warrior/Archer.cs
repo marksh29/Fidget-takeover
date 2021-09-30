@@ -18,7 +18,7 @@ public class Archer : MonoBehaviour
 
     void OnEnable()
     {
-        fire_time = 3;
+        //fire_time = 3;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         Set_move_pos();       
     }
@@ -59,7 +59,7 @@ public class Archer : MonoBehaviour
                 }
             }            
         }
-    }   
+    }
     IEnumerator Fire(float time)
     {
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
@@ -69,11 +69,11 @@ public class Archer : MonoBehaviour
         List<GameObject> add_list = new List<GameObject>();
         for (int i = 0; i < list.Length; i++)
         {
-            if(!enemy && list[i].transform.position.z - transform.position.z > attack_dist)
+            if (!enemy && list[i].transform.position.z - transform.position.z > attack_dist)
             {
                 add_list.Add(list[i]);
             }
-            else if(enemy && transform.position.z - list[i].transform.position.z > attack_dist)
+            else if (enemy && transform.position.z - list[i].transform.position.z > attack_dist)
             {
                 add_list.Add(list[i]);
             }
@@ -85,7 +85,7 @@ public class Archer : MonoBehaviour
             arr.transform.rotation = transform.rotation;
             arr.GetComponent<Arrow>().Start_fly(add_list[Random.Range(0, add_list.Count)].transform);
         }
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
     }
     private void OnTriggerEnter(Collider other)
     {

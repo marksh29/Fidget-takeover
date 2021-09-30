@@ -14,8 +14,6 @@ public class Game_Controll : MonoBehaviour
     public Text load_text;
     public GameObject load_panel, start_panel, game_panel;
 
-    //public Transform[] all_buttons;
-
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -28,7 +26,7 @@ public class Game_Controll : MonoBehaviour
     }
     private void Update()
     {
-       if(!game && Input.GetMouseButtonDown(0))
+       if(!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.5f)
         {
             game = true;
             start_panel.SetActive(false);
@@ -56,25 +54,47 @@ public class Game_Controll : MonoBehaviour
         if (Sound.Instance != null)
             Sound.Instance.Click();
     }
-
     public void Continue()
     {
         game = true;
         Time.timeScale = 1;
         PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
-        SceneManager.LoadScene("game 1");
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Win()
+    {
+        if(game)
+        {
+            Money_controll.Instance.End_money();
+            game = false;
+            PoolControll.Instance.Win();
+            StartCoroutine(Open_panel("Win"));
+        }       
     }
     public void Lose()
     {
-        game = false;
-        lose_panel.SetActive(true);
-    }
-    public void Win()
+        if (game)
+        {
+            game = false;
+            PoolControll.Instance.Lose();
+            StartCoroutine(Open_panel("Lose"));
+        }        
+    }    
+    IEnumerator Open_panel(string name)
     {
         game = false;
-        win_panel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        switch (name)
+        {
+            case ("Win"):
+                win_panel.SetActive(true);
+                break;
+            case ("Lose"):
+                lose_panel.SetActive(true);
+                break;
+        }
     }
-
     public void Load_level(string name)
     {
         Time.timeScale = 1;

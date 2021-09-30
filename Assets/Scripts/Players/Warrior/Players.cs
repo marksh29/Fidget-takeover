@@ -12,7 +12,7 @@ public class Players : MonoBehaviour
     [Header("Не трогать")]
     [SerializeField] int life;
     public Transform target;
-    public bool spawn, move, battle;    
+    public bool spawn, move, battle, end;    
    
     void OnEnable()
     {
@@ -22,7 +22,7 @@ public class Players : MonoBehaviour
     }
     private void Update()
     {
-        if (!battle)
+        if (!battle && !end)
         {
             if (move)
             {
@@ -82,7 +82,6 @@ public class Players : MonoBehaviour
     }
     public void Attack(int id, string target_type)
     {
-        print("damg");
         life -= id;
         switch(target_type)
         {
@@ -135,7 +134,7 @@ public class Players : MonoBehaviour
     public void Damage(int id)
     {
         life -= id;
-        if (life <= 0)
+        if (life <= 0 && gameObject.activeSelf)
         {
             Blood();
             StartCoroutine(Disable(0));
@@ -144,14 +143,10 @@ public class Players : MonoBehaviour
 
     public void Win()
     {
-        battle = true;
-
-    }
-    public void Lose()
-    {
-        battle = true;
-
-    }
+        print("win");
+        end = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
+    }    
     private void OnDisable()
     {
         StopAllCoroutines();

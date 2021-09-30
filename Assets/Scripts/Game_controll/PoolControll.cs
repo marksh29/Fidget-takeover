@@ -78,10 +78,56 @@ public class PoolControll : MonoBehaviour
 
     public void Win()
     {
-
+        for (int i = 0; i < player_stack.Count; i++)
+        {
+            player_stack[i].GetComponent<Players>().Win();
+        }
+        for (int i = 0; i < pl_gaints_stack.Count; i++)
+        {
+            pl_gaints_stack[i].GetComponent<Players>().Win();
+        }
+        for (int i = 0; i < pl_archer_stack.Count; i++)
+        {
+            pl_archer_stack[i].GetComponent<Archer>().Win();
+        }
+        for (int i = 0; i < enemy_stack.Count; i++)
+        {
+            enemy_stack[i].GetComponent<Enemy>().Damage(100);
+        }
+        for (int i = 0; i < en_gaints_stack.Count; i++)
+        {
+            enemy_stack[i].GetComponent<Enemy>().Damage(100);
+        }
+        for (int i = 0; i < en_archer_stack.Count; i++)
+        {
+            en_archer_stack[i].GetComponent<Archer>().Damage();
+        }
     }
     public void Lose()
     {
-
+        for (int i = 0; i < player_stack.Count; i++)
+        {
+            player_stack[i].GetComponent<Players>().Damage(100);
+        }
+        for (int i = 0; i < pl_gaints_stack.Count; i++)
+        {
+            pl_gaints_stack[i].GetComponent<Players>().Damage(100); 
+        }
+        for (int i = 0; i < pl_archer_stack.Count; i++)
+        {
+            pl_archer_stack[i].GetComponent<Archer>().Damage();
+        }
+        for (int i = 0; i < enemy_stack.Count; i++)
+        {
+            enemy_stack[i].GetComponent<Enemy>().Win();
+        }
+        for (int i = 0; i < en_gaints_stack.Count; i++)
+        {
+            enemy_stack[i].GetComponent<Enemy>().Win();
+        }
+        for (int i = 0; i < en_archer_stack.Count; i++)
+        {
+            en_archer_stack[i].GetComponent<Archer>().Win();
+        }
     }
 }

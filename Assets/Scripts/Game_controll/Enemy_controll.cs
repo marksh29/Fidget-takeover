@@ -6,30 +6,37 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct Stage
 {
-    public float spawn_timer;
-    public float move_speed;
+    public int life;
+    public float warrior_spawn_timer;
+    public float gaint_spawn_timer;
+    public float move_speed;   
+    public float frize_timer;
+
     public bool warrior;
     public bool gaint;
     public bool archer;
+
+    public float[] select_timer_min_max;  
+    public int[] boost_variant;   
 }
 
 public class Enemy_controll : MonoBehaviour
 {
     public static Enemy_controll Instance;
-    [Header("Настраиваемое")]    
-    [SerializeField] int life;
-    [SerializeField] float spawn_time, freez_timer, hand_move_speed, gaint_spawn_timer;
+    [Header("Настраиваемое")]
     public List<Stage> stages;
+    [SerializeField] float hand_move_speed;
 
-    [Header("Не трогать")]
+    [Header("Не трогать")]    
+    public float move_speed;
     [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand, target;
-    [SerializeField] bool warrior, gaint, archer;
-    int level;
-    bool select, frize_on, move;
-    Vector3 hand_pos;
-    float timer, select_timer, gaint_timer;
+    float[] select_timer_min_max;    
+    int level, life;
+    bool select, frize_on, move, warrior, gaint, archer;
+    float timer, select_timer, gaint_timer, warrior_spawn_time, freez_timer, gaint_spawn_timer;
     GameObject sp;
+    Vector3 hand_pos;
 
     private void Awake()
     {
@@ -37,19 +44,27 @@ public class Enemy_controll : MonoBehaviour
             Instance = this;
     }
     void Start()
-    {        
+    {
+        PlayerPrefs.DeleteAll(); 
     }
 
     public void Set_level()
     {
         level = PlayerPrefs.GetInt("level", 0);
 
+        life = stages[level].life;
+        freez_timer = stages[level].frize_timer;
+        move_speed = stages[level].move_speed;
+        warrior_spawn_time = stages[level].warrior_spawn_timer;
+        gaint_spawn_timer = stages[level].gaint_spawn_timer;
+
         warrior = stages[level].warrior;
         gaint = stages[level].gaint;
         archer = stages[level].archer;
 
-       
+        select_timer_min_max = stages[level].select_timer_min_max;
         hand_pos = hand.transform.position;
+
         gaint_timer = gaint_spawn_timer;
 
         if (archer)
@@ -64,7 +79,7 @@ public class Enemy_controll : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
-                    timer = spawn_time;
+                    timer = warrior_spawn_time;
                     Spawn(0);
                 }
             }
@@ -118,7 +133,7 @@ public class Enemy_controll : MonoBehaviour
    
     public void Start_select()
     {
-        select_timer = Random.Range(1, 2);
+        select_timer = Random.Range(select_timer_min_max[0], select_timer_min_max[1]);
         select = true;
     }
     void Hand_move()

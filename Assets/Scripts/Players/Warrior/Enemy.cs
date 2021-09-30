@@ -12,11 +12,12 @@ public class Enemy : MonoBehaviour
     [Header("Не трогать")]
     public Transform target;
     public int life;
-    public bool move, battle, spawn;
+    public bool move, battle, spawn, end;
    
 
     void OnEnable()
     {
+        speed = Enemy_controll.Instance.move_speed;
         life = start_life;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         Enable_param(); 
@@ -115,7 +116,7 @@ public class Enemy : MonoBehaviour
     public void Damage(int id)
     {
         life -= id;
-        if (life <= 0)
+        if (life <= 0)// && gameObject.activeSelf)
         {
             Blood();
             StartCoroutine(Disable(0));
@@ -124,10 +125,7 @@ public class Enemy : MonoBehaviour
 
     public void Win()
     {
-        battle = true;
-    }
-    public void Lose()
-    {
-        battle = true;
-    }
+        end = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
+    }   
 }

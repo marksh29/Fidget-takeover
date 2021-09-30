@@ -6,19 +6,22 @@ using UnityEngine.UI;
 public class Buttons_controll : MonoBehaviour
 {
     public static Buttons_controll Instance;
-    [SerializeField] float timer, time;
+    [SerializeField] float time;
     [SerializeField] GameObject[] buttons;
     public GameObject best;
     [SerializeField] List<GameObject> list;
     [SerializeField] int[] count;
 
     [SerializeField] Font nide_font;
+    float timer;
 
     void Start()
     {
         if (Instance == null)
             Instance = this;
+       
         timer = 3;
+        count = Enemy_controll.Instance.stages[PlayerPrefs.GetInt("level")].boost_variant;
 
         for (int i = 0; i < buttons.Length; i++)
         {

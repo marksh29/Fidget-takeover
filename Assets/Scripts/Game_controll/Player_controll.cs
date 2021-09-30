@@ -113,9 +113,6 @@ public class Player_controll : MonoBehaviour
         }
         sp.transform.position = new Vector3(transform.position.x + Random.Range(-5,5), 0, transform.position.z);
         sp.transform.rotation = transform.rotation;
-        
-        //if(sp.GetComponent<Players>() != null)
-        //    sp.GetComponent<Players>().spawn = true;
     }
     private IEnumerator DoMove(float time, GameObject target)
     {
