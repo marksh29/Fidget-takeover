@@ -45,7 +45,7 @@ public class Enemy_controll : MonoBehaviour
     }
     void Start()
     {
-        PlayerPrefs.DeleteAll(); 
+        //PlayerPrefs.DeleteAll(); 
     }
 
     public void Set_level()

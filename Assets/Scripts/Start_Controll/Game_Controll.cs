@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Game_Controll : MonoBehaviour
 {
-
     public static Game_Controll Instance;
     public bool game, pause;
     [SerializeField] GameObject lose_panel, win_panel;
 
     public Slider load_slider;
     public Text load_text;
-    public GameObject load_panel, start_panel, game_panel;
+    public GameObject load_panel, start_panel, game_panel, lootbox_panel;
 
     private void Awake()
     {
@@ -89,11 +88,12 @@ public class Game_Controll : MonoBehaviour
         {
             case ("Win"):
                 win_panel.SetActive(true);
+                lootbox_panel.SetActive(true);
                 break;
             case ("Lose"):
                 lose_panel.SetActive(true);
                 break;
-        }
+        }        
     }
     public void Load_level(string name)
     {

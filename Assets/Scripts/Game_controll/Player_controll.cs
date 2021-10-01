@@ -36,9 +36,9 @@ public class Player_controll : MonoBehaviour
         {
             warrior = true;
         }
-        gaint = PlayerPrefs.GetInt("buy_gaint") == 1 ? true : false;
+        gaint = PlayerPrefs.GetInt("buy_Gaint") == 1 ? true : false;
 
-        if (PlayerPrefs.GetInt("buy_archer") == 1 || archer)
+        if (PlayerPrefs.GetInt("buy_Archer") == 1 || archer)
         {
             Spawn(2);
         }

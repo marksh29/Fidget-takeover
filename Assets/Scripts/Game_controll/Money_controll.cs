@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Money_controll : MonoBehaviour
 {
     public static Money_controll Instance;
-    [SerializeField] int money, end_money;
+    public int money, end_money;
     [SerializeField] Text end_money_text;
     [SerializeField] Text[] money_text;
     [SerializeField] int[] end_money_list;
