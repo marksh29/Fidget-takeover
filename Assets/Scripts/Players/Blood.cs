@@ -25,5 +25,6 @@ public class Blood : MonoBehaviour
     public void Set_color(int id)
     {
         GetComponent<SpriteRenderer>().color = color[id];
+        transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().startColor = color[id];
     }
 }

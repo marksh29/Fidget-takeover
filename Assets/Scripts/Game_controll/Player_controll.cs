@@ -8,14 +8,14 @@ public class Player_controll : MonoBehaviour
     public static Player_controll Instance;
     [Header("Настраиваемое")]
     [SerializeField] int life;
-    [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer;
+    [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer, spawn_timer_upgrade;
 
     [Header("Не трогать")]
     [SerializeField] GameObject hand;
     [SerializeField] bool warrior, gaint, archer;
     [SerializeField] Gate_controll gate;    
-    bool freez_on;
-    float timer, gaint_timer;
+    bool freez_on, hand_move;
+    float timer, gaint_timer, sp_upgrade;
     Vector3 hand_pos;
     GameObject sp;
     private void Awake()
@@ -29,6 +29,8 @@ public class Player_controll : MonoBehaviour
 
     public void Set_level()
     {
+        sp_upgrade = spawn_timer_upgrade * PlayerPrefs.GetInt("Upgrade0");
+
         hand_pos = hand.transform.position;
         gaint_timer = gaint_spawn_timer;
 
@@ -47,7 +49,7 @@ public class Player_controll : MonoBehaviour
     {
         if (Game_Controll.Instance.game)
         {
-            if (Input.GetMouseButtonDown(0) && !freez_on)
+            if (Input.GetMouseButtonDown(0) && !freez_on && !hand_move)
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,6 +58,7 @@ public class Player_controll : MonoBehaviour
                 {
                     if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
                     {
+                        hand_move = true;
                         StartCoroutine(DoMove(0.5f, hit.collider.gameObject));                       
                     }
                 }
@@ -65,7 +68,9 @@ public class Player_controll : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
-                    timer = spawn_time;
+                    timer = spawn_time - sp_upgrade;
+                    if (timer < 1)
+                        timer = 1;
                     Spawn(0);
                 }
             }            
@@ -74,7 +79,9 @@ public class Player_controll : MonoBehaviour
                 gaint_timer -= Time.deltaTime;
                 if (gaint_timer <= 0)
                 {
-                    gaint_timer = gaint_spawn_timer;
+                    gaint_timer = gaint_spawn_timer - sp_upgrade;
+                    if (gaint_timer < 1)
+                        gaint_timer = 1;
                     Spawn(1);
                 }
             }            
@@ -125,7 +132,10 @@ public class Player_controll : MonoBehaviour
             hand.transform.position = Vector3.Lerp(startPosition, target.transform.position, fraction);
             yield return null;
         }
+        hand_move = false;
         hand.transform.position = hand_pos;
+        if (Sound.Instance != null)
+            Sound.Instance.Play_Sound(0);
         if (target.GetComponent<Button>().count != 0)
         {
             gate.Set_text(target.GetComponent<Button>().count);

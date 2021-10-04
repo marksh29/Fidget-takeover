@@ -10,8 +10,7 @@ public class Buttons_controll : MonoBehaviour
     [SerializeField] GameObject[] buttons;
     public GameObject best;
     [SerializeField] List<GameObject> list;
-    [SerializeField] int[] count;
-
+    [SerializeField] int[] count;    
     [SerializeField] Font nide_font;
     float timer;
 

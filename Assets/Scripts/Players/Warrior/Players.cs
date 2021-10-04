@@ -12,12 +12,14 @@ public class Players : MonoBehaviour
     [Header("Не трогать")]
     [SerializeField] int life;
     public Transform target;
-    public bool spawn, move, battle, end;    
+    public bool spawn, move, battle, end;
+    [SerializeField] GameObject effect;
    
     void OnEnable()
     {
         life = start_life;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        damage = damage + PlayerPrefs.GetInt("Upgrade1");
         Enable_param();
     }
     private void Update()

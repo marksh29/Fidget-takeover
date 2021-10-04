@@ -110,6 +110,8 @@ public class Enemy_controll : MonoBehaviour
                     hand.transform.position = Vector3.MoveTowards(hand.transform.position, target.transform.position, hand_move_speed * Time.deltaTime);
                     if(hand.transform.position == target.transform.position)
                     {
+                        if (Sound.Instance != null)
+                            Sound.Instance.Play_Sound(0);
                         hand.transform.position = hand_pos;
                         gate.Set_text(target.GetComponent<Button>().count);
                         target.GetComponent<Button>().Off();

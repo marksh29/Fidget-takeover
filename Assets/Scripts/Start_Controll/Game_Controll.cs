@@ -25,15 +25,15 @@ public class Game_Controll : MonoBehaviour
     }
     private void Update()
     {
-       if(!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.5f)
-        {
-            game = true;
-            start_panel.SetActive(false);
-            game_panel.SetActive(true);
+       //if(!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f)
+       // {
+       //     game = true;
+       //     start_panel.SetActive(false);
+       //     game_panel.SetActive(true);
 
-            Player_controll.Instance.Set_level();
-            Enemy_controll.Instance.Set_level();
-        }
+       //     Player_controll.Instance.Set_level();
+       //     Enemy_controll.Instance.Set_level();
+       // }
     }      
     public void Pause()
     {
@@ -116,5 +116,14 @@ public class Game_Controll : MonoBehaviour
             }
             yield return null;
         }
+    }
+    public void Play_game()
+    {
+        game = true;
+        start_panel.SetActive(false);
+        game_panel.SetActive(true);
+
+        Player_controll.Instance.Set_level();
+        Enemy_controll.Instance.Set_level();
     }
 }

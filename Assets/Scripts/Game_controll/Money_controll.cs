@@ -15,12 +15,12 @@ public class Money_controll : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        money = PlayerPrefs.GetInt("money");
     }
     void Start()
-    {
-        money = PlayerPrefs.GetInt("money");
-        money_text[0].text = money.ToString();
-        money_text[1].text = money.ToString();
+    {        
+        money_text[0].text = money.ToString("0,0");
+        money_text[1].text = money.ToString("0,0");
     }
     void Update()
     {
@@ -29,7 +29,7 @@ public class Money_controll : MonoBehaviour
 
     public void End_money()
     {
-        end_money = end_money_list[PlayerPrefs.GetInt("level")];
+        end_money = end_money_list[PlayerPrefs.GetInt("level")] + (50 * PlayerPrefs.GetInt("Upgrade2"));
         end_money_text.text = "+" + end_money;
         PlayerPrefs.SetInt("money", money + end_money);
         StartCoroutine(Money_count(money + end_money));
@@ -41,8 +41,8 @@ public class Money_controll : MonoBehaviour
         {
             money += 1;
             end_money -= 1;
-            money_text[0].text = money.ToString();
-            money_text[1].text = money.ToString();
+            money_text[0].text = money.ToString("0,0");
+            money_text[1].text = money.ToString("0,0");
             end_money_text.text = "+" + end_money;
             yield return null;
         }
@@ -53,8 +53,8 @@ public class Money_controll : MonoBehaviour
         money += count;
         if (money < 0)
             money = 0;
-        money_text[0].text = money.ToString();
-        money_text[1].text = money.ToString();
+        money_text[0].text = money.ToString("0,0");
+        money_text[1].text = money.ToString("0,0");
         PlayerPrefs.SetInt("money", money);
     }
 }

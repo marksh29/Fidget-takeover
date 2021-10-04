@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        if(!battle)
+        if(!battle && !end)
         {
             if (move)
             {

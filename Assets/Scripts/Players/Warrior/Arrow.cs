@@ -9,7 +9,8 @@ public class Arrow : MonoBehaviour
     public bool enemy;
     void Start()
     {
-        
+        if(!enemy)
+            damage = damage +PlayerPrefs.GetInt("Upgrade1");
     }
     public void Start_fly(Transform obj)
     {
