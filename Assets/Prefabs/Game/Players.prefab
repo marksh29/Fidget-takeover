@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   start_life: 0
-  speed: 5
+  speed: 8
   life: 1
   target: {fileID: 0}
   gaint: 0
