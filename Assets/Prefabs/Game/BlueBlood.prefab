@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2049488372798087424}
   - component: {fileID: 2049488372798087455}
   - component: {fileID: 6393626558773752856}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BlueBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,10 +109,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2049488372798087424}
     m_Modifications:
+    - target: {fileID: 8879401633776798169, guid: 01686b29cb5749c4b9ad890203f6901f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879401633776799615, guid: 01686b29cb5749c4b9ad890203f6901f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8879401633776845779, guid: 01686b29cb5749c4b9ad890203f6901f,
         type: 3}
       propertyPath: m_Name
       value: BlueExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879401633776845779, guid: 01686b29cb5749c4b9ad890203f6901f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8879401633777175519, guid: 01686b29cb5749c4b9ad890203f6901f,
         type: 3}

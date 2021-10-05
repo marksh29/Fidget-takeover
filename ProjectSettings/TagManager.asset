@@ -9,6 +9,7 @@ TagManager:
   - Button
   - Pfinish
   - EnemyGate
+  - Path
   layers:
   - Default
   - TransparentFX

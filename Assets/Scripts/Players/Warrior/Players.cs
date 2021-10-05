@@ -5,14 +5,14 @@ using UnityEngine;
 public class Players : MonoBehaviour
 {
     [Header("Настраиваемое")]
-    [SerializeField] int damage;
+    public int damage;
     [SerializeField] int start_life;
     [SerializeField] float speed;
 
     [Header("Не трогать")]
     [SerializeField] int life;
     public Transform target;
-    public bool spawn, move, battle, end;
+    public bool gaint, spawn, move, battle, end;
     [SerializeField] GameObject effect;
    
     void OnEnable()
@@ -89,6 +89,8 @@ public class Players : MonoBehaviour
         {
             case ("warrior"):
                 target.GetComponent<Enemy>().Attack(damage);
+                if (gaint)
+                    GetComponent<Gaint>().Mass_attack(damage);
                 break;
             case ("archer"):
                 target.GetComponent<Archer>().Damage();
@@ -130,6 +132,7 @@ public class Players : MonoBehaviour
     }
     IEnumerator Disable(float time)
     {
+        gameObject.tag = "Untagged";
         yield return new WaitForSeconds(time);        
         gameObject.SetActive(false);
     }
@@ -145,12 +148,11 @@ public class Players : MonoBehaviour
 
     public void Win()
     {
-        print("win");
         end = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
     }    
     private void OnDisable()
     {
         StopAllCoroutines();
-    }
+    }    
 }

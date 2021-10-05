@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [Header("Не трогать")]
     public Transform target;
     public int life;
-    public bool move, battle, spawn, end;
+    public bool move, battle, spawn, end, gaint;
    
 
     void OnEnable()
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {       
-        if (other.gameObject.tag == "EnemyGate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn)
+        if (other.gameObject.tag == "EnemyGate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn && !gaint)
         {
             other.gameObject.GetComponent<Gate_controll>().Set_spawn();
             spawn = false;
@@ -77,30 +77,28 @@ public class Enemy : MonoBehaviour
         battle = true;
         life -= id;
         if (life <= 0)
-        {
+        {            
             Blood();
             StartCoroutine(Disable(0));
         }
         else
         {
-            if(target != null)
+            if (gaint)
+                GetComponent<Gaint>().Mass_attack(damage);
+            if (target != null)
             {
                 transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
             }            
         }
-    }
-    
-    void Blood()
-    {
-        GameObject bl = PoolControll.Instance.Spawn("blood", 1);
-        bl.transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
-    }
+    }   
     IEnumerator Disable(float timer)
     {
+        gameObject.tag = "Untagged";
         yield return new WaitForSeconds(timer);
         if(target != null)
             target.GetComponent<Players>().target = null;
         gameObject.SetActive(false);
+        StopAllCoroutines();
     }
 
     public void Continue()
@@ -122,7 +120,14 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Disable(0));
         }
     }
-
+    void Blood()
+    {
+        if (Game_Controll.Instance.game)
+        {
+            GameObject bl = PoolControll.Instance.Spawn("blood", 1);
+            bl.transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
+        }
+    }
     public void Win()
     {
         end = true;

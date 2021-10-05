@@ -4,23 +4,17 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -6959931057268468427
-    second: Armature.004|Armature.004|mixamo.com|Layer0.001
+      74: 156964476166669451
+    second: Win
   - first:
-      74: -3019213964835195884
+      74: 5883523313946568657
+    second: MoveWin
+  - first:
+      74: 4682765751262850392
     second: Attack
   - first:
-      74: -263746265019315659
-    second: Armature.004|Fight.001
-  - first:
-      74: 1690476349912347297
+      74: -7551964380084998518
     second: Move
-  - first:
-      74: 2187101429510800092
-    second: Armature.004|victory
-  - first:
-      74: 2749739714284831463
-    second: Win
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -50,18 +44,47 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.004|Armature.004|mixamo.com|Layer0.001
-      takeName: Armature.004|Armature.004|mixamo.com|Layer0.001
+      name: Win
+      takeName: Armature|Dancing
       internalID: 0
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 371
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MoveWin
+      takeName: Armature|Dancing walk
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 325
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -80,36 +103,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Attack
-      takeName: Armature.004|Fight
-      internalID: 0
-      firstFrame: 65
-      lastFrame: 91
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature.004|Fight.001
-      takeName: Armature.004|Fight.001
+      takeName: Armature|Fight
       internalID: 0
       firstFrame: 0
       lastFrame: 140
@@ -138,7 +132,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Move
-      takeName: Armature.004|Run
+      takeName: Armature|Run
       internalID: 0
       firstFrame: 0
       lastFrame: 19
@@ -165,68 +159,10 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature.004|victory
-      takeName: Armature.004|victory
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 135
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Win
-      takeName: Armature.004|victory.001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 135
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -277,7 +213,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

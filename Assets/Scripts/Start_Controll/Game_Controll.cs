@@ -7,11 +7,12 @@ public class Game_Controll : MonoBehaviour
 {
     public static Game_Controll Instance;
     public bool game, pause;
-    [SerializeField] GameObject lose_panel, win_panel;
+    [SerializeField] GameObject lose_panel, win_panel, shop_panel, abill_panel;
 
     public Slider load_slider;
     public Text load_text;
     public GameObject load_panel, start_panel, game_panel, lootbox_panel;
+    [SerializeField] GameObject[] gate;
 
     private void Awake()
     {
@@ -21,19 +22,19 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-       
+        PlayerPrefs.DeleteAll();
     }
     private void Update()
     {
-       //if(!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f)
-       // {
-       //     game = true;
-       //     start_panel.SetActive(false);
-       //     game_panel.SetActive(true);
+        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf)
+        {
+            game = true;
+            start_panel.SetActive(false);
+            game_panel.SetActive(true);
 
-       //     Player_controll.Instance.Set_level();
-       //     Enemy_controll.Instance.Set_level();
-       // }
+            Player_controll.Instance.Set_level();
+            Enemy_controll.Instance.Set_level();
+        }
     }      
     public void Pause()
     {
@@ -82,6 +83,8 @@ public class Game_Controll : MonoBehaviour
     }    
     IEnumerator Open_panel(string name)
     {
+        gate[0].SetActive(false);
+        gate[1].SetActive(false);
         game = false;
         yield return new WaitForSeconds(3);
         switch (name)

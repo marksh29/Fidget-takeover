@@ -21,17 +21,37 @@ public class Button : MonoBehaviour
         mesh = transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>();
         count_txt.gameObject.SetActive(false);
         count = 0;
+
         stay = true;
+        speed = Random.Range(0.1f, 0.5f);
+        max = Random.Range(10, 30);
+        up = true;
     }
     private void Update()
     {
         if(stay)
         {
-
+            if(up)
+            {
+                mesh.SetBlendShapeWeight(0, (mesh.GetBlendShapeWeight(0) + speed));
+                if(mesh.GetBlendShapeWeight(0) >= max)
+                {
+                    up = false;
+                }
+            }
+            else
+            {
+                mesh.SetBlendShapeWeight(0, (mesh.GetBlendShapeWeight(0) - speed));
+                if (mesh.GetBlendShapeWeight(0) <= 0)
+                {
+                    up = true;
+                }
+            }
         }
     }
     public void On_true(int ct)
     {
+        stay = false;
         transform.GetChild(2).gameObject.SetActive(true);
         count_txt.gameObject.SetActive(true);
         count = ct;
@@ -51,6 +71,7 @@ public class Button : MonoBehaviour
     }
     public void Off()
     {
+        stay = true;
         mesh.SetBlendShapeWeight(0, 70);
         Drop();
     }
