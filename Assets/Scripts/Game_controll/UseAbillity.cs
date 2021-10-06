@@ -64,6 +64,8 @@ public class UseAbillity : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         big_hand.position = new Vector3(pricel.position.x, 60, pricel.position.z);
+        hand_move = false;
+        hand_drop = false;
     }
     public void Visual()
     {

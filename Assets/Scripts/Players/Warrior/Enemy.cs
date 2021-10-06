@@ -82,15 +82,21 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Disable(0));
         }
         else
-        {
-            if (gaint)
-                GetComponent<Gaint>().Mass_attack(damage);
+        {           
             if (target != null)
             {
-                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
+                if (gaint)
+                    StartCoroutine(Gaint_attack(1));
+                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");                    
             }            
         }
-    }   
+    }
+    IEnumerator Gaint_attack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GetComponent<Gaint>().Mass_attack(damage);
+    }
+
     IEnumerator Disable(float timer)
     {
         gameObject.tag = "Untagged";
@@ -103,7 +109,7 @@ public class Enemy : MonoBehaviour
 
     public void Continue()
     {
-        StartCoroutine(Move_on(1));        
+        StartCoroutine(Move_on(1.5f));        
     }
     IEnumerator Move_on(float attack_timer)
     {

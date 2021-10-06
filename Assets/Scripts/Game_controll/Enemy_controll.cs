@@ -33,7 +33,7 @@ public class Enemy_controll : MonoBehaviour
     [SerializeField] GameObject hand, target;
     float[] select_timer_min_max;    
     int level, life;
-    bool select, frize_on, move, warrior, gaint, archer;
+    bool select, frize_on, move, warrior, gaint, archer, end;
     float timer, select_timer, gaint_timer, warrior_spawn_time, freez_timer, gaint_spawn_timer;
     GameObject sp;
     Vector3 hand_pos;
@@ -172,8 +172,12 @@ public class Enemy_controll : MonoBehaviour
     public void Damage(int id)
     {
         life -=id;
-        if (life <= 0)
-            Game_Controll.Instance.Win();
+        if (life <= 0 && !end)
+        {
+            end = true;
+            EndEffect.Instance.Win();
+            //Game_Controll.Instance.Win();
+        }
     }   
     IEnumerator Freez_timer()
     {

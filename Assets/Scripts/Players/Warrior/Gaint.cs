@@ -24,8 +24,7 @@ public class Gaint : MonoBehaviour
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    print((list[i].transform.position - transform.position).sqrMagnitude);
-                    if ((list[i].transform.position - transform.position).sqrMagnitude < dist_attack)
+                    if ((list[i].transform.position - transform.position).sqrMagnitude < dist_attack && list[i].transform.position.z > transform.position.z)
                     {
                         list2.Add(list[i]);
                     }
@@ -36,10 +35,11 @@ public class Gaint : MonoBehaviour
         {
             list = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
             if (list.Count > 0)
-            {
+            {               
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if ((transform.position - list[i].transform.position).sqrMagnitude < dist_attack)
+                    print((transform.position - list[i].transform.position).sqrMagnitude);
+                    if ((transform.position - list[i].transform.position).sqrMagnitude < dist_attack && list[i].transform.position.z < transform.position.z)
                     {
                         list2.Add(list[i]);
                     }

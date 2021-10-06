@@ -165,7 +165,7 @@ MonoBehaviour:
   move: 0
   battle: 0
   end: 0
-  effect: {fileID: 0}
+  effect: {fileID: 3005724841719086228, guid: 01686b29cb5749c4b9ad890203f6901f, type: 3}
 --- !u!136 &377514521584473548
 CapsuleCollider:
   m_ObjectHideFlags: 0

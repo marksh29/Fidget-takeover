@@ -12,8 +12,6 @@ public class Game_Controll : MonoBehaviour
     public Slider load_slider;
     public Text load_text;
     public GameObject load_panel, start_panel, game_panel, lootbox_panel;
-    [SerializeField] GameObject[] gate;
-
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -22,7 +20,7 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
     private void Update()
     {
@@ -64,36 +62,25 @@ public class Game_Controll : MonoBehaviour
 
     public void Win()
     {
-        if(game)
-        {
-            Money_controll.Instance.End_money();
-            game = false;
-            PoolControll.Instance.Win();
-            StartCoroutine(Open_panel("Win"));
-        }       
+        StartCoroutine(Open_panel("Win"));        
     }
     public void Lose()
     {
-        if (game)
-        {
-            game = false;
-            PoolControll.Instance.Lose();
-            StartCoroutine(Open_panel("Lose"));
-        }        
-    }    
+        StartCoroutine(Open_panel("Lose"));
+    }   
+    
     IEnumerator Open_panel(string name)
     {
-        gate[0].SetActive(false);
-        gate[1].SetActive(false);
-        game = false;
         yield return new WaitForSeconds(3);
         switch (name)
         {
             case ("Win"):
+                game_panel.SetActive(false);
                 win_panel.SetActive(true);
-                lootbox_panel.SetActive(true);
+                Money_controll.Instance.End_money();
                 break;
             case ("Lose"):
+                game_panel.SetActive(false);
                 lose_panel.SetActive(true);
                 break;
         }        
@@ -128,5 +115,9 @@ public class Game_Controll : MonoBehaviour
 
         Player_controll.Instance.Set_level();
         Enemy_controll.Instance.Set_level();
+    }
+    public void Lootbox()
+    {
+        lootbox_panel.SetActive(true);
     }
 }

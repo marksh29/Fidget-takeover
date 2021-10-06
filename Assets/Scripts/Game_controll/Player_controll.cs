@@ -14,7 +14,7 @@ public class Player_controll : MonoBehaviour
     [SerializeField] GameObject hand;
     [SerializeField] bool warrior, gaint, archer;
     [SerializeField] Gate_controll gate;    
-    bool freez_on, hand_move;
+    bool freez_on, hand_move, end;
     float timer, gaint_timer, sp_upgrade;
     Vector3 hand_pos;
     GameObject sp;
@@ -100,8 +100,11 @@ public class Player_controll : MonoBehaviour
     public void Damage(int id)
     {
         life -= id;
-        if (life <= 0)
-            Game_Controll.Instance.Lose();
+        if (life <= 0 && !end)
+        {
+            EndEffect.Instance.Lose();
+            //Game_Controll.Instance.Lose();
+        }
     }
     void Spawn(int id)
     {

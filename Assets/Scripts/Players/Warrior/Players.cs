@@ -87,10 +87,11 @@ public class Players : MonoBehaviour
         life -= id;
         switch(target_type)
         {
-            case ("warrior"):
-                target.GetComponent<Enemy>().Attack(damage);
+            case ("warrior"):               
                 if (gaint)
-                    GetComponent<Gaint>().Mass_attack(damage);
+                    StartCoroutine(Gaint_attack(1));
+                else
+                    target.GetComponent<Enemy>().Attack(damage);
                 break;
             case ("archer"):
                 target.GetComponent<Archer>().Damage();
@@ -109,9 +110,16 @@ public class Players : MonoBehaviour
         else
         {
             transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
-            StartCoroutine(Move_on(0.8f));
+            StartCoroutine(Move_on(1.5f));
         }
     }
+    IEnumerator Gaint_attack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        target.GetComponent<Enemy>().Attack(damage);
+        GetComponent<Gaint>().Mass_attack(damage);
+    }
+
     IEnumerator Move_on(float attack_timer)
     {
         yield return new WaitForSeconds(attack_timer);
