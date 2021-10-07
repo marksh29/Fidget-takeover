@@ -38,7 +38,6 @@ public class Gaint : MonoBehaviour
             {               
                 for (int i = 0; i < list.Count; i++)
                 {
-                    print((transform.position - list[i].transform.position).sqrMagnitude);
                     if ((transform.position - list[i].transform.position).sqrMagnitude < dist_attack && list[i].transform.position.z < transform.position.z)
                     {
                         list2.Add(list[i]);

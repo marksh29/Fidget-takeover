@@ -117,6 +117,7 @@ MonoBehaviour:
   damage: 1
   start_life: 5
   speed: 5
+  force_speed: 0
   target: {fileID: 0}
   life: 1
   move: 0
@@ -124,6 +125,8 @@ MonoBehaviour:
   spawn: 0
   end: 0
   gaint: 1
+  open: 0
+  close: 126
 --- !u!136 &2108329387010100957
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -252,6 +255,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -6538014686017579001, guid: 8192cbe0fc2578e46abcbe4fae013e62,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1a81cd5d7a30d74399921e2610f6a85, type: 2}
     - target: {fileID: -5424213705957445524, guid: 8192cbe0fc2578e46abcbe4fae013e62,
         type: 3}
       propertyPath: m_Layer

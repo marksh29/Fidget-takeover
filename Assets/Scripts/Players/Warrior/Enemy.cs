@@ -7,19 +7,19 @@ public class Enemy : MonoBehaviour
     [Header("Настраиваемое")]
     public int damage;
     public int start_life;   
-    [SerializeField] float speed;
+    [SerializeField] float speed, force_speed;
 
     [Header("Не трогать")]
     public Transform target;
     public int life;
     public bool move, battle, spawn, end, gaint;
-   
+    [SerializeField] RigidbodyConstraints open, close;
 
     void OnEnable()
     {
         speed = Enemy_controll.Instance.move_speed;
         life = start_life;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         Enable_param(); 
     }
     private void Update()
@@ -36,14 +36,23 @@ public class Enemy : MonoBehaviour
                 {
                     transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
                     transform.LookAt(target.position, Vector3.up);
-                }               
+                }
+                else
+                {
+                    Enable_param();
+                }
             }
         }        
     }
 
     void Enable_param()
-    {        
+    {
+        GetComponent<Rigidbody>().constraints = close;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         gameObject.tag = "Enemy";
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(0, 180, 0);
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().isTrigger = false;
@@ -100,21 +109,33 @@ public class Enemy : MonoBehaviour
     IEnumerator Disable(float timer)
     {
         gameObject.tag = "Untagged";
+        if (target != null && target.GetComponent<Players>() != null)
+            target.GetComponent<Players>().target = null;
         yield return new WaitForSeconds(timer);
-        if(target != null)
+        if (!gaint)
+            Add_force();
+        else
+        {
+            StopAllCoroutines();
+            Off();
+        }
+        yield return new WaitForSeconds(2);
+        Off();
+    }
+    void Off()
+    {
+        if (target != null && target.GetComponent<Players>() != null)
             target.GetComponent<Players>().target = null;
         gameObject.SetActive(false);
-        StopAllCoroutines();
     }
 
     public void Continue()
     {
-        StartCoroutine(Move_on(1.5f));        
+        StartCoroutine(Move_on(1f));        
     }
     IEnumerator Move_on(float attack_timer)
     {
         yield return new WaitForSeconds(attack_timer);
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         Enable_param();
     }
     public void Damage(int id)
@@ -138,5 +159,16 @@ public class Enemy : MonoBehaviour
     {
         end = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
-    }   
+    }
+    void Add_force()
+    {
+        if (target != null && target.GetComponent<Players>() != null)
+            target.GetComponent<Players>().target = null;
+
+        GetComponent<Rigidbody>().constraints = open;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().isTrigger = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = false;
+        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(1, 2)) * force_speed, ForceMode.Impulse);
+    }
 }

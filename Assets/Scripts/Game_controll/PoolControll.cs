@@ -110,7 +110,7 @@ public class PoolControll : MonoBehaviour
         }
         for (int i = 0; i < en_gaints_stack.Count; i++)
         {
-            enemy_stack[i].SetActive(false);
+            en_gaints_stack[i].SetActive(false);
         }
         for (int i = 0; i < en_archer_stack.Count; i++)
         {
@@ -137,7 +137,7 @@ public class PoolControll : MonoBehaviour
         }
         for (int i = 0; i < en_gaints_stack.Count; i++)
         {
-            enemy_stack[i].GetComponent<Enemy>().Win();
+            en_gaints_stack[i].GetComponent<Enemy>().Win();
         }
         for (int i = 0; i < en_archer_stack.Count; i++)
         {

@@ -4,14 +4,14 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 156964476166669451
-    second: Win
-  - first:
       74: -7551964380084998518
-    second: Move
+    second: Armature|Run
   - first:
       74: -7453387558714718212
-    second: Shoot
+    second: Armature|Shoot
+  - first:
+      74: 4866529375028573729
+    second: Armature|Dancing2
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -41,18 +41,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Win
-      takeName: Armature|Dancing
+      name: Armature|Dancing2
+      takeName: Armature|Dancing2
       internalID: 0
       firstFrame: 0
-      lastFrame: 371
+      lastFrame: 163
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -70,7 +70,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Move
+      name: Armature|Run
       takeName: Armature|Run
       internalID: 0
       firstFrame: 0
@@ -81,7 +81,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -99,7 +99,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Shoot
+      name: Armature|Shoot
       takeName: Armature|Shoot
       internalID: 0
       firstFrame: 0

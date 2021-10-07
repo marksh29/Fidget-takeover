@@ -11,7 +11,7 @@ public class Game_Controll : MonoBehaviour
 
     public Slider load_slider;
     public Text load_text;
-    public GameObject load_panel, start_panel, game_panel, lootbox_panel;
+    public GameObject load_panel, start_panel, game_panel, lootbox_panel, pause_panel;
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -24,7 +24,7 @@ public class Game_Controll : MonoBehaviour
     }
     private void Update()
     {
-        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf)
+        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf)
         {
             game = true;
             start_panel.SetActive(false);
@@ -44,7 +44,7 @@ public class Game_Controll : MonoBehaviour
         else
         {
             pause = true;
-            Time.timeScale = 0;
+            Time.timeScale = 0f;
         }
     }
     public void Click()
@@ -77,11 +77,12 @@ public class Game_Controll : MonoBehaviour
             case ("Win"):
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
-                Money_controll.Instance.End_money();
+                Money_controll.Instance.End_money(true);
                 break;
-            case ("Lose"):
+            case ("Lose"):                
                 game_panel.SetActive(false);
-                lose_panel.SetActive(true);
+                win_panel.SetActive(true);
+                Money_controll.Instance.End_money(false);
                 break;
         }        
     }

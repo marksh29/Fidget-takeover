@@ -33,7 +33,7 @@ public class Arrow : MonoBehaviour
     }
     void Damage()
     {
-        if(target != null)
+        if(target != null && target.gameObject.activeSelf)
         {
             if (enemy)
                 target.gameObject.GetComponent<Players>().Damage(damage);

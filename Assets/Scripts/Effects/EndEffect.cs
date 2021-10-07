@@ -8,7 +8,7 @@ public class EndEffect : MonoBehaviour
     [SerializeField] GameObject[] prefabs;
     [SerializeField] GameObject stay_prefabs, spawn_pos, explos, boss;
     [SerializeField] GameObject[] end_object, warriors, gaints, archers;
-
+    int end_count;
     private void Awake()
     {
         if (Instance == null)
@@ -16,33 +16,39 @@ public class EndEffect : MonoBehaviour
     }
     void Start()
     {
-        boss.GetComponent<Animator>().SetTrigger(Random.Range(1, 6).ToString());
+        
     }  
     public void Win()
     {
+        end_count = 5;
+
         Game_Controll.Instance.game = false;
         PoolControll.Instance.Win();
         for (int i = 0; i < end_object.Length; i++)
         {
             end_object[i].SetActive(false);
         }
-        for(int i = 0; i < 3; i++)
-        {
-            int r = Random.Range(0, warriors.Length);
-            warriors[r].SetActive(true);
-            warriors[r].GetComponent<Players>().Win();
-        }
         if (PlayerPrefs.GetInt("buy_Gaint") == 1)
         {
+            end_count--;
             int r = Random.Range(0, gaints.Length);
             gaints[r].SetActive(true);
             gaints[r].GetComponent<Players>().Win();
-        }            
+        }
         if (PlayerPrefs.GetInt("buy_Arche") == 1)
         {
+            end_count--;
             int r = Random.Range(0, archers.Length);
             archers[r].SetActive(true);
             archers[r].GetComponent<Archer>().Win();
+        }
+        List<GameObject> list = new List<GameObject>(warriors);
+        for (int i = 0; i < end_count; i++)
+        {
+            int r = Random.Range(0, list.Count);
+            list[r].SetActive(true);
+            list[r].GetComponent<Players>().Win();
+            list.Remove(list[r]);
         }
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("win");
         StartCoroutine(On());
@@ -74,7 +80,7 @@ public class EndEffect : MonoBehaviour
     {
         GameObject obj = Instantiate(prefabs[Random.Range(0, prefabs.Length)]) as GameObject;
         obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-25, 25), spawn_pos.transform.position.y + Random.Range(-10, 10), spawn_pos.transform.position.z);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         StartCoroutine(Effect());       
     }
 }

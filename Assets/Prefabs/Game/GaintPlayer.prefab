@@ -117,6 +117,7 @@ MonoBehaviour:
   damage: 1
   start_life: 5
   speed: 5
+  force_speed: 0
   life: 5
   target: {fileID: 0}
   gaint: 1
@@ -124,7 +125,8 @@ MonoBehaviour:
   move: 0
   battle: 0
   end: 0
-  effect: {fileID: 0}
+  open: 0
+  close: 126
 --- !u!136 &5976344637431457183
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -138,7 +140,7 @@ CapsuleCollider:
   m_Radius: 0.4
   m_Height: 2.35
   m_Direction: 1
-  m_Center: {x: 0, y: 1.16, z: 0.88}
+  m_Center: {x: 0, y: 1.16, z: 0.24}
 --- !u!114 &4383508321352486969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 0
+  gaint: 1
 --- !u!1001 &6625003786276014172
 PrefabInstance:
   m_ObjectHideFlags: 0

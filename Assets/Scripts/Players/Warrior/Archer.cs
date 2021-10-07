@@ -48,6 +48,7 @@ public class Archer : MonoBehaviour
                 {
                     transform.rotation = Quaternion.Euler(0, enemy == true ? 180 : 0, 0);
                     move = false;
+                    transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
                 }                   
             }
             else
@@ -62,31 +63,32 @@ public class Archer : MonoBehaviour
         }
     }
     IEnumerator Fire(float time)
-    {
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
-        yield return new WaitForSeconds(time);
+    {           
+        yield return new WaitForSeconds(time);        
         GameObject[] list = GameObject.FindGameObjectsWithTag(enemy == false ? "Enemy" : "Player");
-
-        List<GameObject> add_list = new List<GameObject>();
-        for (int i = 0; i < list.Length; i++)
-        {
-            if (!enemy && list[i].transform.position.z - transform.position.z > attack_dist)
+        if(list.Length != 0)
+        {            
+            List<GameObject> add_list = new List<GameObject>();
+            for (int i = 0; i < list.Length; i++)
             {
-                add_list.Add(list[i]);
+                if (!enemy && list[i].transform.position.z - transform.position.z < attack_dist)
+                {
+                    add_list.Add(list[i]);
+                }
+                else if (enemy && transform.position.z - list[i].transform.position.z < attack_dist)
+                {
+                    add_list.Add(list[i]);
+                }
             }
-            else if (enemy && transform.position.z - list[i].transform.position.z > attack_dist)
+            if (add_list.Count > 0)
             {
-                add_list.Add(list[i]);
+                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");
+                GameObject arr = PoolControll.Instance.Spawn("arrow", (enemy == false ? 0 : 1));
+                arr.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+                arr.transform.rotation = transform.rotation;
+                arr.GetComponent<Arrow>().Start_fly(add_list[Random.Range(0, add_list.Count)].transform);
             }
-        }
-        if (add_list.Count > 0)
-        {
-            GameObject arr = PoolControll.Instance.Spawn("arrow", (enemy == false ? 0 : 1));
-            arr.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-            arr.transform.rotation = transform.rotation;
-            arr.GetComponent<Arrow>().Start_fly(add_list[Random.Range(0, add_list.Count)].transform);
-        }
-        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        }        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -101,7 +103,6 @@ public class Archer : MonoBehaviour
             else if (attack && other.gameObject == target)
             {
                 other.gameObject.GetComponent<Enemy>().Attack(damage);
-                //other.gameObject.GetComponent<Enemy>().Continue();
                 Blood();
                 StartCoroutine(Disable(0));
             }
@@ -129,7 +130,14 @@ public class Archer : MonoBehaviour
     IEnumerator Disable(float time)
     {
         yield return new WaitForSeconds(time);
-        target.GetComponent<Players>().target = null;
+        if(target != null)
+        {
+            if (target.GetComponent<Players>() != null)
+                target.GetComponent<Players>().target = null;
+            else
+                target.GetComponent<Enemy>().target = null;
+        }
+
         gameObject.SetActive(false);
     }
 

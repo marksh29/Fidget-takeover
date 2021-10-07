@@ -11,39 +11,22 @@ public class Sound : MonoBehaviour
 
     private void Awake()
     {
-        //sd = (int)(transform.GetChild(0).gameObject.GetComponent<AudioSource>().volume * 10);
-        //ms = (int)(gameObject.GetComponent<AudioSource>().volume * 10);
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
-
-    //public void Set_ms(int count)
-    //{
-    //    if(count == 0)
-    //    {
-    //        transform.GetChild(0).gameObject.GetComponent<AudioSource>().volume = transform.GetChild(0).gameObject.GetComponent<AudioSource>().volume == 0 ? 1f : 0;
-    //        transform.GetChild(1).gameObject.GetComponent<AudioSource>().volume = transform.GetChild(1).gameObject.GetComponent<AudioSource>().volume == 0 ? 1f : 0;
-    //    }
-    //    else
-    //    {
-    //        GetComponent<AudioSource>().volume = GetComponent<AudioSource>().volume == 0 ? 0.5f : 0;
-    //    }          
-    //}
     public void Set_voll(int id, float count)
     {
         if (id == 0)
         {
-            //sd = count;
-            transform.GetChild(0).gameObject.GetComponent<AudioSource>().volume = (float)count;// /10f;
-            transform.GetChild(1).gameObject.GetComponent<AudioSource>().volume = (float)count;// / 10f;
+            transform.GetChild(0).gameObject.GetComponent<AudioSource>().volume = count;
+            transform.GetChild(1).gameObject.GetComponent<AudioSource>().volume = count;
         }
         else
         {
-            //ms = count;
-            GetComponent<AudioSource>().volume = (float)count;// / 10f;
+            GetComponent<AudioSource>().volume = count;
         }
     }
     public void Play_Sound(int id)

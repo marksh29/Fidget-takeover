@@ -7,10 +7,11 @@ public class Money_controll : MonoBehaviour
 {
     public static Money_controll Instance;
     public int money, end_money;
-    [SerializeField] Text end_money_text;
+    [SerializeField] Text end_money_text, end_logo;
     [SerializeField] Text[] money_text;
     [SerializeField] int[] end_money_list;
-    [SerializeField] GameObject next_button, coin_prefab, target;
+    [SerializeField] GameObject button, coin_prefab, target;
+    bool win;
     private void Awake()
     {
         if (Instance == null)
@@ -27,14 +28,29 @@ public class Money_controll : MonoBehaviour
         
     }
 
-    public void End_money()
-    {       
-        end_money = end_money_list[PlayerPrefs.GetInt("level")] + (50 * PlayerPrefs.GetInt("Upgrade2"));
-        end_money_text.text = "+" + end_money;
-        PlayerPrefs.SetInt("money", money + end_money);
-        
-        StartCoroutine(Money_count(money + end_money));
-        StartCoroutine(Money_coins());
+    public void End_money(bool wn)
+    {
+        win = wn;
+        if (win)
+        {
+            end_logo.text = "VICTORY";
+            end_money = end_money_list[PlayerPrefs.GetInt("level")] + (50 * PlayerPrefs.GetInt("Upgrade2"));
+            end_money_text.text = "+" + end_money;
+            PlayerPrefs.SetInt("money", money + end_money);
+
+            StartCoroutine(Money_count(money + end_money));
+            StartCoroutine(Money_coins());
+        }
+        else
+        {
+            end_logo.text = "YOU LOSE";
+            end_money = 100 + (50 * PlayerPrefs.GetInt("Upgrade2"));
+            end_money_text.text = "+" + end_money;
+            PlayerPrefs.SetInt("money", money + end_money);
+
+            StartCoroutine(Money_count(money + end_money));
+            StartCoroutine(Money_coins());
+        }
     }
 
     IEnumerator Money_count(int mn)
@@ -55,9 +71,13 @@ public class Money_controll : MonoBehaviour
             money_text[1].text = money.ToString("0,0");
             end_money_text.text = (end_money != 0 ? "+" : "") + end_money;           
             yield return null;
-        }
-        next_button.SetActive(true);
-        Game_Controll.Instance.Lootbox();
+        }        
+        button.transform.GetChild(0).gameObject.SetActive(true);
+        if (win)
+            button.transform.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSeconds(4);
+        if(win)
+            Game_Controll.Instance.Lootbox();
     }
 
     IEnumerator Money_coins()
@@ -65,11 +85,10 @@ public class Money_controll : MonoBehaviour
         while (end_money > 0)
         {            
             GameObject obj = Instantiate(coin_prefab, coin_prefab.transform) as GameObject;
-            StartCoroutine(DoMove(obj, 1));
-            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(DoMove(obj, 0.3f));
+            yield return new WaitForSeconds(0.1f);
             yield return null;
         }
-        next_button.SetActive(true);
     }
     private IEnumerator DoMove(GameObject obj,  float time)
     {
@@ -83,8 +102,7 @@ public class Money_controll : MonoBehaviour
             yield return null;
         }
         obj.SetActive(false);
-    }
-
+    }   
     public void Change_money(int count)
     {
         money += count;
