@@ -36,7 +36,7 @@ public class EndEffect : MonoBehaviour
             gaints[r].SetActive(true);
             gaints[r].GetComponent<Players>().Win();
         }
-        if (PlayerPrefs.GetInt("buy_Arche") == 1)
+        if (PlayerPrefs.GetInt("buy_Archer") == 1)
         {
             end_count--;
             int r = Random.Range(0, archers.Length);
