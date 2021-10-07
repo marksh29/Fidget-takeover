@@ -72,7 +72,7 @@ public class Enemy_controll : MonoBehaviour
     }
     void Update()
     {
-        if (Game_Controll.Instance.game)
+        if (Game_Controll.Instance.game && !EndEffect.Instance.end)
         {
             if (warrior)
             {

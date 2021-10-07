@@ -9,6 +9,7 @@ public class EndEffect : MonoBehaviour
     [SerializeField] GameObject stay_prefabs, spawn_pos, explos, boss;
     [SerializeField] GameObject[] end_object, warriors, gaints, archers;
     int end_count;
+    public bool end;
     private void Awake()
     {
         if (Instance == null)
@@ -21,7 +22,7 @@ public class EndEffect : MonoBehaviour
     public void Win()
     {
         end_count = 5;
-
+        end = true;
         Game_Controll.Instance.game = false;
         PoolControll.Instance.Win();
         for (int i = 0; i < end_object.Length; i++)
@@ -55,6 +56,7 @@ public class EndEffect : MonoBehaviour
     }
     public void Lose()
     {
+        end = true;
         Game_Controll.Instance.game = false;
         Game_Controll.Instance.Lose();
         PoolControll.Instance.Lose();
