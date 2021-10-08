@@ -20,15 +20,9 @@ public class Money_controll : MonoBehaviour
         money = PlayerPrefs.GetInt("money");
     }
     void Start()
-    {        
-        money_text[0].text = money.ToString("0,0");
-        money_text[1].text = money.ToString("0,0");
-    }
-    void Update()
     {
-        
-    }
-
+        Mon();
+    }   
     public void End_money(bool wn)
     {
         win = wn;
@@ -67,9 +61,8 @@ public class Money_controll : MonoBehaviour
             {
                 money += end_money;
                 end_money -= end_money;
-            }            
-            money_text[0].text = money.ToString("0,0");
-            money_text[1].text = money.ToString("0,0");
+            }
+            Mon();
             //end_money_text.text = (end_money != 0 ? "+" : "") + end_money;           
             yield return null;
         }        
@@ -86,8 +79,7 @@ public class Money_controll : MonoBehaviour
         money += count;
         if (money < 0)
             money = 0;
-        money_text[0].text = money.ToString("0,0");
-        money_text[1].text = money.ToString("0,0");
+        Mon();
         PlayerPrefs.SetInt("money", money);
     }
     IEnumerator Money_coins()
@@ -103,5 +95,10 @@ public class Money_controll : MonoBehaviour
             }            
             yield return new WaitForSeconds(0.1f);            
         }        
+    }
+    void Mon()
+    {
+        money_text[0].text = money.ToString(money > 0 ? "0,0" : "");
+        money_text[1].text = money.ToString(money > 0 ? "0,0" : "");
     }
 }

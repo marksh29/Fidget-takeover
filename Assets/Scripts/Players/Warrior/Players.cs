@@ -180,6 +180,9 @@ public class Players : MonoBehaviour
     }
     void Off()
     {
+        if (Sound.Instance != null)
+            Sound.Instance.Play_Sound(1);
+
         if (target != null && target.GetComponent<Enemy>() != null)
             target.GetComponent<Enemy>().target = null;
         gameObject.SetActive(false);

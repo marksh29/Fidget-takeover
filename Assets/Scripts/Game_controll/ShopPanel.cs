@@ -8,43 +8,55 @@ public struct Unit
 {
     public int cena;
     public string name;
-    public Sprite icon;
 }
 public class ShopPanel : MonoBehaviour
 {
-    [SerializeField] List<Unit> units;    
-    [SerializeField] Transform[] all_buttons;
+    int cur_id;
+    [SerializeField] List<Unit> list;
+    [SerializeField] GameObject[] all_buttons;
+    [SerializeField] Text buy_text;
+    [SerializeField] GameObject buy_button, free_button;
 
-    private void OnEnable()
-    {        
-        for(int i = 0; i < all_buttons.Length; i++)
-        {
-            if(PlayerPrefs.GetInt("buy_" + units[i].name) == 0)
-            {
-                all_buttons[i].GetChild(0).gameObject.GetComponent<Text>().text = units[i].cena.ToString();
-                all_buttons[i].GetChild(1).gameObject.GetComponent<Text>().text = units[i].name;
-            }
-            else
-            {
-                all_buttons[i].GetChild(0).gameObject.SetActive(false);
-                all_buttons[i].GetChild(2).gameObject.SetActive(false);
-            }
-        }
+    private void Start()
+    {
+        PlayerPrefs.SetInt("buy_" + list[0].name, 1);
+        Selected(0);
     }
-
-    // Update is called once per frame
     void Update()
     {
         
     }
-    public void Buy(int id)
+    public void Selected(int id)
     {
-        if (units[id].cena <= Money_controll.Instance.money)
+        cur_id = id;
+        for (int i = 0; i < all_buttons.Length; i++)
         {
-            Money_controll.Instance.Change_money(units[id].cena);
-            PlayerPrefs.SetInt("buy_" + units[id].name, 1);
-            all_buttons[id].GetChild(0).gameObject.SetActive(false);
-            all_buttons[id].GetChild(2).gameObject.SetActive(false);
+            if (i == cur_id)
+            {
+                all_buttons[i].transform.GetChild(0).gameObject.SetActive(true);
+                if (PlayerPrefs.GetInt("buy_" + list[i].name) == 1)
+                {
+                    buy_button.SetActive(false);
+                }
+                else
+                {
+                    buy_button.SetActive(true);
+                    buy_text.text = list[cur_id].cena.ToString();
+                }
+            }
+            else
+            {
+                all_buttons[i].transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+    }
+    public void Buy()
+    {
+        if (list[cur_id].cena <= Money_controll.Instance.money)
+        {
+            Money_controll.Instance.Change_money(list[cur_id].cena);
+            PlayerPrefs.SetInt("buy_" + list[cur_id].name, 1);
+            buy_button.SetActive(false);
         }
     }
 }

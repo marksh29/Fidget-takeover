@@ -21,6 +21,9 @@ public class EndEffect : MonoBehaviour
     }  
     public void Win()
     {
+        if (Sound.Instance != null)
+            Sound.Instance.Play_Sound(3);
+
         end_count = 5;
         end = true;
         Game_Controll.Instance.game = false;
@@ -56,6 +59,9 @@ public class EndEffect : MonoBehaviour
     }
     public void Lose()
     {
+        if (Sound.Instance != null)
+            Sound.Instance.Play_Sound(2);
+
         end = true;
         Game_Controll.Instance.game = false;
         Game_Controll.Instance.Lose();

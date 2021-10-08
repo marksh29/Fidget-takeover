@@ -22,8 +22,8 @@ public class Money : MonoBehaviour
     }
     private IEnumerator DoMove(float time)
     {
-        print("move");
-
+        if (Sound.Instance != null)
+            Sound.Instance.Play_Sound(4);
         Vector3 startPosition = transform.localPosition;
         float startTime = Time.realtimeSinceStartup;
         float fraction = 0f;
@@ -34,5 +34,7 @@ public class Money : MonoBehaviour
             yield return null;
         }
         gameObject.SetActive(false);
+        if (Sound.Instance != null)
+            Sound.Instance.Play_Sound(4);
     }
 }
