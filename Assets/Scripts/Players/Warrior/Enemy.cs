@@ -32,20 +32,24 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if(target != null)
+                if (target != null)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
                     transform.LookAt(target.position, Vector3.up);
                 }
                 else
-                {
                     Enable_param();
-                }
             }
-        }        
-    }
-
-    void Enable_param()
+        }
+        else if(battle && !end)
+        {
+            if (target != null)
+            {
+                Enable_param();
+            }
+        }
+    }    
+    public void Enable_param()
     {
         GetComponent<Rigidbody>().constraints = close;
         transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
@@ -112,15 +116,17 @@ public class Enemy : MonoBehaviour
         if (target != null && target.GetComponent<Players>() != null)
             target.GetComponent<Players>().target = null;
         yield return new WaitForSeconds(timer);
-        if (!gaint)
-            Add_force();
-        else
-        {
-            StopAllCoroutines();
-            Off();
-        }
-        yield return new WaitForSeconds(2);
         Off();
+
+        //if (!gaint)
+        //    Add_force();
+        //else
+        //{
+        //    StopAllCoroutines();
+        //    Off();
+        //}
+        //yield return new WaitForSeconds(2);
+        //Off();
     }
     void Off()
     {

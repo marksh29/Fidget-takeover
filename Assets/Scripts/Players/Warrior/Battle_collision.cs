@@ -18,8 +18,7 @@ public class Battle_collision : MonoBehaviour
         if (other.gameObject.tag == "Enemy" && !on)
         {
             transform.parent.gameObject.GetComponent<Players>().Set_target(other.gameObject.transform);
-            if(!gaint)
-                on = true;
+            on = true;
         }
     }
 }

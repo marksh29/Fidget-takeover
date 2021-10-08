@@ -144,5 +144,6 @@ public class Archer : MonoBehaviour
     public void Win()
     {
         end = true;
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
     }
 }

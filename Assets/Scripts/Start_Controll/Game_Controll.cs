@@ -12,6 +12,10 @@ public class Game_Controll : MonoBehaviour
     public Slider load_slider;
     public Text load_text;
     public GameObject load_panel, start_panel, game_panel, lootbox_panel, pause_panel;
+    [SerializeField] int level;
+    [SerializeField] Slider level_slider;
+    [SerializeField] Transform[] level_icon;
+
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -20,10 +24,16 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        level = PlayerPrefs.GetInt("level");        
+        level_icon[level - (5 * (int)(level / 5))].localScale = new Vector3(1.2f, 1.2f, 1.2f);       
     }
     private void Update()
-    {
+    {    
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            print(level - (5 * (int)(level / 5)));
+        }
+
         if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf)
         {
             game = true;
@@ -119,6 +129,6 @@ public class Game_Controll : MonoBehaviour
     }
     public void Lootbox()
     {
-        lootbox_panel.SetActive(true);
+        //lootbox_panel.SetActive(true);
     }
 }

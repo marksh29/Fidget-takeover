@@ -10,7 +10,8 @@ public class Money_controll : MonoBehaviour
     [SerializeField] Text end_money_text, end_logo;
     [SerializeField] Text[] money_text;
     [SerializeField] int[] end_money_list;
-    [SerializeField] GameObject button, coin_prefab, target;
+    [SerializeField] GameObject button;
+    [SerializeField] List<Money> list;
     bool win;
     private void Awake()
     {
@@ -69,40 +70,17 @@ public class Money_controll : MonoBehaviour
             }            
             money_text[0].text = money.ToString("0,0");
             money_text[1].text = money.ToString("0,0");
-            end_money_text.text = (end_money != 0 ? "+" : "") + end_money;           
+            //end_money_text.text = (end_money != 0 ? "+" : "") + end_money;           
             yield return null;
         }        
         button.transform.GetChild(0).gameObject.SetActive(true);
         if (win)
             button.transform.GetChild(1).gameObject.SetActive(true);
+
         yield return new WaitForSeconds(4);
         if(win)
             Game_Controll.Instance.Lootbox();
-    }
-
-    IEnumerator Money_coins()
-    {
-        while (end_money > 0)
-        {            
-            GameObject obj = Instantiate(coin_prefab, coin_prefab.transform) as GameObject;
-            StartCoroutine(DoMove(obj, 0.3f));
-            yield return new WaitForSeconds(0.1f);
-            yield return null;
-        }
-    }
-    private IEnumerator DoMove(GameObject obj,  float time)
-    {
-        Vector2 startPosition = obj.transform.position;
-        float startTime = Time.realtimeSinceStartup;
-        float fraction = 0f;
-        while (fraction < 1f)
-        {
-            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
-            obj.transform.position = Vector2.Lerp(startPosition, target.transform.position, fraction);
-            yield return null;
-        }
-        obj.SetActive(false);
-    }   
+    }  
     public void Change_money(int count)
     {
         money += count;
@@ -111,5 +89,19 @@ public class Money_controll : MonoBehaviour
         money_text[0].text = money.ToString("0,0");
         money_text[1].text = money.ToString("0,0");
         PlayerPrefs.SetInt("money", money);
+    }
+    IEnumerator Money_coins()
+    {
+        while(list.Count > 0)
+        {            
+            int d = Random.Range(1, 4);
+            for(int i = 0; i < d; i++)
+            {
+                int r = Random.Range(0, list.Count);
+                list[r].Start_move();
+                list.Remove(list[r]);
+            }            
+            yield return new WaitForSeconds(0.1f);            
+        }        
     }
 }

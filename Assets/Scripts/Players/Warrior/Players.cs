@@ -17,7 +17,6 @@ public class Players : MonoBehaviour
 
     void OnEnable()
     {
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         life = start_life;
         damage = damage + PlayerPrefs.GetInt("Upgrade1");
         Enable_param();
@@ -32,32 +31,40 @@ public class Players : MonoBehaviour
             }
             else
             {
-                if (target != null)
+                if(target != null)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
                     transform.LookAt(target.position, Vector3.up);
                 }
                 else
-                {
                     Enable_param();
-                }
             }
-        }       
+        }
+        else if (battle && !end)
+        {
+            if (target != null)
+            {
+                Enable_param();
+            }
+        }
     }
 
     void Enable_param()
-    {       
+    {      
         gameObject.tag = "Player";
+
         GetComponent<Rigidbody>().constraints = close;
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);        
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        transform.GetChild(0).gameObject.GetComponent<Battle_collision>().on = false;
-        GetComponent<Rigidbody>().useGravity = true;
-        GetComponent<CapsuleCollider>().isTrigger = false;
         target = null;
         move = true;
         battle = false;
+
+        transform.GetChild(0).gameObject.GetComponent<Battle_collision>().on = false;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().isTrigger = false;
+        
         transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
     }
@@ -67,6 +74,7 @@ public class Players : MonoBehaviour
             target = obj;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<CapsuleCollider>().isTrigger = true;   
+        
         if(target.GetComponent<Enemy>() != null)
         {
             target.GetComponent<Enemy>().Set_battle(gameObject.transform);            
@@ -128,8 +136,9 @@ public class Players : MonoBehaviour
     }
     IEnumerator Gaint_attack(float time)
     {
-        yield return new WaitForSeconds(time);
-        target.GetComponent<Enemy>().Attack(damage);
+        if (target != null && target.GetComponent<Enemy>() != null)
+            target.GetComponent<Enemy>().Attack(damage);
+        yield return new WaitForSeconds(time);        
         GetComponent<Gaint>().Mass_attack(damage);
     }
 
@@ -155,17 +164,19 @@ public class Players : MonoBehaviour
     {
         gameObject.tag = "Untagged";
         if (target != null && target.GetComponent<Enemy>() != null)
-            target.GetComponent<Enemy>().target = null;       
+            target.GetComponent<Enemy>().target = null;    
         yield return new WaitForSeconds(time);
-        if(!gaint)
-            Add_force();
-        else
-        {            
-            StopAllCoroutines();
-            Off();
-        }
-        yield return new WaitForSeconds(2);
         Off();
+        
+        //if(!gaint)
+        //    Add_force();
+        //else
+        //{            
+        //    StopAllCoroutines();
+        //    Off();
+        //}
+        //yield return new WaitForSeconds(2);
+        //Off();
     }
     void Off()
     {
@@ -188,6 +199,7 @@ public class Players : MonoBehaviour
     {
         end = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
+        transform.rotation = Quaternion.Euler(0, 180, 0);
     }    
     private void OnDisable()
     {
