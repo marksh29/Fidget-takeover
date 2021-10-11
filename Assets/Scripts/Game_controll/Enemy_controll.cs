@@ -52,21 +52,37 @@ public class Enemy_controll : MonoBehaviour
     {
         level = PlayerPrefs.GetInt("level", 0);
 
-        life = stages[level].life;
-        freez_timer = stages[level].frize_timer;
-        move_speed = stages[level].move_speed;
-        warrior_spawn_time = stages[level].warrior_spawn_timer;
-        gaint_spawn_timer = stages[level].gaint_spawn_timer;
+        if (level < stages.Count)
+        {
+            life = stages[level].life;
+            freez_timer = stages[level].frize_timer;
+            move_speed = stages[level].move_speed;
+            warrior_spawn_time = stages[level].warrior_spawn_timer;
+            gaint_spawn_timer = stages[level].gaint_spawn_timer;
 
-        warrior = stages[level].warrior;
-        gaint = stages[level].gaint;
-        archer = stages[level].archer;
+            warrior = stages[level].warrior;
+            gaint = stages[level].gaint;
+            archer = stages[level].archer;
 
-        select_timer_min_max = stages[level].select_timer_min_max;
+            select_timer_min_max = stages[level].select_timer_min_max;
+        }
+        else
+        {
+            life = stages[stages.Count - 1].life;
+            freez_timer = stages[stages.Count - 1].frize_timer;
+            move_speed = stages[stages.Count - 1].move_speed;
+            warrior_spawn_time = stages[stages.Count - 1].warrior_spawn_timer;
+            gaint_spawn_timer = stages[stages.Count - 1].gaint_spawn_timer;
+
+            warrior = stages[stages.Count - 1].warrior;
+            gaint = stages[stages.Count - 1].gaint;
+            archer = stages[stages.Count - 1].archer;
+
+            select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
+        }
+
         hand_pos = hand.transform.position;
-
         gaint_timer = gaint_spawn_timer;
-
         if (archer)
             Spawn(2);
     }

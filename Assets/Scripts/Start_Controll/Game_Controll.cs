@@ -21,6 +21,7 @@ public class Game_Controll : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
         if (Instance == null)
             Instance = this;
+       // PlayerPrefs.DeleteAll();
     }
     private void Start()
     {
