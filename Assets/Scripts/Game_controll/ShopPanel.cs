@@ -15,8 +15,8 @@ public class ShopPanel : MonoBehaviour
     [SerializeField] List<Unit> list;
     [SerializeField] GameObject[] all_buttons;
     [SerializeField] Text buy_text;
-    [SerializeField] GameObject buy_button, free_button;
-
+    [SerializeField] GameObject buy_button;
+    [SerializeField] Sprite buy_sprt;
     private void Start()
     {
         PlayerPrefs.SetInt("buy_" + list[0].name, 1);

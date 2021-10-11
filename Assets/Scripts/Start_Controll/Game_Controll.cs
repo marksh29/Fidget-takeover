@@ -13,7 +13,6 @@ public class Game_Controll : MonoBehaviour
     public Text load_text;
     public GameObject load_panel, start_panel, game_panel, lootbox_panel, pause_panel;
     [SerializeField] int level;
-    [SerializeField] Slider level_slider;
     [SerializeField] Transform[] level_icon;
     [SerializeField] Sprite[] level_sprt;
 
@@ -28,10 +27,24 @@ public class Game_Controll : MonoBehaviour
         level = PlayerPrefs.GetInt("level");
         int lvl = level - (5 * (int)(level / 5));
         level_icon[lvl].localScale = new Vector3(1.2f, 1.2f, 1.2f);
-        level_icon[lvl].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
+        for(int i = 0; i < level_icon.Length; i++)
+        {
+            if(i < lvl)
+            {
+                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[2];
+                level_icon[i].localScale = new Vector3(0.8f, 0.8f, 1);
+            }                
+            else if(i == lvl)
+                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];            
+        }        
     }
     private void Update()
     {    
+        if(Input.GetKey(KeyCode.Space))
+        {
+            EndEffect.Instance.Win();
+        }
+
         if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f)
         {
             game = true;
@@ -85,7 +98,7 @@ public class Game_Controll : MonoBehaviour
             case ("Win"):
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
-                PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
+
                 Money_controll.Instance.End_money(true);
                 break;
             case ("Lose"):                
