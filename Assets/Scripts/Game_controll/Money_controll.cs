@@ -66,14 +66,14 @@ public class Money_controll : MonoBehaviour
             //end_money_text.text = (end_money != 0 ? "+" : "") + end_money;           
             yield return null;
         }        
-        button.transform.GetChild(0).gameObject.SetActive(true);
-        if (win)
-            button.transform.GetChild(1).gameObject.SetActive(true);
-
+        //button.transform.GetChild(0).gameObject.SetActive(true);
+        //if (win)
+        //    button.transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(4);
-        if(win)
-            Game_Controll.Instance.Lootbox();
-    }  
+        //if(win)
+        //    Game_Controll.Instance.Lootbox();
+        Game_Controll.Instance.Load_level("Game");
+    }
     public void Change_money(int count)
     {
         money += count;
@@ -98,7 +98,9 @@ public class Money_controll : MonoBehaviour
     }
     void Mon()
     {
-        money_text[0].text = money.ToString(money > 0 ? "0,0" : "");
-        money_text[1].text = money.ToString(money > 0 ? "0,0" : "");
+        for(int i =0; i < money_text.Length; i++)
+        {
+            money_text[i].text = money.ToString(money > 0 ? "0,0" : "");
+        }
     }
 }

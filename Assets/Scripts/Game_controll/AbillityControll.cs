@@ -23,7 +23,7 @@ public class AbillityControll : MonoBehaviour
     }    
     public void Buy_upgrade(int id)
     {
-        if(cena[id] + (cena[id] * count[id]) <= Money_controll.Instance.money)
+        if(cena[id] <= Money_controll.Instance.money)
         {
             Money_controll.Instance.Change_money(-cena[id]);
             count[id]++;

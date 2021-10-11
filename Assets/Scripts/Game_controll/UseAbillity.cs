@@ -14,12 +14,20 @@ public class UseAbillity : MonoBehaviour
     [SerializeField] float big_hand_drop_time;
     bool hand_move;
 
+    [Header("Buy")]
+    int cur_id;
+    [SerializeField] GameObject buy_panel;
+    [SerializeField] Text[] txt;
+    [SerializeField] Image buy_img;
+    [SerializeField] Sprite[] abill_sprt;
+    [SerializeField] int[] cena;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
     }
-    void Start()
+    void OnEnable()
     {
         Visual();
     }
@@ -72,6 +80,7 @@ public class UseAbillity : MonoBehaviour
         for(int i = 0; i < buttons.Length; i++)
         {
             abill_count[i] = PlayerPrefs.GetInt("Abillity" + i);
+            print(abill_count[i]);
             buttons[i].GetChild(0).gameObject.GetComponent<Text>().text = abill_count[i].ToString();
             buttons[i].GetChild(1).gameObject.SetActive(abill_count[i] > 0 ? false : true);
         }
@@ -98,5 +107,28 @@ public class UseAbillity : MonoBehaviour
                     break;
             }
         }        
+    }
+
+    public void Open_buy(int id)
+    {
+        cur_id = id;
+        buy_panel.SetActive(true);
+        buy_img.sprite = abill_sprt[id];
+        txt[0].text = abill_count[id].ToString();
+        txt[1].text = cena[id].ToString();
+    }
+    public void Buy()
+    {
+        if(cena[cur_id] <= Money_controll.Instance.money)
+        {
+            if (Sound.Instance != null)
+                Sound.Instance.Play_Sound(4);
+
+            Money_controll.Instance.Change_money(-cena[cur_id]);
+            abill_count[cur_id]++;           
+            txt[0].text = abill_count[cur_id].ToString();
+            PlayerPrefs.SetInt("Abillity" + cur_id, abill_count[cur_id]);
+            Visual();
+        }
     }
 }

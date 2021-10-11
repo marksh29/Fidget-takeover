@@ -15,6 +15,7 @@ public class Game_Controll : MonoBehaviour
     [SerializeField] int level;
     [SerializeField] Slider level_slider;
     [SerializeField] Transform[] level_icon;
+    [SerializeField] Sprite[] level_sprt;
 
     private void Awake()
     {
@@ -24,17 +25,14 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-        level = PlayerPrefs.GetInt("level");        
-        level_icon[level - (5 * (int)(level / 5))].localScale = new Vector3(1.2f, 1.2f, 1.2f);       
+        level = PlayerPrefs.GetInt("level");
+        int lvl = level - (5 * (int)(level / 5));
+        level_icon[lvl].localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        level_icon[lvl].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
     }
     private void Update()
     {    
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            print(level - (5 * (int)(level / 5)));
-        }
-
-        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf)
+        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f)
         {
             game = true;
             start_panel.SetActive(false);
@@ -87,6 +85,7 @@ public class Game_Controll : MonoBehaviour
             case ("Win"):
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
+                PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
                 Money_controll.Instance.End_money(true);
                 break;
             case ("Lose"):                
@@ -94,7 +93,7 @@ public class Game_Controll : MonoBehaviour
                 win_panel.SetActive(true);
                 Money_controll.Instance.End_money(false);
                 break;
-        }        
+        }       
     }
     public void Load_level(string name)
     {
@@ -130,5 +129,5 @@ public class Game_Controll : MonoBehaviour
     public void Lootbox()
     {
         //lootbox_panel.SetActive(true);
-    }
+    }   
 }
