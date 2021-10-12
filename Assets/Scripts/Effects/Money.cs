@@ -10,7 +10,8 @@ public class Money : MonoBehaviour
     void Start()
     {
         float r = Random.Range(0.8f, 1f);
-        transform.localScale = new Vector3(r, r, r);
+        //transform.localScale = new Vector3(r, r, r);
+        StartCoroutine(DoMove(5));
     }
     public void Start_move()
     {
@@ -31,6 +32,7 @@ public class Money : MonoBehaviour
         {
             fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
             transform.localPosition = Vector3.Lerp(startPosition, target.localPosition, fraction);
+            time -= 0.03f;
             yield return null;
         }
         gameObject.SetActive(false);

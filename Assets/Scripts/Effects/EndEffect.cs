@@ -91,4 +91,11 @@ public class EndEffect : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         StartCoroutine(Effect());       
     }
+    public void Play_game()
+    {
+        for (int i = 0; i < end_object.Length; i++)
+        {
+            end_object[i].SetActive(true);
+        }
+    }
 }

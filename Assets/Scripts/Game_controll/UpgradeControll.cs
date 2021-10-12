@@ -25,6 +25,8 @@ public class UpgradeControll : MonoBehaviour
     {
         if(cena[id] + (cena[id] * count[id]) <= Money_controll.Instance.money)
         {
+            GameAnalityc.Instance.Buy_upgrade(id.ToString());
+
             Money_controll.Instance.Change_money(-(cena[id] + (cena[id] * count[id])));
             count[id]++;
             PlayerPrefs.SetInt(name + id, count[id]);
@@ -37,7 +39,7 @@ public class UpgradeControll : MonoBehaviour
         {
             obj[i].GetChild(0).gameObject.GetComponent<Text>().text = (cena[i] + (cena[i] * count[i])).ToString();
             obj[i].GetChild(1).gameObject.GetComponent<Text>().text = "LEVEL " + (count[i] + 1);
-            obj[i].GetChild(2).gameObject.SetActive(Money_controll.Instance.money < (cena[i] + (cena[i] * count[i])) ? false : true);
+            //obj[i].GetChild(2).gameObject.SetActive(Money_controll.Instance.money < (cena[i] + (cena[i] * count[i])) ? false : true);
         }
     }
 }

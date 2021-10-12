@@ -25,6 +25,8 @@ public class AbillityControll : MonoBehaviour
     {
         if(cena[id] <= Money_controll.Instance.money)
         {
+            GameAnalityc.Instance.Buy_abillity("0");
+
             Money_controll.Instance.Change_money(-cena[id]);
             count[id]++;
             PlayerPrefs.SetInt(name + id, count[id]);

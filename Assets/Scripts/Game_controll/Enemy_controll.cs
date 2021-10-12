@@ -138,10 +138,17 @@ public class Enemy_controll : MonoBehaviour
                 else
                 {
                     target = Buttons_controll.Instance.Best();
-                    if(target.GetComponent<Button>().count < gate.count)
+                    if(target != null)
                     {
-                        move = false;
-                        select = true;
+                        if (target.GetComponent<Button>().count < gate.count)
+                        {
+                            move = false;
+                            select = true;
+                            hand.transform.position = hand_pos;
+                        }
+                    }
+                    else
+                    {
                         hand.transform.position = hand_pos;
                     }
                 }

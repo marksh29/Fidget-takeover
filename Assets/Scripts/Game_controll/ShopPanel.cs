@@ -54,10 +54,12 @@ public class ShopPanel : MonoBehaviour
     {
         if (list[cur_id].cena <= Money_controll.Instance.money)
         {
+            GameAnalityc.Instance.Buy_unit(list[cur_id].name);
+
             if (Sound.Instance != null)
                 Sound.Instance.Play_Sound(4);
 
-            Money_controll.Instance.Change_money(list[cur_id].cena);
+            Money_controll.Instance.Change_money(-list[cur_id].cena);
             PlayerPrefs.SetInt("buy_" + list[cur_id].name, 1);
             buy_button.SetActive(false);
         }
