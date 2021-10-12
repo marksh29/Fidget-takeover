@@ -53,7 +53,7 @@ public class GameAnalityc : MonoBehaviour
         }
         else
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "First - ", "Start game");
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "First start game");
         }
         Debug.Log("Start_game");
     }
@@ -61,34 +61,34 @@ public class GameAnalityc : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("First") == 0)
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Start level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Start level: ", id.ToString());
         }
         else
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "First - " , "Start level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "First start level: ", id.ToString());
         }
     }
-    public void Win_level(int id)
+    public void Win_level(int id, int time)
     {
         if (PlayerPrefs.GetInt("First") == 0)
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Win level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Win level: ", id.ToString(), time);
         }
         else
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "First - ", "Win level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "First win level: ", id.ToString(), time);
         }
         Debug.Log("Win_level");
     }
-    public void Lose_level(int id)
+    public void Lose_level(int id, int time)
     {
         if (PlayerPrefs.GetInt("First") == 0)
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Lose level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Lose level: ", id.ToString(), time);
         }
         else
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "First - ", "Lose level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "First lose level: ", id.ToString(), time);
         }
         Debug.Log("Lose_level");
     }
@@ -97,11 +97,11 @@ public class GameAnalityc : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("First") == 0)
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Close game in level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "Close game in level: ", id.ToString());
         }
         else
         {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "First - ", "Close game in level: ", id);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "First close game in level: ", id.ToString());
         }
         Debug.Log("Close");
     }

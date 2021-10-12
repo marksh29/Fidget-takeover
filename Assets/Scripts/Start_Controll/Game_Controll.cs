@@ -99,19 +99,19 @@ public class Game_Controll : MonoBehaviour
     
     IEnumerator Open_panel(string name)
     {
-        GameAnalityc.Instance.Level_timer(lvl, lvl_timer);
+        //GameAnalityc.Instance.Level_timer(lvl, lvl_timer);
         yield return new WaitForSeconds(3);
         switch (name)
         {
             case ("Win"):
-                GameAnalityc.Instance.Win_level(level + 1);
+                GameAnalityc.Instance.Win_level(level + 1, (int)lvl_timer);
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
 
                 Money_controll.Instance.End_money(true);
                 break;
             case ("Lose"):
-                GameAnalityc.Instance.Lose_level(level + 1);
+                GameAnalityc.Instance.Lose_level(level + 1, (int)lvl_timer);
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
                 Money_controll.Instance.End_money(false);

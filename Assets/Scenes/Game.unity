@@ -5337,7 +5337,7 @@ MonoBehaviour:
     move_speed: 5
     frize_timer: 1
     warrior: 1
-    gaint: 1
+    gaint: 0
     archer: 0
     select_timer_min_max:
     - 2
@@ -24992,7 +24992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75.00348, y: -74.001144}
+  m_AnchoredPosition: {x: 75.00348, y: -74.00116}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891555431
@@ -28748,7 +28748,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089877664}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -29037,7 +29037,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097168522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -53494,6 +53494,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bd2a111a1523e13459120bd1129cea8f, type: 3}
   - {fileID: 21300000, guid: 5ef703dcc679bd3468f909502c3065f8, type: 3}
   game_timer: 0
+  lvl_timer: 0
 --- !u!4 &2007241549
 Transform:
   m_ObjectHideFlags: 0
