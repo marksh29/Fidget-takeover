@@ -86,6 +86,20 @@ public class Enemy_controll : MonoBehaviour
         if (archer)
             Spawn(2);
     }
+
+    public int[] Get_count()
+    {
+        if (level < stages.Count)
+        {
+            int[] i = stages[level].boost_variant;
+            return i;
+        }
+        else
+        {
+            int[] i = stages[level - 1].boost_variant;
+            return i;
+        }        
+    }
     void Update()
     {
         if (Game_Controll.Instance.game && !EndEffect.Instance.end)

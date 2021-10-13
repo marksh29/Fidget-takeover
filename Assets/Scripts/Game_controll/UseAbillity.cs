@@ -80,7 +80,6 @@ public class UseAbillity : MonoBehaviour
         for(int i = 0; i < buttons.Length; i++)
         {
             abill_count[i] = PlayerPrefs.GetInt("Abillity" + i);
-            print(abill_count[i]);
             buttons[i].GetChild(0).gameObject.GetComponent<Text>().text = abill_count[i].ToString();
             buttons[i].GetChild(1).gameObject.SetActive(abill_count[i] > 0 ? false : true);
         }

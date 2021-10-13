@@ -78,8 +78,8 @@ public class EndEffect : MonoBehaviour
     }
     void Effect_on()
     {
-        boss.SetActive(false);
-        explos.SetActive(true);
+        //boss.SetActive(false);
+        //explos.SetActive(true);
         stay_prefabs.SetActive(true);
         Game_Controll.Instance.Win();
         StartCoroutine(Effect());        

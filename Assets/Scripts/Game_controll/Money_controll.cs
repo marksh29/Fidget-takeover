@@ -52,10 +52,10 @@ public class Money_controll : MonoBehaviour
     {
         while(money < mn)
         {
-            if(end_money >= 5)
+            if(end_money >= 50)
             {
-                money += 5;
-                end_money -= 5;
+                money += 50;
+                end_money -= 50;
             }
             else
             {
@@ -69,7 +69,7 @@ public class Money_controll : MonoBehaviour
         //button.transform.GetChild(0).gameObject.SetActive(true);
         //if (win)
         //    button.transform.GetChild(1).gameObject.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         //if(win)
         //    Game_Controll.Instance.Lootbox();
         Game_Controll.Instance.Load_level("Game");

@@ -51,7 +51,7 @@ public class Game_Controll : MonoBehaviour
         {
             EndEffect.Instance.Win();
         }
-        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f)
+        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f && !win_panel.activeSelf)
         {
             EndEffect.Instance.Play_game();
 
@@ -63,9 +63,10 @@ public class Game_Controll : MonoBehaviour
             Enemy_controll.Instance.Set_level();
 
             GameAnalityc.Instance.Start_level(level + 1);
-
+        }
+        if(game)
+        {
             game_timer += Time.deltaTime;
-
             lvl_timer += Time.deltaTime;
         }
     }      
@@ -104,6 +105,7 @@ public class Game_Controll : MonoBehaviour
         switch (name)
         {
             case ("Win"):
+                print(lvl_timer);
                 GameAnalityc.Instance.Win_level(level + 1, (int)lvl_timer);
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);

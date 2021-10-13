@@ -6,37 +6,49 @@ public class Money : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float time_speed;
+    Vector3 start_pos;
+    [SerializeField] bool move;
 
+    private void Awake()
+    {
+        start_pos = transform.localPosition;
+    }
     void Start()
     {
-        float r = Random.Range(0.8f, 1f);
-        //transform.localScale = new Vector3(r, r, r);
-        StartCoroutine(DoMove(5));
     }
     public void Start_move()
     {
-       StartCoroutine(DoMove(0.3f));
+        //StartCoroutine(DoMove(0.3f));
+        move = true;
     }
     void Update()
     {
-        
-    }
-    private IEnumerator DoMove(float time)
-    {
-        if (Sound.Instance != null)
-            Sound.Instance.Play_Sound(4);
-        Vector3 startPosition = transform.localPosition;
-        float startTime = Time.realtimeSinceStartup;
-        float fraction = 0f;
-        while (fraction < 1f)
+        if(move)
         {
-            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
-            transform.localPosition = Vector3.Lerp(startPosition, target.localPosition, fraction);
-            time -= 0.03f;
-            yield return null;
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target.localPosition, time_speed * Time.deltaTime);
+            if(transform.localPosition == target.localPosition)
+            {
+                move = false;
+                transform.localPosition = start_pos;
+            }
         }
-        gameObject.SetActive(false);
-        if (Sound.Instance != null)
-            Sound.Instance.Play_Sound(4);
     }
+    //private IEnumerator DoMove(float time)
+    //{
+    //    if (Sound.Instance != null)
+    //        Sound.Instance.Play_Sound(4);
+    //    Vector3 startPosition = transform.localPosition;
+    //    float startTime = Time.realtimeSinceStartup;
+    //    float fraction = 0f;
+    //    while (fraction < 1f)
+    //    {
+    //        fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
+    //        transform.localPosition = Vector3.Lerp(startPosition, target.localPosition, fraction);
+    //        time -= 0.03f;
+    //        yield return null;
+    //    }
+    //    gameObject.SetActive(false);
+    //    if (Sound.Instance != null)
+    //        Sound.Instance.Play_Sound(4);
+    //}
 }
