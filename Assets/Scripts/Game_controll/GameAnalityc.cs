@@ -52,16 +52,16 @@ public class GameAnalityc : MonoBehaviour
     }
     public void Start_level(int id)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Start level" + id.ToString());
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level" + id.ToString());
     }
     public void Win_level(int id, int time)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Win level" + id.ToString(), time);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level" + id.ToString(), time);
         Debug.Log("Win_level");
     }
     public void Lose_level(int id, int time)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Lose level" + id.ToString(), time);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level" + id.ToString(), time);
         Debug.Log("Lose level");
     }
 

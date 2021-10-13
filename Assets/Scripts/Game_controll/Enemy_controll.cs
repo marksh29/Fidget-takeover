@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct Stage
 {
-    public int life;
+    public int life, win_money;
     public float warrior_spawn_timer;
     public float gaint_spawn_timer;
     public float move_speed;   
@@ -26,6 +26,7 @@ public class Enemy_controll : MonoBehaviour
     [Header("Настраиваемое")]
     public List<Stage> stages;
     [SerializeField] float hand_move_speed;
+
 
     [Header("Не трогать")]    
     public float move_speed;
@@ -96,10 +97,24 @@ public class Enemy_controll : MonoBehaviour
         }
         else
         {
-            int[] i = stages[level - 1].boost_variant;
+            int[] i = stages[stages.Count - 1].boost_variant;
             return i;
         }        
     }
+    public int Get_win_money()
+    {
+        if (level < stages.Count)
+        {
+            int i = stages[level].win_money;
+            return i;
+        }
+        else
+        {
+            int i = stages[stages.Count - 1].win_money;
+            return i;
+        }
+    }
+
     void Update()
     {
         if (Game_Controll.Instance.game && !EndEffect.Instance.end)

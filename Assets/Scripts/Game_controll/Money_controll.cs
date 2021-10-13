@@ -9,8 +9,6 @@ public class Money_controll : MonoBehaviour
     public int money, end_money;
     [SerializeField] Text end_money_text, end_logo;
     [SerializeField] Text[] money_text;
-    [SerializeField] int[] end_money_list;
-    [SerializeField] GameObject button;
     [SerializeField] List<Money> list;
     bool win;
     private void Awake()
@@ -29,7 +27,7 @@ public class Money_controll : MonoBehaviour
         if (win)
         {
             end_logo.text = "VICTORY";
-            end_money = end_money_list[PlayerPrefs.GetInt("level")] + (50 * PlayerPrefs.GetInt("Upgrade2"));
+            end_money = Enemy_controll.Instance.Get_win_money() + (50 * PlayerPrefs.GetInt("Upgrade2"));
             end_money_text.text = "+" + end_money;
             PlayerPrefs.SetInt("money", money + end_money);
 
@@ -62,17 +60,12 @@ public class Money_controll : MonoBehaviour
                 money += end_money;
                 end_money -= end_money;
             }
-            Mon();
-            //end_money_text.text = (end_money != 0 ? "+" : "") + end_money;           
+            Mon();          
             yield return null;
-        }        
-        //button.transform.GetChild(0).gameObject.SetActive(true);
-        //if (win)
-        //    button.transform.GetChild(1).gameObject.SetActive(true);
+        }     
         yield return new WaitForSeconds(2);
-        //if(win)
-        //    Game_Controll.Instance.Lootbox();
-        Game_Controll.Instance.Load_level("Game");
+        Game_Controll.Instance.Next_level();
+        //Game_Controll.Instance.Load_level("Game");
     }
     public void Change_money(int count)
     {
@@ -90,6 +83,7 @@ public class Money_controll : MonoBehaviour
             for(int i = 0; i < d; i++)
             {
                 int r = Random.Range(0, list.Count);
+                list[r].gameObject.SetActive(true);
                 list[r].Start_move();
                 list.Remove(list[r]);
             }            

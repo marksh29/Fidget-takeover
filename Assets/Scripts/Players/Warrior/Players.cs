@@ -61,7 +61,7 @@ public class Players : MonoBehaviour
         move = true;
         battle = false;
 
-        transform.GetChild(0).gameObject.GetComponent<Battle_collision>().on = false;
+        transform.GetChild(1).gameObject.GetComponent<Battle_collision>().on = false;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().isTrigger = false;
         
@@ -151,6 +151,7 @@ public class Players : MonoBehaviour
         }
         else
         {
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
             transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");            
             Enable_param();
         }       
@@ -166,17 +167,7 @@ public class Players : MonoBehaviour
         if (target != null && target.GetComponent<Enemy>() != null)
             target.GetComponent<Enemy>().target = null;    
         yield return new WaitForSeconds(time);
-        Off();
-        
-        //if(!gaint)
-        //    Add_force();
-        //else
-        //{            
-        //    StopAllCoroutines();
-        //    Off();
-        //}
-        //yield return new WaitForSeconds(2);
-        //Off();
+        Off();       
     }
     void Off()
     {

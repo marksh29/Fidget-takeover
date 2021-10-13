@@ -6,7 +6,7 @@ public class EndEffect : MonoBehaviour
 {
     public static EndEffect Instance;
     [SerializeField] GameObject[] prefabs;
-    [SerializeField] GameObject stay_prefabs, spawn_pos, explos, boss;
+    [SerializeField] GameObject spawn_pos;
     [SerializeField] GameObject[] end_object, warriors, gaints, archers;
     int end_count;
     public bool end;
@@ -78,9 +78,6 @@ public class EndEffect : MonoBehaviour
     }
     void Effect_on()
     {
-        //boss.SetActive(false);
-        //explos.SetActive(true);
-        stay_prefabs.SetActive(true);
         Game_Controll.Instance.Win();
         StartCoroutine(Effect());        
     }
@@ -97,5 +94,22 @@ public class EndEffect : MonoBehaviour
         {
             end_object[i].SetActive(true);
         }
+    }
+    public void Off_all()
+    {
+        for (int i = 0; i < end_object.Length; i++)
+        {
+            end_object[i].SetActive(false);
+        }
+        for (int i = 0; i < warriors.Length; i++)
+        {
+            warriors[i].SetActive(false);
+            if (i < 1)
+                gaints[i].SetActive(false);
+            if (i < 3)
+                archers[i].SetActive(false);
+        }
+        StopAllCoroutines();
+        end = false;
     }
 }

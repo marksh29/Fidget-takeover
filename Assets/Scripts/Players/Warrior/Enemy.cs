@@ -18,9 +18,9 @@ public class Enemy : MonoBehaviour
     void OnEnable()
     {
         speed = Enemy_controll.Instance.move_speed;
-        life = start_life;
-        //transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
-        Enable_param(); 
+        life = start_life;        
+        Enable_param();
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
     }
     private void Update()
     {
@@ -117,16 +117,6 @@ public class Enemy : MonoBehaviour
             target.GetComponent<Players>().target = null;
         yield return new WaitForSeconds(timer);
         Off();
-
-        //if (!gaint)
-        //    Add_force();
-        //else
-        //{
-        //    StopAllCoroutines();
-        //    Off();
-        //}
-        //yield return new WaitForSeconds(2);
-        //Off();
     }
     void Off()
     {

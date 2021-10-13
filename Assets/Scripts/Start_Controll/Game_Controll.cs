@@ -7,7 +7,7 @@ public class Game_Controll : MonoBehaviour
 {
     public static Game_Controll Instance;
     public bool game, pause;
-    [SerializeField] GameObject lose_panel, win_panel, shop_panel, abill_panel;
+    [SerializeField] GameObject win_panel, shop_panel, abill_panel;
 
     public Slider load_slider;
     public Text load_text;
@@ -23,28 +23,12 @@ public class Game_Controll : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
         if (Instance == null)
             Instance = this;
-       // PlayerPrefs.DeleteAll();
     }
     private void Start()
     {
         GameAnalityc.Instance.Start_game();
-
-        game_timer = PlayerPrefs.GetFloat("game_timer");
-
-        level = PlayerPrefs.GetInt("level");
-        lvl = level - (5 * (int)(level / 5));
-        level_icon[lvl].localScale = new Vector3(1.2f, 1.2f, 1.2f);
-        for(int i = 0; i < level_icon.Length; i++)
-        {
-            if(i < lvl)
-            {
-                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[2];
-                level_icon[i].localScale = new Vector3(0.8f, 0.8f, 1);
-            }                
-            else if(i == lvl)
-                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];            
-        }        
-    }
+        Next_level();     
+    }   
     private void Update()
     {    
         if(Input.GetKey(KeyCode.Space))
@@ -100,12 +84,10 @@ public class Game_Controll : MonoBehaviour
     
     IEnumerator Open_panel(string name)
     {
-        //GameAnalityc.Instance.Level_timer(lvl, lvl_timer);
         yield return new WaitForSeconds(3);
         switch (name)
         {
             case ("Win"):
-                print(lvl_timer);
                 GameAnalityc.Instance.Win_level(level + 1, (int)lvl_timer);
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
@@ -120,30 +102,53 @@ public class Game_Controll : MonoBehaviour
                 break;
         }       
     }
-    public void Load_level(string name)
+    public void Next_level()
     {
-        PlayerPrefs.SetFloat("game_timer", game_timer);
-
-        Time.timeScale = 1;
-        load_panel.SetActive(true);
-        StartCoroutine(Load(name));
-    }
-    IEnumerator Load(string name)
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
-        asyncLoad.allowSceneActivation = false;
-
-        while (!asyncLoad.isDone)
+        PoolControll.Instance.DisableAll();
+        start_panel.SetActive(true);
+        game_panel.SetActive(false);
+        win_panel.SetActive(false);
+        level = PlayerPrefs.GetInt("level");
+        lvl = level - (5 * (int)(level / 5));
+        level_icon[lvl].localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        for (int i = 0; i < level_icon.Length; i++)
         {
-            load_slider.value = asyncLoad.progress;
-            load_text.text = (load_slider.value * 100).ToString("f0") + "%";
-            if (asyncLoad.progress >= 0.9f && !asyncLoad.allowSceneActivation)
+            if (i < lvl)
             {
-                asyncLoad.allowSceneActivation = true;
+                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[2];
+                level_icon[i].localScale = new Vector3(0.8f, 0.8f, 1);
             }
-            yield return null;
+            else if (i == lvl)
+                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
         }
+        EndEffect.Instance.Off_all();
+        Camera.main.gameObject.GetComponent<Animator>().SetTrigger("stay");
     }
+
+    //public void Load_level(string name)
+    //{
+    //    PlayerPrefs.SetFloat("game_timer", game_timer);
+
+    //    Time.timeScale = 1;
+    //    load_panel.SetActive(true);
+    //    StartCoroutine(Load(name));
+    //}
+    //IEnumerator Load(string name)
+    //{
+    //    AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
+    //    asyncLoad.allowSceneActivation = false;
+
+    //    while (!asyncLoad.isDone)
+    //    {
+    //        load_slider.value = asyncLoad.progress;
+    //        load_text.text = (load_slider.value * 100).ToString("f0") + "%";
+    //        if (asyncLoad.progress >= 0.9f && !asyncLoad.allowSceneActivation)
+    //        {
+    //            asyncLoad.allowSceneActivation = true;
+    //        }
+    //        yield return null;
+    //    }
+    //}
     public void Play_game()
     {
         game = true;
