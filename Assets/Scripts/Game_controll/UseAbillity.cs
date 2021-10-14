@@ -33,31 +33,31 @@ public class UseAbillity : MonoBehaviour
     }
     void Update()
     {
-        if (hand_drop && pricel.gameObject.activeSelf && Input.GetMouseButtonDown(0))
-        {
-            hand_move = true;
-        }
-        if (hand_move)
-        {
-            if(Input.GetMouseButton(0))
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider != null && hit.collider.gameObject.tag == "Path")
-                    {
-                        pricel.position = new Vector3(hit.point.x, 0.001f, hit.point.z);
-                    }
-                }
-            }
-            if (Input.GetMouseButtonUp(0))
-            {                
-                hand_move = false;
-                pricel.gameObject.SetActive(false);                
-                StartCoroutine(DoMove(pricel.position));
-            }
-        }        
+        //if (hand_drop && pricel.gameObject.activeSelf && Input.GetMouseButtonDown(0))
+        //{
+        //    hand_move = true;
+        //}
+        //if (hand_move)
+        //{
+        //    if(Input.GetMouseButton(0))
+        //    {
+        //        RaycastHit hit;
+        //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //        if (Physics.Raycast(ray, out hit))
+        //        {
+        //            if (hit.collider != null && hit.collider.gameObject.tag == "Path")
+        //            {
+        //                pricel.position = new Vector3(hit.point.x, 0.001f, hit.point.z);
+        //            }
+        //        }
+        //    }
+        //    if (Input.GetMouseButtonUp(0))
+        //    {                
+        //        hand_move = false;
+        //        pricel.gameObject.SetActive(false);                
+        //        StartCoroutine(DoMove(pricel.position));
+        //    }
+        //}        
     }
     private IEnumerator DoMove(Vector3 targetPosition)
     {
@@ -94,9 +94,12 @@ public class UseAbillity : MonoBehaviour
             switch (id)
             {
                 case (0):
+
                     hand_drop = true;
                     pricel.position = new Vector3(0, 0.001f, 0);
-                    pricel.gameObject.SetActive(true);
+                    StartCoroutine(DoMove(pricel.position));
+                    
+                    //pricel.gameObject.SetActive(true);
                     break;
                 case (1):
 
@@ -105,7 +108,11 @@ public class UseAbillity : MonoBehaviour
 
                     break;
             }
-        }        
+        }
+        else if(abill_count[id] <= 0)
+        {
+            Open_buy(id);
+        }
     }
 
     public void Open_buy(int id)
@@ -118,13 +125,13 @@ public class UseAbillity : MonoBehaviour
     }
     public void Buy()
     {
-        if(cena[cur_id] <= Money_controll.Instance.money)
+        if (cena[cur_id] <= Money_controll.Instance.money)
         {
             if (Sound.Instance != null)
                 Sound.Instance.Play_Sound(4);
 
             Money_controll.Instance.Change_money(-cena[cur_id]);
-            abill_count[cur_id]++;           
+            abill_count[cur_id]++;
             txt[0].text = abill_count[cur_id].ToString();
             PlayerPrefs.SetInt("Abillity" + cur_id, abill_count[cur_id]);
             Visual();

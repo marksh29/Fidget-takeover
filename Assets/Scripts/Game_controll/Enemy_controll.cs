@@ -27,9 +27,9 @@ public class Enemy_controll : MonoBehaviour
     public List<Stage> stages;
     [SerializeField] float hand_move_speed;
 
-
     [Header("Не трогать")]    
     public float move_speed;
+    public int skin_id, stickman_id;
     [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand, target;
     float[] select_timer_min_max;    
@@ -46,12 +46,15 @@ public class Enemy_controll : MonoBehaviour
     }
     void Start()
     {
-      
+        
     }
 
     public void Set_level()
     {
+        timer = 0.1f;
         level = PlayerPrefs.GetInt("level", 0);
+        move = false;
+        select = false;
 
         if (level < stages.Count)
         {
@@ -81,6 +84,8 @@ public class Enemy_controll : MonoBehaviour
 
             select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
         }
+        stickman_id = (Random.Range(0, 4) == 0 ? 0 : 1);
+        skin_id = Random.Range(0, 4);
 
         hand_pos = hand.transform.position;
         gaint_timer = gaint_spawn_timer;
@@ -240,6 +245,10 @@ public class Enemy_controll : MonoBehaviour
         frize_on = false;
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 255);
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(231, 0, 0, 255);
-    }     
+    }
+    public void New_level()
+    {
+
+    }
 }
 

@@ -127,6 +127,7 @@ MonoBehaviour:
   gaint: 1
   open: 0
   close: 126
+  body: {fileID: 7138049024049752684}
 --- !u!136 &2108329387010100957
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -412,6 +413,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8192cbe0fc2578e46abcbe4fae013e62, type: 3}
+--- !u!1 &7138049024049752684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8192cbe0fc2578e46abcbe4fae013e62,
+    type: 3}
+  m_PrefabInstance: {fileID: 8056403263358113597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7513307547105718486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8192cbe0fc2578e46abcbe4fae013e62,

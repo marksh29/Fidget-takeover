@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 public class Game_Controll : MonoBehaviour
 {
     public static Game_Controll Instance;
-    public bool game, pause;
-    [SerializeField] GameObject win_panel, shop_panel, abill_panel;
+    public bool game, pause, end;
+    [SerializeField] GameObject win_panel, shop_panel, abill_panel, upgrade_panel;
 
     public Slider load_slider;
     public Text load_text;
@@ -18,9 +20,11 @@ public class Game_Controll : MonoBehaviour
 
     [SerializeField] float game_timer, lvl_timer;
 
-    public delegate void SomeAction();
-    public event SomeAction reloadSkin;
+    public delegate void ReloadSkin();
+    public event ReloadSkin reloadSkin;
 
+    [SerializeField] List<RandomObject> list_random;
+     
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -29,6 +33,7 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         GameAnalityc.Instance.Start_game();
         Next_level();     
     }   
@@ -38,7 +43,7 @@ public class Game_Controll : MonoBehaviour
         {
             EndEffect.Instance.Win();
         }
-        if (!game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f && !win_panel.activeSelf)
+        if (!end && !game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f && !win_panel.activeSelf)
         {
             EndEffect.Instance.Play_game();
 
@@ -87,6 +92,7 @@ public class Game_Controll : MonoBehaviour
     
     IEnumerator Open_panel(string name)
     {
+        end = true;
         yield return new WaitForSeconds(3);
         switch (name)
         {
@@ -106,7 +112,9 @@ public class Game_Controll : MonoBehaviour
     }
     public void Next_level()
     {
-        PoolControll.Instance.DisableAll();        
+        end = false;
+        lvl_timer = 0;
+        PoolControll.Instance.DisableAll();
         start_panel.SetActive(true);
         game_panel.SetActive(false);
         win_panel.SetActive(false);
@@ -124,12 +132,13 @@ public class Game_Controll : MonoBehaviour
                 level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
         }
         EndEffect.Instance.Off_all();
-        Reload_skin();
+
+        upgrade_panel.SetActive(level >= 1 ? true : false);
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("stay");
-    }
-    void Reload_skin()
-    {
-        reloadSkin?.Invoke();
+        for (int i = 0; i < list_random.Count; i++)
+        {
+            list_random[i].Random_on();
+        }
     }
 
     public void Play_game()

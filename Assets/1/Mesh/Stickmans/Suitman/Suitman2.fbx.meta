@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: f222d0d8f28e11d4b8faa8c492b50505
+guid: e8ee035abd8a2af44b714f0d8f2eba05
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -6294259000607041188
-    second: Armature|1
+      74: 1307289275110995618
+    second: Armature|Armature.001|Armature|Dancing walk|Armature|Dancing walk
   - first:
-      74: 3445795200340149715
-    second: Armature|2
+      74: -6595332793972895469
+    second: Armature|Armature.001|Armature|Dancing|Armature|Dancing
   - first:
-      74: 1025442053835053160
-    second: Armature|3
+      74: 6688872515729988149
+    second: Armature|Armature.001|Armature|Fight|Armature|Fight
   - first:
-      74: 5940532041814944293
-    second: Armature|4
+      74: -6339497785203022621
+    second: Armature|Armature.001|Armature|Run|Armature|Run
   - first:
-      74: 9142526972430381442
-    second: Armature|5
+      74: -4791504522942941401
+    second: Armature|Armature|mixamo.com|Layer0
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -109,7 +109,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

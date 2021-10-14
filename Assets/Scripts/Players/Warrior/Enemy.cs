@@ -14,13 +14,15 @@ public class Enemy : MonoBehaviour
     public int life;
     public bool move, battle, spawn, end, gaint;
     [SerializeField] RigidbodyConstraints open, close;
+    public GameObject body;
 
     void OnEnable()
     {
         speed = Enemy_controll.Instance.move_speed;
         life = start_life;        
         Enable_param();
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        //if (body != null)
+        //    body.gameObject.GetComponent<Animator>().SetTrigger("move");
     }
     private void Update()
     {
@@ -52,8 +54,11 @@ public class Enemy : MonoBehaviour
     public void Enable_param()
     {
         GetComponent<Rigidbody>().constraints = close;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        if(body != null)
+        {
+            body.gameObject.GetComponent<Animator>().enabled = true;
+            body.gameObject.GetComponent<Animator>().SetTrigger("move");
+        }       
         gameObject.tag = "Enemy";
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
@@ -100,7 +105,7 @@ public class Enemy : MonoBehaviour
             {
                 if (gaint)
                     StartCoroutine(Gaint_attack(1));
-                transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("attack");                    
+                body.gameObject.GetComponent<Animator>().SetTrigger("attack");                    
             }            
         }
     }
@@ -154,7 +159,7 @@ public class Enemy : MonoBehaviour
     public void Win()
     {
         end = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
+        body.gameObject.GetComponent<Animator>().SetTrigger("win");
     }
     void Add_force()
     {
@@ -164,7 +169,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody>().constraints = open;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().isTrigger = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = false;
+        body.gameObject.GetComponent<Animator>().enabled = false;
         GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(1, 2)) * force_speed, ForceMode.Impulse);
     }
 }

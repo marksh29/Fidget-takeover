@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: ff525d0186cac4346bdc3633dddc0121
+guid: fd0aad3fb33204b4d85c93b85705052e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -6294259000607041188
-    second: Armature|1
+      74: 156964476166669451
+    second: Armature|Dancing
   - first:
-      74: 3445795200340149715
-    second: Armature|2
+      74: 3937146739096016386
+    second: Armature|Dancing running
   - first:
-      74: 1025442053835053160
-    second: Armature|3
+      74: 4682765751262850392
+    second: Armature|Fight
   - first:
-      74: 5940532041814944293
-    second: Armature|4
+      74: 1586051729853729830
+    second: Armature|Moonwalk
   - first:
-      74: 9142526972430381442
-    second: Armature|5
+      74: -3828583913261678786
+    second: Armature|Running
   externalObjects: {}
   materials:
     materialImportMode: 2

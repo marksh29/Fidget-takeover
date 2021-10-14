@@ -6,7 +6,7 @@ public class Players : MonoBehaviour
 {
     [Header("Настраиваемое")]
     public int damage;
-    [SerializeField] int start_life;
+    [SerializeField] int start_life, dop_attack;
     [SerializeField] float speed, force_speed;
 
     [Header("Не трогать")]
