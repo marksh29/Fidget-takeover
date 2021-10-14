@@ -65,7 +65,6 @@ public class Money_controll : MonoBehaviour
         }     
         yield return new WaitForSeconds(2);
         Game_Controll.Instance.Next_level();
-        //Game_Controll.Instance.Load_level("Game");
     }
     public void Change_money(int count)
     {

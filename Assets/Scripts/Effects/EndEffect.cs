@@ -21,6 +21,8 @@ public class EndEffect : MonoBehaviour
     }  
     public void Win()
     {
+        List<GameObject> enemy_list = new List<GameObject>();
+
         if (Sound.Instance != null)
             Sound.Instance.Play_Sound(3);
 
@@ -54,9 +56,16 @@ public class EndEffect : MonoBehaviour
             list[r].GetComponent<Players>().Win();
             list.Remove(list[r]);
         }
+
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("win");
         StartCoroutine(On());
     }
+    IEnumerator Enemy_on()
+    {
+        
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+    }
+
     public void Lose()
     {
         if (Sound.Instance != null)

@@ -10271,6 +10271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e237cd649a1c214f927cd0c047b2780,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4628347513043353130, guid: 2e237cd649a1c214f927cd0c047b2780,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11201,6 +11206,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 361325985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &361325987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a7b645f690845b54a9daf943cb7846d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 361325985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &361679266
 GameObject:
   m_ObjectHideFlags: 0
@@ -11517,13 +11528,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 373550372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9bc851531a72549baacad200e6420a, type: 3}
+  m_Script: {fileID: 11500000, guid: 18da2c11a945cba45aa9de89a11c8ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprt:
+  objects: 0
+  sprite: 0
+  material: 1
+  skined: 0
+  obj: []
+  mesh: {fileID: 373550375}
+  sprt: []
+  mat:
   - {fileID: 2100000, guid: e9f70d981db59f74a9608b07cbf74c5a, type: 2}
   - {fileID: 2100000, guid: 65ef1668fa61c084e979808d748fe23e, type: 2}
   - {fileID: 2100000, guid: 676ba999bd6cae742af40d47c6985582, type: 2}
+--- !u!23 &373550375 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: be220e219ff043e42905a13f5a784a00,
+    type: 3}
+  m_PrefabInstance: {fileID: 373550371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &373550377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be220e219ff043e42905a13f5a784a00,
@@ -11975,6 +11999,7 @@ GameObject:
   - component: {fileID: 391931896}
   - component: {fileID: 391931895}
   - component: {fileID: 391931894}
+  - component: {fileID: 391931897}
   m_Layer: 0
   m_Name: 'Path '
   m_TagString: Path
@@ -12061,6 +12086,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391931892}
   m_Mesh: {fileID: -7177582377190089013, guid: 740fc8fcd565d264aaf6ec91085d5937, type: 3}
+--- !u!114 &391931897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391931892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da2c11a945cba45aa9de89a11c8ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: 0
+  sprite: 0
+  material: 1
+  skined: 0
+  obj: []
+  mesh: {fileID: 391931895}
+  sprt: []
+  mat:
+  - {fileID: 2100000, guid: 943a499539fcd9a47baa85dd860fbeb8, type: 2}
+  - {fileID: 2100000, guid: ddbdd4aa48f79a548bdd2d6f007b8738, type: 2}
+  - {fileID: 2100000, guid: 64216abb095d726439128dfa61ae7939, type: 2}
 --- !u!1 &394527475
 GameObject:
   m_ObjectHideFlags: 0
@@ -17789,6 +17837,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be220e219ff043e42905a13f5a784a00, type: 3}
+--- !u!23 &582943309 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: be220e219ff043e42905a13f5a784a00,
+    type: 3}
+  m_PrefabInstance: {fileID: 582943308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &585406693
 GameObject:
   m_ObjectHideFlags: 0
@@ -19096,6 +19150,12 @@ PrefabInstance:
 --- !u!4 &616402217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 160430b4ad2a3fb4191e78197a0eeb82,
+    type: 3}
+  m_PrefabInstance: {fileID: 616402216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &616402218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 160430b4ad2a3fb4191e78197a0eeb82,
     type: 3}
   m_PrefabInstance: {fileID: 616402216}
   m_PrefabAsset: {fileID: 0}
@@ -26172,6 +26232,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 928641783}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &928641785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 184f7784ec31d4a46905734cf78e5a72,
+    type: 3}
+  m_PrefabInstance: {fileID: 928641783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937603975
 GameObject:
   m_ObjectHideFlags: 0
@@ -31550,10 +31616,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1153339905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9bc851531a72549baacad200e6420a, type: 3}
+  m_Script: {fileID: 11500000, guid: 18da2c11a945cba45aa9de89a11c8ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprt:
+  objects: 0
+  sprite: 0
+  material: 1
+  skined: 0
+  obj: []
+  mesh: {fileID: 582943309}
+  sprt: []
+  mat:
   - {fileID: 2100000, guid: e9f70d981db59f74a9608b07cbf74c5a, type: 2}
   - {fileID: 2100000, guid: 65ef1668fa61c084e979808d748fe23e, type: 2}
   - {fileID: 2100000, guid: 676ba999bd6cae742af40d47c6985582, type: 2}
@@ -40121,6 +40194,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b096c2591d03b4e98205903e962ea5, type: 3}
+--- !u!1 &1466977476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 52b096c2591d03b4e98205903e962ea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1466977475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1466977477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466977476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da2c11a945cba45aa9de89a11c8ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: 0
+  sprite: 0
+  material: 1
+  skined: 0
+  obj: []
+  mesh: {fileID: 0}
+  sprt: []
+  mat:
+  - {fileID: 2100000, guid: cad57e8063cdfb341b585699015e07df, type: 2}
+  - {fileID: 2100000, guid: 8263b25b8b4d689499dfdc9afd056b11, type: 2}
+  - {fileID: 2100000, guid: a1c8ec6f0da8da740bad0b5370a316c9, type: 2}
+  - {fileID: 2100000, guid: dced4fc1071e5924f9091cc2e36b23ec, type: 2}
 --- !u!1 &1476622172
 GameObject:
   m_ObjectHideFlags: 0
@@ -40493,7 +40596,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f1a81cd5d7a30d74399921e2610f6a85, type: 2}
+      objectReference: {fileID: 2100000, guid: cc0bb4e0b4fb37247a51b1bb4dfb9887, type: 2}
     - target: {fileID: -8679921383154817045, guid: e9e1cbd93328f0d48a98a224ef941740,
         type: 3}
       propertyPath: m_RootOrder
@@ -49481,7 +49584,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a7b645f690845b54a9daf943cb7846d9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1746654310787607633, guid: a7b645f690845b54a9daf943cb7846d9,
         type: 3}
@@ -50138,6 +50241,12 @@ PrefabInstance:
 --- !u!4 &1864738337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e237cd649a1c214f927cd0c047b2780,
+    type: 3}
+  m_PrefabInstance: {fileID: 1864738336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1864738338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e237cd649a1c214f927cd0c047b2780,
     type: 3}
   m_PrefabInstance: {fileID: 1864738336}
   m_PrefabAsset: {fileID: 0}
@@ -57148,7 +57257,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 99882a72831481749b3891ba5aadc679, type: 2}
+      objectReference: {fileID: 2100000, guid: 7ca4ee92f12d222409f4740db3dc5152, type: 2}
     - target: {fileID: 919132149155446097, guid: 5d7d794b085faff47a0aabcabb5300ba,
         type: 3}
       propertyPath: m_Name
@@ -59018,6 +59127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653466736256}
+  - component: {fileID: 919132149261986875}
   m_Layer: 2
   m_Name: EnCastle
   m_TagString: Untagged
@@ -59025,6 +59135,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132149261986875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149261986874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da2c11a945cba45aa9de89a11c8ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: 1
+  sprite: 0
+  material: 0
+  skined: 0
+  obj:
+  - {fileID: 1864738338}
+  - {fileID: 616402218}
+  - {fileID: 361325987}
+  - {fileID: 928641785}
+  mesh: {fileID: 0}
+  sprt: []
+  mat: []
 --- !u!1 &919132149323318532
 GameObject:
   m_ObjectHideFlags: 0

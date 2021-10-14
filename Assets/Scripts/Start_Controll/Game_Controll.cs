@@ -18,6 +18,9 @@ public class Game_Controll : MonoBehaviour
 
     [SerializeField] float game_timer, lvl_timer;
 
+    public delegate void SomeAction();
+    public event SomeAction reloadSkin;
+
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.Portrait;
@@ -91,7 +94,6 @@ public class Game_Controll : MonoBehaviour
                 GameAnalityc.Instance.Win_level(level + 1, (int)lvl_timer);
                 game_panel.SetActive(false);
                 win_panel.SetActive(true);
-
                 Money_controll.Instance.End_money(true);
                 break;
             case ("Lose"):
@@ -104,7 +106,7 @@ public class Game_Controll : MonoBehaviour
     }
     public void Next_level()
     {
-        PoolControll.Instance.DisableAll();
+        PoolControll.Instance.DisableAll();        
         start_panel.SetActive(true);
         game_panel.SetActive(false);
         win_panel.SetActive(false);
@@ -122,33 +124,14 @@ public class Game_Controll : MonoBehaviour
                 level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
         }
         EndEffect.Instance.Off_all();
+        Reload_skin();
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("stay");
     }
+    void Reload_skin()
+    {
+        reloadSkin?.Invoke();
+    }
 
-    //public void Load_level(string name)
-    //{
-    //    PlayerPrefs.SetFloat("game_timer", game_timer);
-
-    //    Time.timeScale = 1;
-    //    load_panel.SetActive(true);
-    //    StartCoroutine(Load(name));
-    //}
-    //IEnumerator Load(string name)
-    //{
-    //    AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
-    //    asyncLoad.allowSceneActivation = false;
-
-    //    while (!asyncLoad.isDone)
-    //    {
-    //        load_slider.value = asyncLoad.progress;
-    //        load_text.text = (load_slider.value * 100).ToString("f0") + "%";
-    //        if (asyncLoad.progress >= 0.9f && !asyncLoad.allowSceneActivation)
-    //        {
-    //            asyncLoad.allowSceneActivation = true;
-    //        }
-    //        yield return null;
-    //    }
-    //}
     public void Play_game()
     {
         game = true;
