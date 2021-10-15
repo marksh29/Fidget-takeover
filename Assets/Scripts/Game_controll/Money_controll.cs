@@ -27,9 +27,9 @@ public class Money_controll : MonoBehaviour
         if (win)
         {
             end_logo.text = "VICTORY";
-            end_money = Enemy_controll.Instance.Get_win_money() + (50 * PlayerPrefs.GetInt("Upgrade2"));            
-            //PlayerPrefs.SetInt("money", money + end_money);            
+            end_money = Enemy_controll.Instance.Get_win_money() + (50 * PlayerPrefs.GetInt("Upgrade2"));                  
             StartCoroutine(Money_coins());
+            //PlayerPrefs.SetInt("money", money + end_money);  
         }
         else
         {
@@ -40,30 +40,30 @@ public class Money_controll : MonoBehaviour
         end_money_text.text = "+" + end_money;
         add_money = end_money / 20;
 
-        //StartCoroutine(Money_count(money + end_money));
+        StartCoroutine(Money_count(money + end_money));
         Change_money(end_money);
         StartCoroutine(Money_coins());
     }
-    //IEnumerator Money_count(int mn)
-    //{
-    //    while(money < mn)
-    //    {
-    //        if(end_money >= add_money)
-    //        {
-    //            money += add_money;
-    //            end_money -= add_money;
-    //        }
-    //        else
-    //        {
-    //            money += end_money;
-    //            end_money -= end_money;
-    //        }
-    //        Mon();          
-    //        yield return null;
-    //    }     
-    //    yield return new WaitForSeconds(3);
-    //    Game_Controll.Instance.Next_level();
-    //}
+    IEnumerator Money_count(int mn)
+    {
+        //while (money < mn)
+        //{
+        //    if (end_money >= add_money)
+        //    {
+        //        money += add_money;
+        //        end_money -= add_money;
+        //    }
+        //    else
+        //    {
+        //        money += end_money;
+        //        end_money -= end_money;
+        //    }
+        //    Mon();
+        //    yield return null;
+        //}
+        yield return new WaitForSeconds(3);
+        Game_Controll.Instance.Next_level();
+    }
     public void Change_money(int count)
     {
         money += count;

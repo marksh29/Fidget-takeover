@@ -29548,6 +29548,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b2296c62c34c10c41898d5d54723b776, type: 2}
   - {fileID: 2100000, guid: cc0bb4e0b4fb37247a51b1bb4dfb9887, type: 2}
   - {fileID: 2100000, guid: 98ad9f24d64203a429bab7a1fbba67a4, type: 2}
+  - {fileID: 2100000, guid: 92fc8f2d7704b454d835524b8fce7ed8, type: 2}
   boss: 0
   stickman: 0
   enem: {fileID: 0}
@@ -31138,6 +31139,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f3450c5167375a48a2849bb006200eb, type: 2}
+    - target: {fileID: -9033132615936964587, guid: 5a931ccce32cfa04fb7492e220b691c9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92fc8f2d7704b454d835524b8fce7ed8, type: 2}
+    - target: {fileID: -9033132615936964587, guid: 5a931ccce32cfa04fb7492e220b691c9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 568f5ad45778dd2468fe3aca665c0dd5, type: 2}
     - target: {fileID: -8679921383154817045, guid: 5a931ccce32cfa04fb7492e220b691c9,
         type: 3}
       propertyPath: m_RootOrder

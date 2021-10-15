@@ -33,7 +33,7 @@ public class Game_Controll : MonoBehaviour
     }
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         GameAnalityc.Instance.Start_game();
         Next_level();     
     }   
