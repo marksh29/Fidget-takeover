@@ -17,6 +17,7 @@ public class Players : MonoBehaviour
 
     void OnEnable()
     {
+        end = false;
         life = start_life;
         damage = damage + PlayerPrefs.GetInt("Upgrade1");
         Enable_param();

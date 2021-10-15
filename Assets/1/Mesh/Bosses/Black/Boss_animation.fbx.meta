@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: e9e1cbd93328f0d48a98a224ef941740
+guid: de8cb05f8b482aa48aaa955c6e26bd9f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -6294259000607041188
-    second: 1
+    second: Armature|1
   - first:
       74: 3445795200340149715
-    second: 2
+    second: Armature|2
   - first:
       74: 1025442053835053160
-    second: 3
+    second: Armature|3
   - first:
       74: 5940532041814944293
-    second: 4
+    second: Armature|4
   - first:
       74: 9142526972430381442
-    second: 5
+    second: Armature|5
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -47,7 +47,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 1
+      name: Armature|1
       takeName: Armature|1
       internalID: 0
       firstFrame: 0
@@ -76,7 +76,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: 2
+      name: Armature|2
       takeName: Armature|2
       internalID: 0
       firstFrame: 0
@@ -105,7 +105,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: 3
+      name: Armature|3
       takeName: Armature|3
       internalID: 0
       firstFrame: 0
@@ -134,7 +134,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: 4
+      name: Armature|4
       takeName: Armature|4
       internalID: 0
       firstFrame: 0
@@ -163,7 +163,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: 5
+      name: Armature|5
       takeName: Armature|5
       internalID: 0
       firstFrame: 0

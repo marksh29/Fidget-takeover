@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
+        end = false;
         speed = Enemy_controll.Instance.move_speed;
         life = start_life;        
         Enable_param();
