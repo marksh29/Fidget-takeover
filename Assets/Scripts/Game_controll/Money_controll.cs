@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Money_controll : MonoBehaviour
 {
     public static Money_controll Instance;
-    public int money, end_money;
+    public int money, end_money, add_money;
     [SerializeField] Text end_money_text, end_logo;
     [SerializeField] Text[] money_text;
     [SerializeField] List<Money> list;
@@ -27,45 +27,43 @@ public class Money_controll : MonoBehaviour
         if (win)
         {
             end_logo.text = "VICTORY";
-            end_money = Enemy_controll.Instance.Get_win_money() + (50 * PlayerPrefs.GetInt("Upgrade2"));
-            end_money_text.text = "+" + end_money;
-            PlayerPrefs.SetInt("money", money + end_money);
-
-            StartCoroutine(Money_count(money + end_money));
+            end_money = Enemy_controll.Instance.Get_win_money() + (50 * PlayerPrefs.GetInt("Upgrade2"));            
+            //PlayerPrefs.SetInt("money", money + end_money);            
             StartCoroutine(Money_coins());
         }
         else
         {
             end_logo.text = "YOU LOSE";
             end_money = 100 + (50 * PlayerPrefs.GetInt("Upgrade2"));
-            end_money_text.text = "+" + end_money;
-            PlayerPrefs.SetInt("money", money + end_money);
-
-            StartCoroutine(Money_count(money + end_money));
-            StartCoroutine(Money_coins());
+            //PlayerPrefs.SetInt("money", money + end_money);
         }
-    }
+        end_money_text.text = "+" + end_money;
+        add_money = end_money / 20;
 
-    IEnumerator Money_count(int mn)
-    {
-        while(money < mn)
-        {
-            if(end_money >= 50)
-            {
-                money += 50;
-                end_money -= 50;
-            }
-            else
-            {
-                money += end_money;
-                end_money -= end_money;
-            }
-            Mon();          
-            yield return null;
-        }     
-        yield return new WaitForSeconds(2);
-        Game_Controll.Instance.Next_level();
+        //StartCoroutine(Money_count(money + end_money));
+        Change_money(end_money);
+        StartCoroutine(Money_coins());
     }
+    //IEnumerator Money_count(int mn)
+    //{
+    //    while(money < mn)
+    //    {
+    //        if(end_money >= add_money)
+    //        {
+    //            money += add_money;
+    //            end_money -= add_money;
+    //        }
+    //        else
+    //        {
+    //            money += end_money;
+    //            end_money -= end_money;
+    //        }
+    //        Mon();          
+    //        yield return null;
+    //    }     
+    //    yield return new WaitForSeconds(3);
+    //    Game_Controll.Instance.Next_level();
+    //}
     public void Change_money(int count)
     {
         money += count;
@@ -78,7 +76,9 @@ public class Money_controll : MonoBehaviour
     {
         while(list.Count > 0)
         {            
-            int d = Random.Range(1, 4);
+            int d = Random.Range(1, 3);
+            if (d > list.Count)
+                d = list.Count;
             for(int i = 0; i < d; i++)
             {
                 int r = Random.Range(0, list.Count);

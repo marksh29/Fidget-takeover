@@ -9,7 +9,7 @@ public class Game_Controll : MonoBehaviour
 {
     public static Game_Controll Instance;
     public bool game, pause, end;
-    [SerializeField] GameObject win_panel, shop_panel, abill_panel, upgrade_panel;
+    [SerializeField] GameObject win_panel, shop_panel, abill_panel, upgrade_panel, butt_shop, butt_ability, game_ability_panel;
 
     public Slider load_slider;
     public Text load_text;
@@ -82,12 +82,18 @@ public class Game_Controll : MonoBehaviour
     }
     public void Win()
     {
-        PlayerPrefs.SetInt("level", level + 1);
-        StartCoroutine(Open_panel("Win"));        
+        if(!end)
+        {
+            PlayerPrefs.SetInt("level", level + 1);
+            StartCoroutine(Open_panel("Win"));
+        }             
     }
     public void Lose()
     {
-        StartCoroutine(Open_panel("Lose"));
+        if (!end)
+        {
+            StartCoroutine(Open_panel("Lose"));
+        }
     }   
     
     IEnumerator Open_panel(string name)
@@ -134,6 +140,11 @@ public class Game_Controll : MonoBehaviour
         EndEffect.Instance.Off_all();
 
         upgrade_panel.SetActive(level >= 1 ? true : false);
+        game_ability_panel.SetActive(level >= 6 ? true : false);
+        butt_ability.SetActive(level >= 6 ? true : false);
+        butt_shop.SetActive(level >= 11 ? true : false);
+
+        Buttons_controll.Instance.Start_game();
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("stay");
         for (int i = 0; i < list_random.Count; i++)
         {

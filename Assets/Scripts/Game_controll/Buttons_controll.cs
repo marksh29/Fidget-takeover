@@ -18,10 +18,11 @@ public class Buttons_controll : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-       
+        Start_game();
+    }
+    public void Start_game()
+    {
         timer = 3;
-
-        //count = Enemy_controll.Instance.stages[PlayerPrefs.GetInt("level")].boost_variant;
         count = Enemy_controll.Instance.Get_count();
 
         for (int i = 0; i < buttons.Length; i++)

@@ -21,57 +21,63 @@ public class EndEffect : MonoBehaviour
     }  
     public void Win()
     {
-        List<GameObject> enemy_list = new List<GameObject>();
+        if (!end)
+        {
+            List<GameObject> enemy_list = new List<GameObject>();
 
-        if (Sound.Instance != null)
-            Sound.Instance.Play_Sound(3);
+            if (Sound.Instance != null)
+                Sound.Instance.Play_Sound(3);
 
-        end_count = 5;
-        end = true;
-        Game_Controll.Instance.game = false;
-        PoolControll.Instance.Win();
-        for (int i = 0; i < end_object.Length; i++)
-        {
-            end_object[i].SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("buy_Gaint") == 1)
-        {
-            end_count--;
-            int r = Random.Range(0, gaints.Length);
-            gaints[r].SetActive(true);
-            gaints[r].GetComponent<Players>().Win();
-        }
-        if (PlayerPrefs.GetInt("buy_Archer") == 1)
-        {
-            end_count--;
-            int r = Random.Range(0, archers.Length);
-            archers[r].SetActive(true);
-            archers[r].GetComponent<Archer>().Win();
-        }
-        List<GameObject> list = new List<GameObject>(warriors);
-        for (int i = 0; i < end_count; i++)
-        {
-            int r = Random.Range(0, list.Count);
-            list[r].SetActive(true);
-            list[r].GetComponent<Players>().Win();
-            list.Remove(list[r]);
-        }
+            end_count = 5;
+            end = true;
+            Game_Controll.Instance.game = false;
+            PoolControll.Instance.Win();
+            for (int i = 0; i < end_object.Length; i++)
+            {
+                end_object[i].SetActive(false);
+            }
+            if (PlayerPrefs.GetInt("buy_Gaint") == 1)
+            {
+                end_count--;
+                int r = Random.Range(0, gaints.Length);
+                gaints[r].SetActive(true);
+                gaints[r].GetComponent<Players>().Win();
+            }
+            if (PlayerPrefs.GetInt("buy_Archer") == 1)
+            {
+                end_count--;
+                int r = Random.Range(0, archers.Length);
+                archers[r].SetActive(true);
+                archers[r].GetComponent<Archer>().Win();
+            }
+            List<GameObject> list = new List<GameObject>(warriors);
+            for (int i = 0; i < end_count; i++)
+            {
+                int r = Random.Range(0, list.Count);
+                list[r].SetActive(true);
+                list[r].GetComponent<Players>().Win();
+                list.Remove(list[r]);
+            }
 
-        Camera.main.gameObject.GetComponent<Animator>().SetTrigger("win");
-        StartCoroutine(On());
+            Camera.main.gameObject.GetComponent<Animator>().SetTrigger("win");
+            StartCoroutine(On());
+        }
     }    
 
     public void Lose()
     {
-        if (Sound.Instance != null)
-            Sound.Instance.Play_Sound(2);
-
-        end = true;
-        Game_Controll.Instance.Lose();
-        PoolControll.Instance.Lose();
-        for (int i = 0; i < end_object.Length; i++)
+        if (!end)
         {
-            end_object[i].SetActive(false);
+            if (Sound.Instance != null)
+                Sound.Instance.Play_Sound(2);
+
+            end = true;
+            Game_Controll.Instance.Lose();
+            PoolControll.Instance.Lose();
+            for (int i = 0; i < end_object.Length; i++)
+            {
+                end_object[i].SetActive(false);
+            }
         }
     }
     IEnumerator On()
@@ -89,9 +95,9 @@ public class EndEffect : MonoBehaviour
     IEnumerator Effect()
     {
         GameObject obj = Instantiate(prefabs[Random.Range(0, prefabs.Length)]) as GameObject;
-        obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-25, 25), spawn_pos.transform.position.y + Random.Range(-10, 10), spawn_pos.transform.position.z);
+        obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-20, 20), spawn_pos.transform.position.y + Random.Range(-8, 8), spawn_pos.transform.position.z);
         DestroyObject(obj, 3);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         StartCoroutine(Effect());       
     }
     public void Play_game()

@@ -153,7 +153,7 @@ public class Enemy_controll : MonoBehaviour
                 }
             }  
             
-            if(move)
+            if(move && target != null)
             {
                 if(target.GetComponent<Button>().count != 0)
                 {
