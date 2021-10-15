@@ -5412,20 +5412,163 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages:
   - life: 5
-    win_money: 100
+    win_money: 500
     warrior_spawn_timer: 2
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
-    gaint: 1
+    gaint: 0
     archer: 0
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 0100000002000000030000000400000005000000060000000700000008000000090000000a00000014000000
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
   - life: 5
-    win_money: 200
+    win_money: 500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 4000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 0
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1500
     warrior_spawn_timer: 2
     gaint_spawn_timer: 5
     move_speed: 5
@@ -5436,7 +5579,228 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 0100000002000000030000000400000005000000060000000700000008000000090000000a00000014000000
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 1500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 8000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 10000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 0
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 2500
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 15000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 3000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 3000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 3000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 3000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
+  - life: 5
+    win_money: 20000
+    warrior_spawn_timer: 2
+    gaint_spawn_timer: 5
+    move_speed: 5
+    frize_timer: 1
+    warrior: 1
+    gaint: 1
+    archer: 1
+    select_timer_min_max:
+    - 2
+    - 5
+    boost_variant: 010000000200000003000000040000000500000006000000070000000800000009000000140000001e000000
   hand_move_speed: 150
   move_speed: 0
   skin_id: 0
@@ -23914,7 +24278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -9.209778, y: 963.06995}
+  m_AnchoredPosition: {x: -9.209717, y: 963.06995}
   m_SizeDelta: {x: -171.81, y: 668.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828869888
@@ -37936,7 +38300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -94.918976, y: -84.150024}
+  m_AnchoredPosition: {x: -94.918945, y: -84.1499}
   m_SizeDelta: {x: 123.47, y: 122.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373269210
