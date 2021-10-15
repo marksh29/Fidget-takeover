@@ -85,7 +85,7 @@ public class Enemy_controll : MonoBehaviour
             select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
         }
         stickman_id = (Random.Range(0, 4) == 0 ? 0 : 1);
-        skin_id = Random.Range(0, 4);
+        skin_id = Random.Range(0, 5);
 
         hand_pos = hand.transform.position;
         gaint_timer = gaint_spawn_timer;

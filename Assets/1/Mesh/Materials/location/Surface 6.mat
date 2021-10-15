@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stickmanx
+  m_Name: Surface 6
   m_Shader: {fileID: 4800000, guid: 7cd5de0b884b14f88ab763ef465e1799, type: 3}
-  m_ShaderKeywords: _SEGMENTED_ON _SHNOVERLAP_ON
+  m_ShaderKeywords: _SEGMENTED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2738f0d48c8e90a4cb6cbe49e064950e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AmbientCol: 0.081
+    - _AmbientCol: 0
     - _BumpScale: 1
     - _Clipped: 0
     - _ColBright: 0
@@ -75,27 +75,27 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Lumin: 0.38
-    - _MaxLight: 0.749
+    - _Lumin: 0
+    - _MaxLight: 1
     - _Metallic: 0
-    - _MinLight: 0.604
+    - _MinLight: 0.5
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.9
+    - _Offset: 0
     - _Parallax: 0.02
     - _RampSmooth: 0.1
     - _RampThreshold: 0.5
     - _RimMax: 1
     - _RimMin: 0.5
     - _Segmented: 1
-    - _ShnIntense: 0.054
-    - _ShnOverlap: 1
-    - _ShnRange: 0.327
-    - _ShnSmooth: 0.882
+    - _ShnIntense: 0
+    - _ShnOverlap: 0
+    - _ShnRange: 0.15
+    - _ShnSmooth: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Steps: 3.6
+    - _Steps: 5.4
     - _StpSmooth: 1
     - _UVSec: 0
     - _UVWaveAmplitude: 0.05
@@ -107,13 +107,13 @@ Material:
     - _ZWrite: 1
     - __dummy__: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9019608, g: 0.7058824, b: 0.3764706, a: 1}
     - _DepthColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
     - _FoamSpeed: {r: 2, g: 2, b: 2, a: 2}
     - _HColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0, g: 0.92376804, b: 1, a: 1}
-    - _ShnColor: {r: 1.8515872, g: 1.8515872, b: 1.8515872, a: 1}
+    - _SColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    - _ShnColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []

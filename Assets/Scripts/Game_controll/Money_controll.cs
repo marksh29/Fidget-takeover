@@ -10,6 +10,7 @@ public class Money_controll : MonoBehaviour
     [SerializeField] Text end_money_text, end_logo;
     [SerializeField] Text[] money_text;
     [SerializeField] List<Money> list;
+    [SerializeField] GameObject[] all_money;
     bool win;
     private void Awake()
     {
@@ -23,12 +24,17 @@ public class Money_controll : MonoBehaviour
     }   
     public void End_money(bool wn)
     {
+        StopAllCoroutines();
         win = wn;
+        for(int i =0; i < all_money.Length; i++)
+        {
+            all_money[i].SetActive(true);
+        }
+
         if (win)
         {
             end_logo.text = "VICTORY";
             end_money = Enemy_controll.Instance.Get_win_money() + (50 * PlayerPrefs.GetInt("Upgrade2"));                  
-            StartCoroutine(Money_coins());
             //PlayerPrefs.SetInt("money", money + end_money);  
         }
         else
@@ -38,11 +44,12 @@ public class Money_controll : MonoBehaviour
             //PlayerPrefs.SetInt("money", money + end_money);
         }
         end_money_text.text = "+" + end_money;
-        add_money = end_money / 20;
+        add_money = end_money / all_money.Length;
 
         StartCoroutine(Money_count(money + end_money));
-        Change_money(end_money);
         StartCoroutine(Money_coins());
+
+        //Change_money(end_money);
     }
     IEnumerator Money_count(int mn)
     {
@@ -74,20 +81,25 @@ public class Money_controll : MonoBehaviour
     }
     IEnumerator Money_coins()
     {
-        while(list.Count > 0)
+        List<Money> list2 = new List<Money>(list);
+        while (list.Count > 0)
         {            
             int d = Random.Range(1, 3);
-            if (d > list.Count)
-                d = list.Count;
+            if (d > list2.Count)
+                d = list2.Count;
             for(int i = 0; i < d; i++)
             {
-                int r = Random.Range(0, list.Count);
-                list[r].gameObject.SetActive(true);
-                list[r].Start_move();
-                list.Remove(list[r]);
+                int r = Random.Range(0, list2.Count);
+                list2[r].Start_move();
+                list2.Remove(list2[r]);
             }            
             yield return new WaitForSeconds(0.1f);            
         }        
+    }
+    public void Add()
+    {
+        Change_money(add_money <= end_money ? add_money : end_money);
+        end_money -= add_money;
     }
     void Mon()
     {

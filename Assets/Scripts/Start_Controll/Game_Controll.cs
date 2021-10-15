@@ -136,6 +136,8 @@ public class Game_Controll : MonoBehaviour
             }
             else if (i == lvl)
                 level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
+            else if(i > lvl)
+                level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[i == 4 ? 4 : 3];
         }
         EndEffect.Instance.Off_all();
 

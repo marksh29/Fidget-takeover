@@ -12525,7 +12525,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391931892}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18da2c11a945cba45aa9de89a11c8ec3, type: 3}
   m_Name: 
@@ -12537,8 +12537,10 @@ MonoBehaviour:
   obj: []
   mat:
   - {fileID: 2100000, guid: 943a499539fcd9a47baa85dd860fbeb8, type: 2}
-  - {fileID: 2100000, guid: ddbdd4aa48f79a548bdd2d6f007b8738, type: 2}
-  - {fileID: 2100000, guid: 64216abb095d726439128dfa61ae7939, type: 2}
+  - {fileID: 2100000, guid: c2a2063b10a95d943bf81496c5e13b28, type: 2}
+  - {fileID: 2100000, guid: 73202458b67da2c45b629b0d8d83eed4, type: 2}
+  - {fileID: 2100000, guid: 1841d941731e8b74b8574804452b4316, type: 2}
+  - {fileID: 2100000, guid: c4d6de988be96604da8af08d672cd219, type: 2}
   boss: 0
   stickman: 0
   enem: {fileID: 0}
@@ -29549,6 +29551,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: cc0bb4e0b4fb37247a51b1bb4dfb9887, type: 2}
   - {fileID: 2100000, guid: 98ad9f24d64203a429bab7a1fbba67a4, type: 2}
   - {fileID: 2100000, guid: 92fc8f2d7704b454d835524b8fce7ed8, type: 2}
+  - {fileID: 2100000, guid: c06278303addfe948a408e89498340de, type: 2}
+  - {fileID: 2100000, guid: 7819ba82afeb4ee409e48329510688e0, type: 2}
   boss: 0
   stickman: 0
   enem: {fileID: 0}
@@ -55554,10 +55558,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b658c4820b9b88d4699b5359b86d508f, type: 3}
   - {fileID: 21300000, guid: bd2a111a1523e13459120bd1129cea8f, type: 3}
   - {fileID: 21300000, guid: 5ef703dcc679bd3468f909502c3065f8, type: 3}
+  - {fileID: 21300000, guid: 3b315f9d217640040ae600c67efcc81d, type: 3}
+  - {fileID: 21300000, guid: ad35851bd35ed1f4b8190f259befebbd, type: 3}
   game_timer: 0
   lvl_timer: 0
   list_random:
   - {fileID: 597675933}
+  - {fileID: 391931897}
 --- !u!4 &2007241549
 Transform:
   m_ObjectHideFlags: 0
@@ -55620,6 +55627,33 @@ MonoBehaviour:
   - {fileID: 1658652335}
   - {fileID: 871992887}
   - {fileID: 1570887727}
+  all_money:
+  - {fileID: 1504762726}
+  - {fileID: 685098993}
+  - {fileID: 229597524}
+  - {fileID: 575264700}
+  - {fileID: 140276890}
+  - {fileID: 358260939}
+  - {fileID: 2142237511}
+  - {fileID: 1054256422}
+  - {fileID: 1014641980}
+  - {fileID: 2083399674}
+  - {fileID: 1415708889}
+  - {fileID: 1488694737}
+  - {fileID: 975777665}
+  - {fileID: 408221500}
+  - {fileID: 599295566}
+  - {fileID: 130078651}
+  - {fileID: 504631586}
+  - {fileID: 809162994}
+  - {fileID: 600696194}
+  - {fileID: 690529603}
+  - {fileID: 916321604}
+  - {fileID: 1964941723}
+  - {fileID: 961902750}
+  - {fileID: 1658652331}
+  - {fileID: 871992883}
+  - {fileID: 1570887723}
 --- !u!114 &2007241551
 MonoBehaviour:
   m_ObjectHideFlags: 0

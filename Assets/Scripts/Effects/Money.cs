@@ -33,6 +33,7 @@ public class Money : MonoBehaviour
                 transform.localPosition = start_pos;
                 if (Sound.Instance != null)
                     Sound.Instance.Play_Sound(4);
+                Money_controll.Instance.Add();
                 gameObject.SetActive(false);                
             }
         }
