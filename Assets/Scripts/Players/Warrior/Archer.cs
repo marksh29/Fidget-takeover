@@ -25,7 +25,7 @@ public class Archer : MonoBehaviour
     }
     public void Set_move_pos()
     {
-        float xx = Random.Range(8, 13);
+        float xx = 4.5f;
         float zz = enemy != true ? -43 : 40;
         move_pos = new Vector3(xx, 0, zz);       
         move = true;

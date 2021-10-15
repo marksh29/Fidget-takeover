@@ -63,6 +63,7 @@ public class Players : MonoBehaviour
         battle = false;
 
         transform.GetChild(1).gameObject.GetComponent<Battle_collision>().on = false;
+
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().isTrigger = false;
         
