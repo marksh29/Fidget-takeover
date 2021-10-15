@@ -43,6 +43,7 @@ public class Enemy_controll : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        hand_pos = hand.transform.position;
     }
     void Start()
     {
@@ -87,8 +88,7 @@ public class Enemy_controll : MonoBehaviour
         }
         stickman_id = (Random.Range(0, 4) == 0 ? 0 : 1);
         skin_id = Random.Range(0, 5);
-
-        hand_pos = hand.transform.position;
+        hand.transform.position = hand_pos;
         gaint_timer = gaint_spawn_timer;
         if (archer)
             Spawn(2);

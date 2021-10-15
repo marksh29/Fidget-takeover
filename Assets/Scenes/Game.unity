@@ -55394,9 +55394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 8276114891002610319, guid: d153036dffcb04969bddf37a70dafe1f, type: 3}
-  - {fileID: 8276114891002610319, guid: d153036dffcb04969bddf37a70dafe1f, type: 3}
-  - {fileID: 8276114891002610319, guid: d153036dffcb04969bddf37a70dafe1f, type: 3}
+  - {fileID: 7414089625555358473, guid: adc787e55b89e21429c95cee95f637bc, type: 3}
+  - {fileID: 7414089625555358473, guid: adc787e55b89e21429c95cee95f637bc, type: 3}
+  - {fileID: 7414089625555358473, guid: adc787e55b89e21429c95cee95f637bc, type: 3}
   spawn_pos: {fileID: 892898612}
   boss: {fileID: 597675931}
   boss_effeect: {fileID: 1357833183}

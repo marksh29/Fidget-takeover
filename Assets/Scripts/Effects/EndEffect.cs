@@ -104,7 +104,7 @@ public class EndEffect : MonoBehaviour
     IEnumerator Effect()
     {
         GameObject obj = Instantiate(prefabs[Random.Range(0, prefabs.Length)]) as GameObject;
-        obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-20, 20), spawn_pos.transform.position.y + Random.Range(-8, 8), spawn_pos.transform.position.z);
+        obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-20, 20), spawn_pos.transform.position.y + Random.Range(4, 6), spawn_pos.transform.position.z);
         DestroyObject(obj, 3);
         yield return new WaitForSeconds(0.8f);
         StartCoroutine(Effect());       

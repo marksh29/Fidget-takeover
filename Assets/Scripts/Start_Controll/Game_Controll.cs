@@ -146,9 +146,9 @@ public class Game_Controll : MonoBehaviour
         EndEffect.Instance.Off_all();
 
         upgrade_panel.SetActive(level >= 1 ? true : false);
-        game_ability_panel.SetActive(level >= 6 ? true : false);
-        butt_ability.SetActive(level >= 6 ? true : false);
-        butt_shop.SetActive(level >= 11 ? true : false);
+        game_ability_panel.SetActive(level >= 5 ? true : false);
+        butt_ability.SetActive(level >= 5 ? true : false);
+        butt_shop.SetActive(level >= 10 ? true : false);
 
         Buttons_controll.Instance.Start_game();
 
