@@ -55338,6 +55338,7 @@ MonoBehaviour:
   spawn_pos: {fileID: 892898612}
   boss: {fileID: 597675931}
   boss_effeect: {fileID: 1357833183}
+  ability_panel: {fileID: 1479947590}
   end_object:
   - {fileID: 662463449}
   - {fileID: 1478724283}

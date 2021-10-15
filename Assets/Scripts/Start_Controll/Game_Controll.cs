@@ -82,19 +82,13 @@ public class Game_Controll : MonoBehaviour
     }
     public void Win()
     {
-        if(!end)
-        {
-            PlayerPrefs.SetInt("level", level + 1);
-            print(PlayerPrefs.GetInt("level"));
-            StartCoroutine(Open_panel("Win"));
-        }             
+        PlayerPrefs.SetInt("level", level + 1);
+        print(PlayerPrefs.GetInt("level"));
+        StartCoroutine(Open_panel("Win"));
     }
     public void Lose()
     {
-        if (!end)
-        {
-            StartCoroutine(Open_panel("Lose"));
-        }
+        StartCoroutine(Open_panel("Lose"));
     }   
     
     IEnumerator Open_panel(string name)

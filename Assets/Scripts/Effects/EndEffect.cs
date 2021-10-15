@@ -6,7 +6,7 @@ public class EndEffect : MonoBehaviour
 {
     public static EndEffect Instance;
     [SerializeField] GameObject[] prefabs;
-    [SerializeField] GameObject spawn_pos, boss, boss_effeect;
+    [SerializeField] GameObject spawn_pos, boss, boss_effeect, ability_panel;
     [SerializeField] GameObject[] end_object, warriors, gaints, archers;
     int end_count;
     public bool end;
@@ -23,9 +23,10 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
+            ability_panel.SetActive(false);
+
             Game_Controll.Instance.end = true;
             Game_Controll.Instance.game = false;
-            List<GameObject> enemy_list = new List<GameObject>();
 
             if (Sound.Instance != null)
                 Sound.Instance.Play_Sound(3);
@@ -70,13 +71,14 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
+            ability_panel.SetActive(false);
+
+            end = true;
             Game_Controll.Instance.end = true;
             Game_Controll.Instance.game = false;
 
             if (Sound.Instance != null)
                 Sound.Instance.Play_Sound(2);
-
-            end = true;
             Game_Controll.Instance.Lose();
             PoolControll.Instance.Lose();
             for (int i = 0; i < end_object.Length; i++)
