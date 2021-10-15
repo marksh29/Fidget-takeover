@@ -16,7 +16,7 @@ public class Money_controll : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        money = PlayerPrefs.GetInt("money");
+        money = PlayerPrefs.GetFloat("money");
     }
     void Start()
     {

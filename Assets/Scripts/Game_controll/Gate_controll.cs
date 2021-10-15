@@ -24,6 +24,10 @@ public class Gate_controll : MonoBehaviour
     {
         
     }
+    private void OnEnable()
+    {
+        
+    }
     private void Update()
     {
         if(time_on)
@@ -70,6 +74,8 @@ public class Gate_controll : MonoBehaviour
     public void Drop()
     {
         time_on = false;
+        count = 0;
+        count_text.text = "";
         gate_wall.SetActive(false);
     }
 }

@@ -199,15 +199,15 @@ public class Players : MonoBehaviour
     {
         StopAllCoroutines();
     }
-    void Add_force()
-    {
-        if (target != null && target.GetComponent<Enemy>() != null)
-            target.GetComponent<Enemy>().target = null;
+    //void Add_force()
+    //{
+    //    if (target != null && target.GetComponent<Enemy>() != null)
+    //        target.GetComponent<Enemy>().target = null;
 
-        GetComponent<Rigidbody>().constraints = open;
-        GetComponent<Rigidbody>().useGravity = true;
-        GetComponent<CapsuleCollider>().isTrigger = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = false;
-        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(-2, -1)) * force_speed, ForceMode.Impulse);
-    }    
+    //    GetComponent<Rigidbody>().constraints = open;
+    //    GetComponent<Rigidbody>().useGravity = true;
+    //    GetComponent<CapsuleCollider>().isTrigger = true;
+    //    transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = false;
+    //    GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(-2, -1)) * force_speed, ForceMode.Impulse);
+    //}    
 }

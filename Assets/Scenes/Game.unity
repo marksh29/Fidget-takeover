@@ -17202,10 +17202,72 @@ MonoBehaviour:
   - {fileID: 591460839}
   - {fileID: 2024857142}
   - {fileID: 540115331}
+  all_buttons:
+  - {fileID: 1191703095}
+  - {fileID: 1983626795}
+  - {fileID: 682173093}
+  - {fileID: 44554603}
+  - {fileID: 1361403188}
+  - {fileID: 330024186}
+  - {fileID: 1990524050}
+  - {fileID: 1515783073}
+  - {fileID: 1705825709}
+  - {fileID: 2036940691}
+  - {fileID: 1507481019}
+  - {fileID: 124153606}
+  - {fileID: 2111244775}
+  - {fileID: 1670502058}
+  - {fileID: 456122070}
+  - {fileID: 1121454204}
+  - {fileID: 286431293}
+  - {fileID: 186989311}
+  - {fileID: 1101057079}
+  - {fileID: 468268767}
+  - {fileID: 2096272145}
+  - {fileID: 469936896}
+  - {fileID: 982552932}
+  - {fileID: 163619798}
+  - {fileID: 440170651}
+  - {fileID: 1838133607}
+  - {fileID: 2029641948}
+  - {fileID: 1209973343}
+  - {fileID: 1628253967}
+  - {fileID: 509096841}
+  - {fileID: 97723172}
+  - {fileID: 87020798}
+  - {fileID: 1741294568}
+  - {fileID: 251696862}
+  - {fileID: 335142104}
+  - {fileID: 156351098}
+  - {fileID: 591460839}
+  - {fileID: 2024857142}
+  - {fileID: 540115331}
+  - {fileID: 832226560}
+  - {fileID: 1085573330}
+  - {fileID: 1188082764}
+  - {fileID: 1093550547}
+  - {fileID: 1022424308}
+  - {fileID: 2029830711}
+  - {fileID: 478055058}
+  - {fileID: 48280318}
+  - {fileID: 1249685827}
+  - {fileID: 643518053}
+  - {fileID: 1818298686}
+  - {fileID: 1327544144}
+  - {fileID: 1125199973}
+  - {fileID: 1930115845}
+  - {fileID: 649742888}
+  - {fileID: 2104800459}
+  - {fileID: 1190549161}
+  - {fileID: 1813531652}
+  - {fileID: 1561008301}
+  - {fileID: 259933606}
+  - {fileID: 1070598893}
   best: {fileID: 0}
   list: []
   count: 
   nide_font: {fileID: 12800000, guid: 827578f3a03771447886331889bded1a, type: 3}
+  game: 0
 --- !u!1 &530810112
 GameObject:
   m_ObjectHideFlags: 0

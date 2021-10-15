@@ -23,6 +23,7 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
+            Buttons_controll.Instance.Drop();
             ability_panel.SetActive(false);
 
             Game_Controll.Instance.end = true;
@@ -71,6 +72,7 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
+            Buttons_controll.Instance.Drop();
             ability_panel.SetActive(false);
 
             end = true;

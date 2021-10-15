@@ -51,6 +51,7 @@ public class Enemy_controll : MonoBehaviour
 
     public void Set_level()
     {
+        end = false;
         timer = 0.1f;
         level = PlayerPrefs.GetInt("level", 0);
         move = false;

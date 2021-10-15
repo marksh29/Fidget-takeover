@@ -7,12 +7,13 @@ public class Buttons_controll : MonoBehaviour
 {
     public static Buttons_controll Instance;
     [SerializeField] float time;
-    [SerializeField] GameObject[] buttons;
+    [SerializeField] GameObject[] buttons, all_buttons;
     public GameObject best;
     [SerializeField] List<GameObject> list;
     [SerializeField] int[] count;    
     [SerializeField] Font nide_font;
     float timer;
+    public bool game;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Buttons_controll : MonoBehaviour
     }
     public void Start_game()
     {
+        game = true;
         timer = 3;
         count = Enemy_controll.Instance.Get_count();
 
@@ -33,7 +35,7 @@ public class Buttons_controll : MonoBehaviour
     }
     void Update()
     {
-        if (Game_Controll.Instance.game)
+        if (Game_Controll.Instance.game && game)
         {
             timer -= Time.deltaTime;
             if (timer <= 0)
@@ -80,5 +82,13 @@ public class Buttons_controll : MonoBehaviour
             }
         }
         return best;
+    }
+    public void Drop()
+    {
+        game = false;
+        for (int i = 0; i < all_buttons.Length; i++)
+        {
+            all_buttons[i].GetComponent<Button>().Start_Off();
+        }
     }
 }

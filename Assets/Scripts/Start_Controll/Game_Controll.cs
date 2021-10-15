@@ -151,6 +151,7 @@ public class Game_Controll : MonoBehaviour
         butt_shop.SetActive(level >= 11 ? true : false);
 
         Buttons_controll.Instance.Start_game();
+
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("stay");
         for (int i = 0; i < list_random.Count; i++)
         {

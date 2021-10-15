@@ -13,11 +13,15 @@ public class Button : MonoBehaviour
     float speed, max;
     void Start()
     {
+        Start_Off();
+    }
+    public void Start_Off()
+    {
         if (butt)
         {
             transform.GetChild(2).localPosition = new Vector3(0, 0, 0);
             transform.GetChild(2).gameObject.SetActive(false);
-        }        
+        }
         mesh = transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>();
         count_txt.gameObject.SetActive(false);
         count = 0;
