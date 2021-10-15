@@ -11,7 +11,6 @@ public class PoolControll : MonoBehaviour
     [SerializeField] private List<GameObject> player_stack, pl_gaints_stack, pl_archer_stack, arrow_stack, blood_stack;
     [SerializeField] private List<GameObject> enemy_stack, en_gaints_stack, en_archer_stack;
     GameObject new_obj, new_blood;
-    [SerializeField] Text level_tex;
 
     private void Awake()
     {
@@ -20,7 +19,7 @@ public class PoolControll : MonoBehaviour
     }    
     void Start()
     {
-        level_tex.text = "LEVEL " + (PlayerPrefs.GetInt("level") + 1);
+        
     }
     public GameObject Spawn(string name, int color_id)
     {

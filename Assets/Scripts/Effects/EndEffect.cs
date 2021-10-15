@@ -23,6 +23,8 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
+            Game_Controll.Instance.end = true;
+            Game_Controll.Instance.game = false;
             List<GameObject> enemy_list = new List<GameObject>();
 
             if (Sound.Instance != null)
@@ -30,7 +32,7 @@ public class EndEffect : MonoBehaviour
 
             end_count = 5;
             end = true;
-            Game_Controll.Instance.game = false;
+            
             PoolControll.Instance.Win();
             for (int i = 0; i < end_object.Length; i++)
             {
@@ -68,6 +70,9 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
+            Game_Controll.Instance.end = true;
+            Game_Controll.Instance.game = false;
+
             if (Sound.Instance != null)
                 Sound.Instance.Play_Sound(2);
 
@@ -113,7 +118,9 @@ public class EndEffect : MonoBehaviour
         boss_effeect.SetActive(false);
         for (int i = 0; i < end_object.Length; i++)
         {
-            end_object[i].SetActive(false);
+            if (i > 1)
+                end_object[i].GetComponent<Gate_controll>().Drop();
+            end_object[i].SetActive(false);            
         }
         for (int i = 0; i < warriors.Length; i++)
         {

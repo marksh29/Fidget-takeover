@@ -11,9 +11,9 @@ public class Game_Controll : MonoBehaviour
     public bool game, pause, end;
     [SerializeField] GameObject win_panel, shop_panel, abill_panel, upgrade_panel, butt_shop, butt_ability, game_ability_panel;
 
-    public Slider load_slider;
-    public Text load_text;
-    public GameObject load_panel, start_panel, game_panel, lootbox_panel, pause_panel;
+    [SerializeField] Text level_tex;
+
+    public GameObject start_panel, game_panel, lootbox_panel, pause_panel;
     [SerializeField] int level, lvl;
     [SerializeField] Transform[] level_icon;
     [SerializeField] Sprite[] level_sprt;
@@ -27,13 +27,13 @@ public class Game_Controll : MonoBehaviour
      
     private void Awake()
     {
+        //PlayerPrefs.DeleteAll();
         Screen.orientation = ScreenOrientation.Portrait;
         if (Instance == null)
             Instance = this;
     }
     private void Start()
-    {
-        //PlayerPrefs.DeleteAll();
+    {        
         GameAnalityc.Instance.Start_game();
         Next_level();     
     }   
@@ -85,6 +85,7 @@ public class Game_Controll : MonoBehaviour
         if(!end)
         {
             PlayerPrefs.SetInt("level", level + 1);
+            print(PlayerPrefs.GetInt("level"));
             StartCoroutine(Open_panel("Win"));
         }             
     }
@@ -118,15 +119,18 @@ public class Game_Controll : MonoBehaviour
     }
     public void Next_level()
     {
+        level = PlayerPrefs.GetInt("level");
+        lvl = level - (5 * (int)(level / 5));
+        level_tex.text = "Level " + (level + 1);
+        PoolControll.Instance.DisableAll();
+
         end = false;
         lvl_timer = 0;
-        PoolControll.Instance.DisableAll();
+        
         start_panel.SetActive(true);
         game_panel.SetActive(false);
         win_panel.SetActive(false);
-        level = PlayerPrefs.GetInt("level");
-        lvl = level - (5 * (int)(level / 5));
-        level_icon[lvl].localScale = new Vector3(1.2f, 1.2f, 1.2f);
+
         for (int i = 0; i < level_icon.Length; i++)
         {
             if (i < lvl)
@@ -135,9 +139,15 @@ public class Game_Controll : MonoBehaviour
                 level_icon[i].localScale = new Vector3(0.8f, 0.8f, 1);
             }
             else if (i == lvl)
+            {
                 level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[lvl != 4 ? 0 : 1];
+                level_icon[lvl].localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            }                
             else if(i > lvl)
+            {
                 level_icon[i].gameObject.GetComponent<Image>().sprite = level_sprt[i == 4 ? 4 : 3];
+                level_icon[i].localScale = new Vector3(0.8f, 0.8f, 1);
+            }                
         }
         EndEffect.Instance.Off_all();
 

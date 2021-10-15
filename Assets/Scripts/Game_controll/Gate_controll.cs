@@ -66,5 +66,10 @@ public class Gate_controll : MonoBehaviour
             sp.transform.rotation = transform.rotation;       
             yield return new WaitForSeconds(0.1f);
         }
-    }   
+    } 
+    public void Drop()
+    {
+        time_on = false;
+        gate_wall.SetActive(false);
+    }
 }

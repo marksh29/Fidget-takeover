@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Money_controll : MonoBehaviour
 {
     public static Money_controll Instance;
-    public int money, end_money, add_money;
+    public float money, end_money, add_money;
     [SerializeField] Text end_money_text, end_logo;
     [SerializeField] Text[] money_text;
     [SerializeField] List<Money> list;
@@ -51,7 +51,7 @@ public class Money_controll : MonoBehaviour
 
         //Change_money(end_money);
     }
-    IEnumerator Money_count(int mn)
+    IEnumerator Money_count(float mn)
     {
         //while (money < mn)
         //{
@@ -71,13 +71,13 @@ public class Money_controll : MonoBehaviour
         yield return new WaitForSeconds(3);
         Game_Controll.Instance.Next_level();
     }
-    public void Change_money(int count)
+    public void Change_money(float count)
     {
         money += count;
         if (money < 0)
             money = 0;
         Mon();
-        PlayerPrefs.SetInt("money", money);
+        PlayerPrefs.SetFloat("money", money);
     }
     IEnumerator Money_coins()
     {
@@ -98,7 +98,7 @@ public class Money_controll : MonoBehaviour
     }
     public void Add()
     {
-        Change_money(add_money <= end_money ? add_money : end_money);
+        Change_money(add_money);
         end_money -= add_money;
     }
     void Mon()
