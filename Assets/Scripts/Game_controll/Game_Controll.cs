@@ -43,7 +43,7 @@ public class Game_Controll : MonoBehaviour
         {
             EndEffect.Instance.Win();
         }
-        if (!end && !game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.3f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f && !win_panel.activeSelf)
+        if (!end && !game && Input.GetMouseButtonDown(0) && Input.mousePosition.y < Screen.height * 0.7f && Input.mousePosition.y > Screen.height * 0.2f && !shop_panel.activeSelf && !abill_panel.activeSelf && !pause_panel.activeSelf && Input.mousePosition.x < Screen.width * 0.85f && !win_panel.activeSelf)
         {
             EndEffect.Instance.Play_game();
 
