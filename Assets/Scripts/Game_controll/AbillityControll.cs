@@ -13,7 +13,7 @@ public class AbillityControll : MonoBehaviour
     {
         for (int i = 0; i < count.Length; i++)
         {
-            count[i] = PlayerPrefs.GetInt(name + i);
+            count[i] = PlayerPrefs.GetInt(name + i, (i == 0 ? 1 : 0));
         }
         Visual();
     }
