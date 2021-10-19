@@ -27,7 +27,7 @@ public class Button : MonoBehaviour
         count = 0;
 
         stay = true;
-        speed = Random.Range(0.3f, 0.5f);
+        speed = Random.Range(0.5f, 0.8f);
         max = Random.Range(10, 30);
         up = true;
     }
