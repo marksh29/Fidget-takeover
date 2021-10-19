@@ -7,8 +7,8 @@ public class UpgradeControll : MonoBehaviour
 {
     [SerializeField] string name;
     [SerializeField] Transform[] obj;
-    [SerializeField] int[] cena, count;
-
+    [SerializeField] float[] cena;
+    [SerializeField] int[] count;
     private void OnEnable()
     {
         
@@ -23,7 +23,7 @@ public class UpgradeControll : MonoBehaviour
     }    
     public void Buy_upgrade(int id)
     {
-        if(cena[id] + (cena[id] * count[id]) <= Money_controll.Instance.money)
+        if(Money_controll.Instance.money >= (cena[id] + (cena[id] * count[id])))
         {
             GameAnalityc.Instance.Buy_upgrade(id.ToString());
 

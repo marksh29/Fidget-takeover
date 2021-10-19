@@ -110,7 +110,7 @@ public class Money_controll : MonoBehaviour
     {
         for(int i =0; i < money_text.Length; i++)
         {
-            money_text[i].text = money.ToString(money > 0 ? "0,0" : "");
+            money_text[i].text = money.ToString(money > 0.1f ? "0,0" : "");
         }
     }
 }

@@ -27,11 +27,11 @@ public class Button : MonoBehaviour
         count = 0;
 
         stay = true;
-        speed = Random.Range(0.5f, 0.8f);
+        speed = Random.Range(1f, 2f);
         max = Random.Range(10, 30);
         up = true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if(stay)
         {

@@ -198,7 +198,7 @@ public class Enemy_controll : MonoBehaviour
     }
     void Hand_move()
     {
-        if(gate.count < Buttons_controll.Instance.Best().GetComponent<Button>().count)
+        if(Buttons_controll.Instance.Best() != null && gate.count < Buttons_controll.Instance.Best().GetComponent<Button>().count)
         {
             target = Buttons_controll.Instance.Best();
             select = false;

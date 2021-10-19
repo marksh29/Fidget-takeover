@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct Unit
 {
-    public int cena;
+    public float cena;
     public string name;
 }
 public class ShopPanel : MonoBehaviour
@@ -55,7 +55,6 @@ public class ShopPanel : MonoBehaviour
         if (list[cur_id].cena <= Money_controll.Instance.money)
         {
             GameAnalityc.Instance.Buy_unit(list[cur_id].name);
-
             if (Sound.Instance != null)
                 Sound.Instance.Play_Sound(4);
 

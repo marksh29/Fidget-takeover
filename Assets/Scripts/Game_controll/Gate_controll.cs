@@ -69,11 +69,11 @@ public class Gate_controll : MonoBehaviour
     //}
     IEnumerator Spawn(int id)
     {
-        for (int i = 0; i < id; i++)
-        {
-            Spawn_obj();
-            yield return new WaitForSeconds(0.1f);
-        }
+        Spawn_obj();
+        id--;
+        yield return new WaitForSeconds(0.1f);
+        if (id != 0)
+            StartCoroutine(Spawn(id));
     }
     void Spawn_obj()
     {
