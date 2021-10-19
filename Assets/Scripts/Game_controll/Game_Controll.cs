@@ -27,7 +27,7 @@ public class Game_Controll : MonoBehaviour
      
     private void Awake()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         Screen.orientation = ScreenOrientation.Portrait;
         if (Instance == null)
             Instance = this;
@@ -145,10 +145,10 @@ public class Game_Controll : MonoBehaviour
         }
         EndEffect.Instance.Off_all();
 
-        upgrade_panel.SetActive(level >= 1 ? true : false);
+        upgrade_panel.SetActive(level >= 2 ? true : false);
         game_ability_panel.SetActive(level >= 5 ? true : false);
         butt_ability.SetActive(level >= 5 ? true : false);
-        butt_shop.SetActive(level >= 10 ? true : false);
+        butt_shop.SetActive(level >= 1 ? true : false);
 
         Buttons_controll.Instance.Start_game();
 

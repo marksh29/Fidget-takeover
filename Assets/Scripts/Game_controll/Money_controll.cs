@@ -12,6 +12,7 @@ public class Money_controll : MonoBehaviour
     [SerializeField] List<Money> list;
     [SerializeField] GameObject[] all_money;
     bool win;
+    int add_count;
     private void Awake()
     {
         if (Instance == null)
@@ -46,12 +47,13 @@ public class Money_controll : MonoBehaviour
         end_money_text.text = "+" + end_money;
         add_money = end_money / all_money.Length;
 
-        StartCoroutine(Money_count(money + end_money));
+        //StartCoroutine(Money_count());
+        add_count = list.Count;
         StartCoroutine(Money_coins());
 
         //Change_money(end_money);
     }
-    IEnumerator Money_count(float mn)
+    IEnumerator Money_count()
     {
         //while (money < mn)
         //{
@@ -68,7 +70,7 @@ public class Money_controll : MonoBehaviour
         //    Mon();
         //    yield return null;
         //}
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Game_Controll.Instance.Next_level();
     }
     public void Change_money(float count)
@@ -98,6 +100,9 @@ public class Money_controll : MonoBehaviour
     }
     public void Add()
     {
+        add_count--;
+        if(add_count <= 0)
+            StartCoroutine(Money_count());
         Change_money(add_money);
         end_money -= add_money;
     }

@@ -21494,7 +21494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662463449}
   m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
-  m_LocalPosition: {x: -16, y: 9.1, z: 57.5}
+  m_LocalPosition: {x: -27.69, y: 10, z: 74.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1851420719}
@@ -26460,9 +26460,9 @@ MonoBehaviour:
   list:
   - cena: 0
     name: 
-  - cena: 10000
+  - cena: 3000
     name: Archer
-  - cena: 30000
+  - cena: 10000
     name: Gaint
   all_buttons:
   - {fileID: 1866486632}
@@ -40963,7 +40963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462238172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022, y: 1.356, z: -0.1428839}
+  m_LocalPosition: {x: -0.022, y: 1.5, z: -0.1428839}
   m_LocalScale: {x: 0.23412505, y: 0.04544801, z: 0.395505}
   m_Children:
   - {fileID: 2092996166}
@@ -41830,7 +41830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478724283}
   m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
-  m_LocalPosition: {x: 15.32, y: 12.14, z: -57.14}
+  m_LocalPosition: {x: 16, y: 14, z: -65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1247796592}

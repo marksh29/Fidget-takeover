@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
         target = null;
         move = true;
         battle = false;
+        spawn = false;
     }
     public void Set_battle(Transform obj)
     {

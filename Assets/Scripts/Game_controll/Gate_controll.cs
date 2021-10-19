@@ -18,7 +18,7 @@ public class Gate_controll : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-            Instance = this;
+            Instance = this;        
     }
     void Start()
     {
@@ -50,27 +50,39 @@ public class Gate_controll : MonoBehaviour
 
         timer = gate_timer;
         time_on = true;
-        //GetComponent<MeshRenderer>().material = mat[1];
     }
 
     public void Set_spawn()
-    {
-        StartCoroutine(Spawn(count));
-        //count = 0;
-        //count_text.text = "";
-        //gate_wall.SetActive(false);
-        //GetComponent<MeshRenderer>().material = mat[0];        
+    {       
+        StartCoroutine(Spawn(count)); 
     }  
+    //IEnumerator Spawn(int id)
+    //{
+    //    for (int i = 0; i < id; i++)
+    //    {
+    //        sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
+    //        sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
+    //        sp.transform.rotation = transform.rotation;
+    //        print("spawn" + (enemy ? "_e" : "_p"));
+    //        yield return new WaitForSeconds(0.1f);
+    //    }
+    //}
     IEnumerator Spawn(int id)
     {
         for (int i = 0; i < id; i++)
         {
-            sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
-            sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
-            sp.transform.rotation = transform.rotation;       
+            Spawn_obj();
             yield return new WaitForSeconds(0.1f);
         }
-    } 
+    }
+    void Spawn_obj()
+    {
+        sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
+        sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
+        sp.transform.rotation = transform.rotation;
+        print("spawn" + (enemy ? "_e" : "_p"));
+    }
+
     public void Drop()
     {
         time_on = false;
