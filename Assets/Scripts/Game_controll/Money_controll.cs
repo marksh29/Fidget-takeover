@@ -50,32 +50,15 @@ public class Money_controll : MonoBehaviour
         //StartCoroutine(Money_count());
         add_count = list.Count;
         StartCoroutine(Money_coins());
-
-        //Change_money(end_money);
     }
     IEnumerator Money_count()
-    {
-        //while (money < mn)
-        //{
-        //    if (end_money >= add_money)
-        //    {
-        //        money += add_money;
-        //        end_money -= add_money;
-        //    }
-        //    else
-        //    {
-        //        money += end_money;
-        //        end_money -= end_money;
-        //    }
-        //    Mon();
-        //    yield return null;
-        //}
+    {        
         yield return new WaitForSeconds(1);
         Game_Controll.Instance.Next_level();
     }
     public void Change_money(float count)
     {
-        money += count;
+        money += count + 0.0001f;
         if (money < 0)
             money = 0;
         Mon();

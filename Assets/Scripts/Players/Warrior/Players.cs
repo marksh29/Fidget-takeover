@@ -58,6 +58,7 @@ public class Players : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);        
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
         target = null;
         move = true;
         battle = false;
@@ -87,8 +88,9 @@ public class Players : MonoBehaviour
     {
         if(other.gameObject.tag == "Gate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn)
         {
-            other.gameObject.GetComponent<Gate_controll>().Set_spawn();
+            print("gate");
             spawn = false;
+            other.gameObject.GetComponent<Gate_controll>().Set_spawn();            
         }
         if(other.gameObject.tag == "Finish")
         {

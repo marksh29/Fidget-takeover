@@ -19,6 +19,7 @@ public class Button : MonoBehaviour
     {
         if (butt)
         {
+            transform.GetChild(2).localScale = new Vector3(3, 3, 3);
             transform.GetChild(2).localPosition = new Vector3(0, 0, 0);
             transform.GetChild(2).gameObject.SetActive(false);
         }
