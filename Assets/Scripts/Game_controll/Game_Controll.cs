@@ -27,7 +27,7 @@ public class Game_Controll : MonoBehaviour
      
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         Screen.orientation = ScreenOrientation.Portrait;
         if (Instance == null)
             Instance = this;
