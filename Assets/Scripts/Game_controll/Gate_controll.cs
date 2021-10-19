@@ -80,7 +80,6 @@ public class Gate_controll : MonoBehaviour
         sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
         sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
         sp.transform.rotation = transform.rotation;
-        print("spawn" + (enemy ? "_e" : "_p"));
     }
 
     public void Drop()

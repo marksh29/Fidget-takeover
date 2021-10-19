@@ -83,7 +83,6 @@ public class Game_Controll : MonoBehaviour
     public void Win()
     {
         PlayerPrefs.SetInt("level", level + 1);
-        print(PlayerPrefs.GetInt("level"));
         StartCoroutine(Open_panel("Win"));
     }
     public void Lose()

@@ -5416,7 +5416,7 @@ MonoBehaviour:
   stages:
   - life: 5
     win_money: 500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3.5
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5426,10 +5426,10 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3.4
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5439,10 +5439,10 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3.3
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5452,10 +5452,10 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3.2
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5465,10 +5465,10 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 01000000030000000600000009000000140000000f00000012000000
   - life: 5
     win_money: 2000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3.2
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5481,7 +5481,7 @@ MonoBehaviour:
     boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
   - life: 5
     win_money: 1000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3.1
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5491,7 +5491,7 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 1000
     warrior_spawn_timer: 2
@@ -5504,7 +5504,7 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 1000
     warrior_spawn_timer: 2
@@ -5517,62 +5517,62 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 01000000030000000600000009000000140000000f00000012000000
   - life: 5
     win_money: 1000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 3
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 0
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 4000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.9
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 0
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
     boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
   - life: 5
     win_money: 1500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.8
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 0
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 1500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.7
     gaint_spawn_timer: 5
-    move_speed: 5
+    move_speed: 8
     frize_timer: 1
     warrior: 1
     gaint: 0
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 1500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.6
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5582,36 +5582,36 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 1500
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.5
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 1
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 01000000030000000600000009000000140000000f00000012000000
   - life: 5
     win_money: 8000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.4
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 1
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
     boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
   - life: 5
     win_money: 2000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.3
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
@@ -5621,178 +5621,48 @@ MonoBehaviour:
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 2000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.2
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 1
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 2000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 2.1
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 1
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 01000000030000000600000009000000140000000f00000012000000
   - life: 5
     win_money: 2000
-    warrior_spawn_timer: 2
+    warrior_spawn_timer: 1.5
     gaint_spawn_timer: 5
     move_speed: 5
     frize_timer: 1
     warrior: 1
     gaint: 1
-    archer: 0
+    archer: 1
     select_timer_min_max:
     - 2
     - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
+    boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 10000
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 0
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 2500
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 0
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 2500
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 0
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 2500
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 2500
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 15000
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 3000
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 3000
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 3000
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 3000
-    warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
-    move_speed: 5
-    frize_timer: 1
-    warrior: 1
-    gaint: 1
-    archer: 1
-    select_timer_min_max:
-    - 2
-    - 5
-    boost_variant: 01000000020000000300000004000000050000000600000007000000080000000900000014000000
-  - life: 5
-    win_money: 20000
     warrior_spawn_timer: 2
     gaint_spawn_timer: 5
     move_speed: 5
@@ -26473,7 +26343,7 @@ MonoBehaviour:
   - {fileID: 656341428}
   buy_text: {fileID: 575055694}
   buy_button: {fileID: 428143198}
-  buy_sprt: {fileID: 0}
+  buy_sprt: {fileID: 21300000, guid: e3f20899040a40e41b70502d1666bb30, type: 3}
 --- !u!1 &891555429
 GameObject:
   m_ObjectHideFlags: 0
@@ -32016,7 +31886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 5
-  spawn_time: 2
+  spawn_time: 3.5
   freez_timer: 1
   gaint_spawn_timer: 5
   spawn_timer_upgrade: 0.1
