@@ -8,6 +8,7 @@ public class Sound : MonoBehaviour
     public AudioClip[] clip;
     public AudioClip[] music_clip;
     public float sd, ms;
+    int clip_id;
 
     private void Awake()
     {
@@ -20,8 +21,9 @@ public class Sound : MonoBehaviour
     private void Update()
     {
         if (!GetComponent<AudioSource>().isPlaying)
-        {
-            GetComponent<AudioSource>().clip = music_clip[GetComponent<AudioSource>().clip == music_clip[0] ? 1 : 0];
+        {            
+            clip_id = GetComponent<AudioSource>().clip == music_clip[2] ? 0 : clip_id + 1;
+            GetComponent<AudioSource>().clip = music_clip[clip_id];
             GetComponent<AudioSource>().Play();
         }
     }

@@ -91,9 +91,8 @@ public class Enemy_controll : MonoBehaviour
         if (select_timer_min_max[0] < 0.1)
             select_timer_min_max[0] = 0.1f;
         select_timer_min_max[1] = select_timer_min_max[1] - 0.5f * level;
-        if (select_timer_min_max[1] < 0.3)
-            select_timer_min_max[1] = 0.3f;
-
+        if (select_timer_min_max[1] < 1)
+            select_timer_min_max[1] = 1f;
 
         stickman_id = (Random.Range(0, 4) == 0 ? 0 : 1);
         skin_id = Random.Range(0, 5);
