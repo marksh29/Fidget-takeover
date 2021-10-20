@@ -6,6 +6,7 @@ public class Big_hand : MonoBehaviour
 {
     [SerializeField] int damage;
     [SerializeField] bool enemy;
+
     void Start()
     {
         

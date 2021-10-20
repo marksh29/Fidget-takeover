@@ -122,7 +122,7 @@ public class EndEffect : MonoBehaviour
         boss_effeect.SetActive(false);
         for (int i = 0; i < end_object.Length; i++)
         {
-            if (i > 1)
+            if (end_object[i].GetComponent<Gate_controll>() != null)
                 end_object[i].GetComponent<Gate_controll>().Drop();
             end_object[i].SetActive(false);            
         }

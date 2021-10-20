@@ -12,6 +12,7 @@ public class UseAbillity : MonoBehaviour
 
     [SerializeField] Transform pricel, big_hand;
     [SerializeField] float big_hand_drop_time;
+    [SerializeField] GameObject prefab;
     bool hand_move;
 
     [Header("Buy")]
@@ -22,6 +23,7 @@ public class UseAbillity : MonoBehaviour
     [SerializeField] Sprite[] abill_sprt;
     [SerializeField] int[] cena;
 
+    
     private void Awake()
     {
         if (Instance == null)
@@ -74,6 +76,9 @@ public class UseAbillity : MonoBehaviour
         big_hand.position = new Vector3(pricel.position.x, 60, pricel.position.z);
         hand_move = false;
         hand_drop = false;
+        GameObject obj = Instantiate(prefab, pricel.transform.position, prefab.transform.rotation) as GameObject;
+        Camera.main.gameObject.GetComponent<Animator>().SetTrigger("hit");
+        Destroy(obj, 2);
     }
     public void Visual()
     {

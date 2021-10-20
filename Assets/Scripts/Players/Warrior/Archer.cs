@@ -137,7 +137,7 @@ public class Archer : MonoBehaviour
             else
                 target.GetComponent<Enemy>().target = null;
         }
-
+        PoolControll.Instance.Visual();
         gameObject.SetActive(false);
     }
 

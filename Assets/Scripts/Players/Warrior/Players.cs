@@ -180,6 +180,7 @@ public class Players : MonoBehaviour
 
         if (target != null && target.GetComponent<Enemy>() != null)
             target.GetComponent<Enemy>().target = null;
+        PoolControll.Instance.Visual();
         gameObject.SetActive(false);
     }
 

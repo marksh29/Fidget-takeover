@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: 1
   damage: 1
-  start_fire_timer: 1
+  start_fire_timer: 0.7
   speed: 5
   attack_dist: 70
   fire_time: 0

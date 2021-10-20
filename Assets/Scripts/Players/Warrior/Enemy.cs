@@ -129,6 +129,7 @@ public class Enemy : MonoBehaviour
     {
         if (target != null && target.GetComponent<Players>() != null)
             target.GetComponent<Players>().target = null;
+        PoolControll.Instance.Visual();
         gameObject.SetActive(false);
     }
 

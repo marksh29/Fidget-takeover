@@ -12,6 +12,8 @@ public class PoolControll : MonoBehaviour
     [SerializeField] private List<GameObject> enemy_stack, en_gaints_stack, en_archer_stack;
     GameObject new_obj, new_blood;
 
+    [SerializeField] Text pl_count_text, en_count_text;
+
     private void Awake()
     {
         if (Instance == null)
@@ -52,7 +54,7 @@ public class PoolControll : MonoBehaviour
                 new_obj = Spawn(en_archer_stack, en_archer);
                 break;
         }
-        return new_obj;
+        return new_obj;       
     }
     GameObject Spawn(List<GameObject> list, GameObject prefab)
     {
@@ -74,23 +76,12 @@ public class PoolControll : MonoBehaviour
             list.Add(new_obj);
             new_blood = new_obj;
         }
+        Visual();
         return new_blood;
     } 
 
     public void Win()
-    {
-        //for (int i = 0; i < player_stack.Count; i++)
-        //{
-        //    player_stack[i].GetComponent<Players>().Win();
-        //}
-        //for (int i = 0; i < pl_gaints_stack.Count; i++)
-        //{
-        //    pl_gaints_stack[i].GetComponent<Players>().Win();
-        //}
-        //for (int i = 0; i < pl_archer_stack.Count; i++)
-        //{
-        //    pl_archer_stack[i].GetComponent<Archer>().Win();
-        //}
+    {       
         for (int i = 0; i < player_stack.Count; i++)
         {
             player_stack[i].SetActive(false);
@@ -169,5 +160,44 @@ public class PoolControll : MonoBehaviour
         {
             en_archer_stack[i].SetActive(false);
         }
+    }
+
+    public void Visual()
+    {
+        int count = new int();       
+        for (int i = 0; i < player_stack.Count; i++)
+        {
+            if (player_stack[i].activeSelf)
+                count++;
+        }
+        for (int i = 0; i < pl_gaints_stack.Count; i++)
+        {
+            if (pl_gaints_stack[i].activeSelf)
+                count++;
+        }
+        for (int i = 0; i < pl_archer_stack.Count; i++)
+        {
+            if (pl_archer_stack[i].activeSelf)
+                count++;
+        }
+
+        int enemy_count = new int();
+        for (int i = 0; i < enemy_stack.Count; i++)
+        {
+            if (enemy_stack[i].activeSelf)
+                enemy_count++;
+        }
+        for (int i = 0; i < en_gaints_stack.Count; i++)
+        {
+            if (en_gaints_stack[i].activeSelf)
+                enemy_count++;
+        }
+        for (int i = 0; i < en_archer_stack.Count; i++)
+        {
+            if (en_archer_stack[i].activeSelf)
+                enemy_count++;
+        }
+        pl_count_text.text = count.ToString();
+        en_count_text.text = enemy_count.ToString();
     }
 }

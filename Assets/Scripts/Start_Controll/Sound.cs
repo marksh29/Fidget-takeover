@@ -17,6 +17,14 @@ public class Sound : MonoBehaviour
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
+    private void Update()
+    {
+        if (!GetComponent<AudioSource>().isPlaying)
+        {
+            GetComponent<AudioSource>().clip = music_clip[GetComponent<AudioSource>().clip == music_clip[0] ? 1 : 0];
+            GetComponent<AudioSource>().Play();
+        }
+    }
     public void Set_voll(int id, float count)
     {
         if (id == 0)
