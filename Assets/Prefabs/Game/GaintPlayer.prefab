@@ -118,7 +118,7 @@ MonoBehaviour:
   damage: 1
   start_life: 5
   dop_attack: 0
-  speed: 7
+  speed: 5
   force_speed: 0
   life: 5
   target: {fileID: 0}

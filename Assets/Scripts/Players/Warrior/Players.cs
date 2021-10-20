@@ -19,7 +19,8 @@ public class Players : MonoBehaviour
     {
         end = false;
         life = start_life;
-        damage = damage + PlayerPrefs.GetInt("Upgrade1");
+        //damage = damage + PlayerPrefs.GetInt("Upgrade1");
+        speed = speed + (0.2f * PlayerPrefs.GetInt("Upgrade1"));
         Enable_param();
     }
     private void Update()

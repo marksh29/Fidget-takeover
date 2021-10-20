@@ -164,15 +164,15 @@ public class Enemy : MonoBehaviour
         end = true;
         body.gameObject.GetComponent<Animator>().SetTrigger("win");
     }
-    void Add_force()
-    {
-        if (target != null && target.GetComponent<Players>() != null)
-            target.GetComponent<Players>().target = null;
+    //void Add_force()
+    //{
+    //    if (target != null && target.GetComponent<Players>() != null)
+    //        target.GetComponent<Players>().target = null;
 
-        GetComponent<Rigidbody>().constraints = open;
-        GetComponent<Rigidbody>().useGravity = true;
-        GetComponent<CapsuleCollider>().isTrigger = true;
-        body.gameObject.GetComponent<Animator>().enabled = false;
-        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(1, 2)) * force_speed, ForceMode.Impulse);
-    }
+    //    GetComponent<Rigidbody>().constraints = open;
+    //    GetComponent<Rigidbody>().useGravity = true;
+    //    GetComponent<CapsuleCollider>().isTrigger = true;
+    //    body.gameObject.GetComponent<Animator>().enabled = false;
+    //    GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(1, 2)) * force_speed, ForceMode.Impulse);
+    //}
 }

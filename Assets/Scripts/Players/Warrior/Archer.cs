@@ -19,7 +19,7 @@ public class Archer : MonoBehaviour
     void OnEnable()
     {
         //fire_time = 3;
-        damage = damage + PlayerPrefs.GetInt("Upgrade1");
+        //damage = damage + PlayerPrefs.GetInt("Upgrade1");
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         Set_move_pos();       
     }

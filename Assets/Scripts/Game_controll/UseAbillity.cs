@@ -28,6 +28,7 @@ public class UseAbillity : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
     }
     void OnEnable()
     {
@@ -73,7 +74,7 @@ public class UseAbillity : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        big_hand.position = new Vector3(pricel.position.x, 60, pricel.position.z);
+        big_hand.position = new Vector3(pricel.position.x, 80, pricel.position.z);
         hand_move = false;
         hand_drop = false;
         GameObject obj = Instantiate(prefab, pricel.transform.position, prefab.transform.rotation) as GameObject;

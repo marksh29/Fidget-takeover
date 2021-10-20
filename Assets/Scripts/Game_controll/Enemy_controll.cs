@@ -86,6 +86,15 @@ public class Enemy_controll : MonoBehaviour
 
             select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
         }
+
+        select_timer_min_max[0] = select_timer_min_max[1] - 0.2f * level;
+        if (select_timer_min_max[0] < 0.1)
+            select_timer_min_max[0] = 0.1f;
+        select_timer_min_max[1] = select_timer_min_max[1] - 0.5f * level;
+        if (select_timer_min_max[1] < 0.3)
+            select_timer_min_max[1] = 0.3f;
+
+
         stickman_id = (Random.Range(0, 4) == 0 ? 0 : 1);
         skin_id = Random.Range(0, 5);
         hand.transform.position = hand_pos;
