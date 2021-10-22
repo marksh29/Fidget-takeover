@@ -37,8 +37,8 @@ public class AbillityControll : MonoBehaviour
     {
         for (int i = 0; i < count.Length; i++)
         {
-            obj[i].GetChild(2).gameObject.GetComponent<Text>().text = cena[i].ToString();
-            obj[i].GetChild(0).gameObject.GetComponent<Text>().text = count[i].ToString();
+            obj[i].GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = count[i].ToString();
+            obj[i].GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = cena[i].ToString("0,0"); 
             //obj[i].GetChild(2).gameObject.SetActive(Money_controll.Instance.money < (cena[i] + (cena[i] * count[i])) ? false : true);
         }
     }

@@ -55,12 +55,14 @@ public class EndEffect : MonoBehaviour
                 archers[r].GetComponent<Archer>().Win();
             }
             List<GameObject> list = new List<GameObject>(warriors);
+            print(end_count);
             for (int i = 0; i < end_count; i++)
             {
                 int r = Random.Range(0, list.Count);
                 list[r].SetActive(true);
                 list[r].GetComponent<Players>().Win();
                 list.Remove(list[r]);
+                print("+");
             }
 
             Camera.main.gameObject.GetComponent<Animator>().SetTrigger("win");

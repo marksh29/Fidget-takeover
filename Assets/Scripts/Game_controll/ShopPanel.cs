@@ -41,7 +41,7 @@ public class ShopPanel : MonoBehaviour
                 else
                 {
                     buy_button.SetActive(true);
-                    buy_text.text = list[cur_id].cena.ToString();
+                    buy_text.text = list[cur_id].cena.ToString("0,0");
                 }
             }
             else
