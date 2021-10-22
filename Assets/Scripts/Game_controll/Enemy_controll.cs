@@ -172,7 +172,9 @@ public class Enemy_controll : MonoBehaviour
                         if (Sound.Instance != null)
                             Sound.Instance.Play_Sound(0);
                         hand.transform.position = hand_pos;
-                        gate.Set_text(target.GetComponent<Button>().count);
+                        //gate.Set_text(target.GetComponent<Button>().count);
+                        gate.Set_spawn(target.GetComponent<Button>().count);
+
                         target.GetComponent<Button>().Off();
                         StartCoroutine(Freez_timer());
                         move = false;

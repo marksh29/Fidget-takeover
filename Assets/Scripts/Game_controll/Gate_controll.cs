@@ -42,7 +42,7 @@ public class Gate_controll : MonoBehaviour
             }
         }
     }
-    public void Set_text(  int id)
+    public void Set_text(int id)
     {
         count = id;
         count_text.text = "+" + count;
@@ -52,21 +52,11 @@ public class Gate_controll : MonoBehaviour
         time_on = true;
     }
 
-    public void Set_spawn()
+    public void Set_spawn(int id)
     {
+        count = id;
         StartCoroutine(Spawn(count)); 
-    }  
-    //IEnumerator Spawn(int id)
-    //{
-    //    for (int i = 0; i < id; i++)
-    //    {
-    //        sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
-    //        sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
-    //        sp.transform.rotation = transform.rotation;
-    //        print("spawn" + (enemy ? "_e" : "_p"));
-    //        yield return new WaitForSeconds(0.1f);
-    //    }
-    //}
+    } 
     IEnumerator Spawn(int id)
     {
         while(id > 0)
@@ -75,6 +65,7 @@ public class Gate_controll : MonoBehaviour
             id--;
             yield return new WaitForSeconds(0.1f);
         }
+        Drop();
         yield return null;               
     }
     void Spawn_obj()

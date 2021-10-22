@@ -141,7 +141,9 @@ public class Player_controll : MonoBehaviour
             Sound.Instance.Play_Sound(0);
         if (target.GetComponent<Button>().count != 0)
         {
-            gate.Set_text(target.GetComponent<Button>().count);
+            //gate.Set_text(target.GetComponent<Button>().count);
+            gate.Set_spawn(target.GetComponent<Button>().count);
+
             target.GetComponent<Button>().Off();
             StartCoroutine(Freez_timer());
         }
