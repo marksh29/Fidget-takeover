@@ -89,7 +89,6 @@ public class Players : MonoBehaviour
     {
         if(other.gameObject.tag == "Gate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn)
         {
-            print("gate");
             spawn = false;
             other.gameObject.GetComponent<Gate_controll>().Set_spawn();            
         }
