@@ -56,7 +56,7 @@ public class Gate_controll : MonoBehaviour
     {
         count = id;
         StartCoroutine(Spawn(count)); 
-    } 
+    }     
     IEnumerator Spawn(int id)
     {
         while(id > 0)

@@ -80,12 +80,11 @@ public class Enemy : MonoBehaviour
         move = false;
     }
     private void OnTriggerEnter(Collider other)
-    {       
-        //if (other.gameObject.tag == "EnemyGate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn && !gaint)
-        //{
-        //    spawn = false;
-        //    other.gameObject.GetComponent<Gate_controll>().Set_spawn();            
-        //}
+    {
+        if (other.gameObject.tag == "Gate" && !gaint)
+        {
+            other.gameObject.GetComponent<Bonus_Gate_controll>().Set_spawn(1);
+        }
         if (other.gameObject.tag == "Pfinish")
         {
             Player_controll.Instance.Damage(damage);

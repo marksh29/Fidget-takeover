@@ -87,12 +87,11 @@ public class Players : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if(other.gameObject.tag == "Gate" && other.gameObject.GetComponent<Gate_controll>().count > 0 && spawn)
-        //{
-        //    spawn = false;
-        //    other.gameObject.GetComponent<Gate_controll>().Set_spawn();            
-        //}
-        if(other.gameObject.tag == "Finish")
+        if (other.gameObject.tag == "Gate" && !gaint)
+        {
+            other.gameObject.GetComponent<Bonus_Gate_controll>().Set_spawn(0);
+        }
+        if (other.gameObject.tag == "Finish")
         {
             Enemy_controll.Instance.Damage(damage);
             gameObject.SetActive(false);

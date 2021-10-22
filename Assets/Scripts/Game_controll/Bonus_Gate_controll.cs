@@ -6,52 +6,62 @@ using UnityEngine.UI;
 public class Bonus_Gate_controll : MonoBehaviour
 {
     public static Bonus_Gate_controll Instance;
-    [SerializeField] bool enemy;
     [SerializeField] Text count_text;
-    [SerializeField] GameObject player_prefab, gate_wall;
-    public int xx, count; 
-    [SerializeField] Material[] mat;
-    [SerializeField] float gate_timer;
-    float timer;
+    [SerializeField] GameObject gate_wall, sp;
+    public int xx, count, rot;
+    [SerializeField] float timer;
     bool time_on;
-    GameObject sp;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;        
     }
-    void Start()
+    private void OnEnable()
     {
+        timer = Random.Range(3, 5);
         int level = PlayerPrefs.GetInt("level");
         int lvl = level - (5 * (int)(level / 5));
         gameObject.SetActive(lvl != 4 ? false : true);
+    }
+    void Start()
+    {
+        
     }   
     private void Update()
     {
-        if(time_on)
-        {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {            
+            if(time_on)
+            {              
+                timer = Random.Range(3, 5);                
+                time_on = false;
+            }
+            else
             {
-                Set_text(Random.Range(1, 10));
+                timer = Random.Range(5, 10);
+                Set_text();
+                time_on = true;
             }
         }
     }
 
-    public void Set_text(int id)
+    public void Set_text()
     {
-        count = id;
+        count = Random.Range(1, 10);
         count_text.text = "+" + count;
         gate_wall.SetActive(true);
 
-        timer = gate_timer;
+        timer = Random.Range(5, 10);
         time_on = true;
     }
 
     public void Set_spawn(int id)
     {
-        count = id;
-        StartCoroutine(Spawn(count)); 
+        rot = id;
+        StartCoroutine(Spawn(count));
+        Drop();
     } 
     IEnumerator Spawn(int id)
     {
@@ -61,26 +71,20 @@ public class Bonus_Gate_controll : MonoBehaviour
             id--;
             yield return new WaitForSeconds(0.1f);
         }
-        Drop();
         yield return null;               
     }
     void Spawn_obj()
     {
-        sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
-        sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
-        sp.transform.rotation = transform.rotation;
+        sp = PoolControll.Instance.Spawn(rot == 1 ? "en_warrior" : "pl_warrior", 0);
+        sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z);
+        sp.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + (rot == 0 ? 0 : 180), transform.rotation.z);
     }
     public void Drop()
     {
-        time_on = false;
         count = 0;
         count_text.text = "";
         gate_wall.SetActive(false);
-    }
-    IEnumerator Start_timer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        timer = Random.Range(5, 10);
-        time_on = true;
-    }
+        timer = Random.Range(3, 5);
+        time_on = false;
+    }  
 }
