@@ -73,12 +73,13 @@ public class UseAbillity : MonoBehaviour
             big_hand.position = Vector3.Lerp(startPosition, targetPosition, fraction);
             yield return null;
         }
-        yield return new WaitForSeconds(0.1f);
+        //yield return new WaitForSeconds(0.1f);
         big_hand.position = new Vector3(pricel.position.x, 80, pricel.position.z);
         hand_move = false;
         hand_drop = false;
         GameObject obj = Instantiate(prefab, pricel.transform.position, prefab.transform.rotation) as GameObject;
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("hit");
+		
         Destroy(obj, 2);
     }
     public void Visual()
