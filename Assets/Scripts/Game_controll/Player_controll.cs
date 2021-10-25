@@ -101,7 +101,7 @@ public class Player_controll : MonoBehaviour
     IEnumerator Effect()
     {
         effect.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.6f);
         effect.SetActive(false);
     }
         public void Damage(int id)

@@ -72,12 +72,7 @@ public class Button : MonoBehaviour
             yield return null;
         }        
     }
-    public IEnumerator Effect_on()
-    {
-        transform.GetChild(3).gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        transform.GetChild(3).gameObject.SetActive(false);
-    }
+   
     public bool On()
     {
         return count_txt.gameObject.activeSelf;
@@ -86,6 +81,13 @@ public class Button : MonoBehaviour
     {
         StartCoroutine(Effect_on());
         Off();
+    }
+    public IEnumerator Effect_on()
+    {
+        transform.GetChild(3).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        count_txt.gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
     }
     public void Off()
     {
@@ -96,7 +98,7 @@ public class Button : MonoBehaviour
     public void Drop()
     {
         transform.GetChild(2).gameObject.SetActive(false);
-        count_txt.gameObject.SetActive(false);
+        //count_txt.gameObject.SetActive(false);
         if (count != 0)
             Buttons_controll.Instance.Remove_button(gameObject);
         count = 0;

@@ -59,10 +59,13 @@ public class Bonus_Gate_controll : MonoBehaviour
 
     public void Set_spawn(int id)
     {
-        rot = id;
-        StartCoroutine(Effect());
-        StartCoroutine(Spawn(count));
-        Drop();
+        if (time_on)
+        {
+            rot = id;
+            StartCoroutine(Effect());
+            StartCoroutine(Spawn(count));
+            Drop();
+        }       
     }
     IEnumerator Effect()
     {
