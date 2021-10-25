@@ -7,7 +7,7 @@ public class Bonus_Gate_controll : MonoBehaviour
 {
     public static Bonus_Gate_controll Instance;
     [SerializeField] Text count_text;
-    [SerializeField] GameObject gate_wall, sp;
+    [SerializeField] GameObject gate_wall, sp, effect;
     public int xx, count, rot;
     [SerializeField] float timer;
     bool time_on;
@@ -60,9 +60,16 @@ public class Bonus_Gate_controll : MonoBehaviour
     public void Set_spawn(int id)
     {
         rot = id;
+        StartCoroutine(Effect());
         StartCoroutine(Spawn(count));
         Drop();
-    } 
+    }
+    IEnumerator Effect()
+    {
+        effect.SetActive(true);
+            yield return new WaitForSeconds(1f);
+        effect.SetActive(false);
+    }
     IEnumerator Spawn(int id)
     {
         while(id > 0)

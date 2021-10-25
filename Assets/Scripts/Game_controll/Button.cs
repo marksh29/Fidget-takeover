@@ -14,6 +14,8 @@ public class Button : MonoBehaviour
     void Start()
     {
         Start_Off();
+        if(transform.childCount >3)
+            transform.GetChild(3).localPosition = new Vector3(0, 0, 0);
     }
     public void Start_Off()
     {
@@ -70,9 +72,20 @@ public class Button : MonoBehaviour
             yield return null;
         }        
     }
+    public IEnumerator Effect_on()
+    {
+        transform.GetChild(3).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        transform.GetChild(3).gameObject.SetActive(false);
+    }
     public bool On()
     {
         return count_txt.gameObject.activeSelf;
+    }
+    public void Get()
+    {
+        StartCoroutine(Effect_on());
+        Off();
     }
     public void Off()
     {

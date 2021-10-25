@@ -31,7 +31,7 @@ public class Enemy_controll : MonoBehaviour
     public float move_speed;
     public int skin_id, stickman_id;
     [SerializeField] Gate_controll gate;
-    [SerializeField] GameObject hand, target;
+    [SerializeField] GameObject hand, target, effect;
     float[] select_timer_min_max;    
     int level, life;
     bool select, frize_on, move, warrior, gaint, archer, end;
@@ -175,7 +175,9 @@ public class Enemy_controll : MonoBehaviour
                         //gate.Set_text(target.GetComponent<Button>().count);
                         gate.Set_spawn(target.GetComponent<Button>().count);
 
-                        target.GetComponent<Button>().Off();
+                        //target.GetComponent<Button>().Off();
+                        target.GetComponent<Button>().Get();
+                        StartCoroutine(Effect());
                         StartCoroutine(Freez_timer());
                         move = false;
                     }
@@ -260,6 +262,12 @@ public class Enemy_controll : MonoBehaviour
     public void New_level()
     {
 
+    }
+    IEnumerator Effect()
+    {
+        effect.SetActive(true);
+        yield return new WaitForSeconds(1);
+        effect.SetActive(false);
     }
 }
 

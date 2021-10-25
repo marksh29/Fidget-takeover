@@ -11,13 +11,14 @@ public class Player_controll : MonoBehaviour
     [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer, spawn_timer_upgrade;
 
     [Header("Не трогать")]
-    [SerializeField] GameObject hand;
+    [SerializeField] GameObject hand, effect;
     [SerializeField] bool warrior, gaint, archer;
     [SerializeField] Gate_controll gate;    
     bool freez_on, hand_move, end;
     float timer, gaint_timer, sp_upgrade;
     Vector3 hand_pos;
     GameObject sp;
+
     private void Awake()
     {
         if (Instance == null)
@@ -97,7 +98,13 @@ public class Player_controll : MonoBehaviour
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 255);
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(14, 114, 224, 255);
     }
-    public void Damage(int id)
+    IEnumerator Effect()
+    {
+        effect.SetActive(true);
+        yield return new WaitForSeconds(1);
+        effect.SetActive(false);
+    }
+        public void Damage(int id)
     {
         life -= id;
         if (life <= 0 && !end)
@@ -144,7 +151,9 @@ public class Player_controll : MonoBehaviour
             //gate.Set_text(target.GetComponent<Button>().count);
             gate.Set_spawn(target.GetComponent<Button>().count);
 
-            target.GetComponent<Button>().Off();
+            //target.GetComponent<Button>().Off();
+            target.GetComponent<Button>().Get();
+            StartCoroutine(Effect());
             StartCoroutine(Freez_timer());
         }
     }
