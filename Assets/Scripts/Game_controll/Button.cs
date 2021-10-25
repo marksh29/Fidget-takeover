@@ -95,13 +95,18 @@ public class Button : MonoBehaviour
         mesh.SetBlendShapeWeight(0, 70);
         Drop();
     }
+    public void Full_off()
+    {
+        count_txt.gameObject.SetActive(false);
+        Drop();
+    }
     public void Drop()
     {
-        transform.GetChild(2).gameObject.SetActive(false);
-        //count_txt.gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false); 
         if (count != 0)
             Buttons_controll.Instance.Remove_button(gameObject);
         count = 0;
         StartCoroutine(Timer_off());
     }
+
 }

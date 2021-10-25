@@ -43,7 +43,7 @@ public class Buttons_controll : MonoBehaviour
                 timer = time;
                 for (int i = 0; i < buttons.Length; i++)
                 {
-                    buttons[i].GetComponent<Button>().Drop();
+                    buttons[i].GetComponent<Button>().Full_off();
                 }
                 best = null;
                 Buttons_on();
