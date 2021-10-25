@@ -5775,26 +5775,26 @@ MonoBehaviour:
     warrior_spawn_timer: 3.5
     gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 3
+    frize_timer: 2
     warrior: 1
     gaint: 0
     archer: 0
     select_timer_min_max:
-    - 2
-    - 5
+    - 1.4
+    - 4
     boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 500
     warrior_spawn_timer: 3.4
     gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 3
+    frize_timer: 2
     warrior: 1
     gaint: 0
     archer: 0
     select_timer_min_max:
-    - 2
-    - 5
+    - 1.6
+    - 4.5
     boost_variant: 0100000003000000060000000900000014000000
   - life: 5
     win_money: 500
@@ -36934,7 +36934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 5
   spawn_time: 3.5
-  freez_timer: 3
+  freez_timer: 2
   gaint_spawn_timer: 10
   spawn_timer_upgrade: 0.1
   hand: {fileID: 1478724283}
