@@ -49,7 +49,7 @@ public class Bonus_Gate_controll : MonoBehaviour
 
     public void Set_text()
     {
-        count = Random.Range(1, 10);
+        count = Random.Range(1, 20);
         count_text.text = "+" + count;
         gate_wall.SetActive(true);
 

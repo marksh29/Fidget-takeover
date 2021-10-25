@@ -4714,7 +4714,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 80, y: -472.9993}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &131245879
 MonoBehaviour:
@@ -4736,7 +4736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5696,9 +5696,9 @@ MonoBehaviour:
   - life: 5
     win_money: 500
     warrior_spawn_timer: 3.5
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5709,9 +5709,9 @@ MonoBehaviour:
   - life: 5
     win_money: 500
     warrior_spawn_timer: 3.4
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5722,9 +5722,9 @@ MonoBehaviour:
   - life: 5
     win_money: 500
     warrior_spawn_timer: 3.3
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5735,9 +5735,9 @@ MonoBehaviour:
   - life: 5
     win_money: 500
     warrior_spawn_timer: 3.2
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5748,9 +5748,9 @@ MonoBehaviour:
   - life: 5
     win_money: 2000
     warrior_spawn_timer: 3.2
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5761,9 +5761,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1000
     warrior_spawn_timer: 3.1
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5774,9 +5774,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1000
     warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5787,9 +5787,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1000
     warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 0
@@ -5800,9 +5800,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1000
     warrior_spawn_timer: 3
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 1
@@ -5813,9 +5813,9 @@ MonoBehaviour:
   - life: 5
     win_money: 4000
     warrior_spawn_timer: 2.9
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 1
@@ -5826,9 +5826,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1500
     warrior_spawn_timer: 2.8
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 1
@@ -5839,9 +5839,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1500
     warrior_spawn_timer: 2.7
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 8
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 0
     archer: 1
@@ -5852,9 +5852,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1500
     warrior_spawn_timer: 2.6
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 1
     archer: 0
@@ -5865,9 +5865,9 @@ MonoBehaviour:
   - life: 5
     win_money: 1500
     warrior_spawn_timer: 2.5
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3
     warrior: 1
     gaint: 1
     archer: 1
@@ -5878,9 +5878,9 @@ MonoBehaviour:
   - life: 5
     win_money: 8000
     warrior_spawn_timer: 2.4
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3.5
     warrior: 1
     gaint: 1
     archer: 1
@@ -5891,9 +5891,9 @@ MonoBehaviour:
   - life: 5
     win_money: 2000
     warrior_spawn_timer: 2.3
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3.5
     warrior: 1
     gaint: 1
     archer: 0
@@ -5904,9 +5904,9 @@ MonoBehaviour:
   - life: 5
     win_money: 2000
     warrior_spawn_timer: 2.2
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3.5
     warrior: 1
     gaint: 1
     archer: 1
@@ -5917,9 +5917,9 @@ MonoBehaviour:
   - life: 5
     win_money: 2000
     warrior_spawn_timer: 2.1
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3.5
     warrior: 1
     gaint: 1
     archer: 1
@@ -5930,9 +5930,9 @@ MonoBehaviour:
   - life: 5
     win_money: 2000
     warrior_spawn_timer: 1.5
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3.5
     warrior: 1
     gaint: 1
     archer: 1
@@ -5943,9 +5943,9 @@ MonoBehaviour:
   - life: 5
     win_money: 10000
     warrior_spawn_timer: 2
-    gaint_spawn_timer: 5
+    gaint_spawn_timer: 10
     move_speed: 5
-    frize_timer: 1
+    frize_timer: 3.5
     warrior: 1
     gaint: 1
     archer: 1
@@ -9355,6 +9355,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 19bf2b08146e01347adf195e67e611cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d54b381aaf7e9b74aac5663f41103c07, type: 2}
     - target: {fileID: 919132149155446097, guid: 19bf2b08146e01347adf195e67e611cd,
         type: 3}
       propertyPath: m_Name
@@ -9894,7 +9899,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -120, y: 140}
-  m_SizeDelta: {x: 212, y: 224.76}
+  m_SizeDelta: {x: 180, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281052289
 MonoBehaviour:
@@ -13497,7 +13502,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -120, y: 385}
-  m_SizeDelta: {x: 212, y: 224.76}
+  m_SizeDelta: {x: 180, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436962801
 MonoBehaviour:
@@ -19582,7 +19587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20095,7 +20100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26278,7 +26283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28923,7 +28928,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 80, y: -472.9993}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048345671
 MonoBehaviour:
@@ -28945,7 +28950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29283,7 +29288,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -80, y: -473}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054375343
 MonoBehaviour:
@@ -29305,7 +29310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29723,7 +29728,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -472.9993}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079519323
 MonoBehaviour:
@@ -29745,7 +29750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -31681,7 +31686,7 @@ MonoBehaviour:
   life: 5
   spawn_time: 3.5
   freez_timer: 3
-  gaint_spawn_timer: 5
+  gaint_spawn_timer: 10
   spawn_timer_upgrade: 0.1
   hand: {fileID: 1478724283}
   warrior: 0
@@ -34083,6 +34088,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 19bf2b08146e01347adf195e67e611cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d54b381aaf7e9b74aac5663f41103c07, type: 2}
     - target: {fileID: 919132149155446097, guid: 19bf2b08146e01347adf195e67e611cd,
         type: 3}
       propertyPath: m_Name
@@ -37446,6 +37456,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 19bf2b08146e01347adf195e67e611cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d54b381aaf7e9b74aac5663f41103c07, type: 2}
     - target: {fileID: 919132149155446097, guid: 19bf2b08146e01347adf195e67e611cd,
         type: 3}
       propertyPath: m_Name
@@ -38355,7 +38370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -81, y: -86.84}
+  m_AnchoredPosition: {x: -81, y: -86.839966}
   m_SizeDelta: {x: 78.77, y: 80.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373269210
@@ -40479,6 +40494,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 52b096c2591d03b4e98205903e962ea5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cad57e8063cdfb341b585699015e07df, type: 2}
     - target: {fileID: 919132149155446097, guid: 52b096c2591d03b4e98205903e962ea5,
         type: 3}
       propertyPath: m_Name
@@ -50695,7 +50715,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891077646}
-  m_LocalRotation: {x: 0, y: -0.8682905, z: 0.49605605, w: 0}
+  m_LocalRotation: {x: 0, y: 0.9396927, z: -0.3420201, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 38}
   m_LocalScale: {x: 1.1666701, y: 1.16667, z: 1.1666701}
   m_Children:
@@ -50703,7 +50723,7 @@ RectTransform:
   - {fileID: 1246891813}
   m_Father: {fileID: 543450652614056210}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 59.479, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.4, y: 17}
@@ -57070,7 +57090,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -80, y: -473}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084761306
 MonoBehaviour:
@@ -57092,7 +57112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -58720,7 +58740,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -472.9993}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139065435
 MonoBehaviour:
@@ -58742,7 +58762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e777395a99f4b4abb8394ed10c75ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c37c3e4667d6bdf40b7fc5f14d2720d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
