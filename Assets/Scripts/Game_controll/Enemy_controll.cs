@@ -87,10 +87,10 @@ public class Enemy_controll : MonoBehaviour
             select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
         }
 
-        select_timer_min_max[0] = select_timer_min_max[1] - 0.2f * level;
-        if (select_timer_min_max[0] < 0.1)
-            select_timer_min_max[0] = 0.1f;
-        select_timer_min_max[1] = select_timer_min_max[1] - 0.5f * level;
+        select_timer_min_max[0] = select_timer_min_max[0] - 0.065f * level;
+        if (select_timer_min_max[0] < 0.75)
+            select_timer_min_max[0] = 0.75f;
+        select_timer_min_max[1] = select_timer_min_max[1] - 0.2f * level;
         if (select_timer_min_max[1] < 1)
             select_timer_min_max[1] = 1f;
 
