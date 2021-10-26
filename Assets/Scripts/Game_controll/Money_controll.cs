@@ -41,7 +41,7 @@ public class Money_controll : MonoBehaviour
         else
         {
             end_logo.text = "YOU LOSE";
-            end_money = 100 + (50 * PlayerPrefs.GetInt("Upgrade2"));
+            end_money = 500;
             //PlayerPrefs.SetInt("money", money + end_money);
         }
         end_money_text.text = "+" + end_money;

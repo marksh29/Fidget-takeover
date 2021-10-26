@@ -26,15 +26,16 @@ public class Game_Controll : MonoBehaviour
     [SerializeField] List<RandomObject> list_random;
      
     private void Awake()
-    {        
-        PlayerPrefs.DeleteAll();
+    {
+        //PlayerPrefs.DeleteAll();       
         Screen.orientation = ScreenOrientation.Portrait;
         if (Instance == null)
             Instance = this;
     }
     
     private void Start()
-    {        
+    {
+        OneSignal.SetLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         GameAnalityc.Instance.Start_game();
         Next_level();     
     }   

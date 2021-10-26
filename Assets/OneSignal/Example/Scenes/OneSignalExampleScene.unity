@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 3e1d8f5fb1cba324c9e14525e9056370, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 3e1d8f5fb1cba324c9e14525e9056370,
+    type: 2}
 --- !u!196 &5
 NavMeshSettings:
   serializedVersion: 2
@@ -246,6 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   email: Email Address
   externalId: External User ID
+  appId: ea25d2d6-077e-4e0f-880f-79980b73d625
+  requiresUserPrivacyConsent: 0
 --- !u!4 &1816083102
 Transform:
   m_ObjectHideFlags: 0

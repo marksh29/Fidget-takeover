@@ -1,0 +1,5 @@
+-keep class android.support.v4.view.MenuCompat
+-keep class android.support.v4.content.WakefulBroadcastReceiver
+-keep class android.support.v4.app.NotificationManagerCompat
+-keep class android.support.v4.app.JobIntentService
+-keep class com.google.firebase.messaging.FirebaseMessaging

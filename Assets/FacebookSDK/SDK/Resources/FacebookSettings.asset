@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - '818130185517625  '
+  - 289197737788
   appLabels:
-  - Fidget Squid
+  - Fidget Pops
   cookie: 1
   logging: 1
   status: 1
