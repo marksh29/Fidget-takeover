@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class OnSignalPush : MonoBehaviour
 {
+    public string name;
     void Start()
 {
     // Uncomment this method to enable OneSignal Debugging log output 
     // OneSignal.SetLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
     // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
-    OneSignal.StartInit("ea25d2d6-077e-4e0f-880f-79980b73d625")
+    OneSignal.StartInit(name)
       .HandleNotificationOpened(OneSignalHandleNotificationOpened)
       .Settings(new Dictionary<string, bool>() {
       { OneSignal.kOSSettingsAutoPrompt, false },

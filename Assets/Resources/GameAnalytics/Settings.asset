@@ -30,22 +30,22 @@ MonoBehaviour:
   secretKey:
   - 0be357b4ebc1d1ba4f72eb4b6d717a6101e666b0
   Build:
-  - 0.1
+  - 0.2
   SelectedPlatformOrganization:
-  - 
+  - IT-Komplex
   SelectedPlatformStudio:
-  - 
+  - it-komplex
   SelectedPlatformGame:
-  - 
-  SelectedPlatformGameID: ffffffff
-  SelectedOrganization: 00000000
-  SelectedStudio: 00000000
-  SelectedGame: 00000000
+  - Fidget takeover
+  SelectedPlatformGameID: 658c0200
+  SelectedOrganization: 01000000
+  SelectedStudio: 01000000
+  SelectedGame: 01000000
   NewVersion: 
   Changes: 
-  SignUpOpen: 1
-  StudioName: TestCompany
-  GameName: Fidget takeover
+  SignUpOpen: 0
+  StudioName: 
+  GameName: 
   OrganizationName: 
   OrganizationIdentifier: 
   EmailGA: it.komplex.x@gmail.com

@@ -84,11 +84,15 @@ public class Game_Controll : MonoBehaviour
     }
     public void Win()
     {
+        FBsdk.Instance.End_level_fb();
+
+        PlayerPrefs.SetFloat("add_time", 0);
         PlayerPrefs.SetInt("level", level + 1);
         StartCoroutine(Open_panel("Win"));
     }
     public void Lose()
     {
+        PlayerPrefs.SetFloat("add_time", 0.5f);
         StartCoroutine(Open_panel("Lose"));
     }   
     

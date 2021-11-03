@@ -87,10 +87,10 @@ public class Enemy_controll : MonoBehaviour
             select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
         }
 
-        select_timer_min_max[0] = select_timer_min_max[0] - 0.065f * level;
+        select_timer_min_max[0] = select_timer_min_max[0] - 0.065f * level + PlayerPrefs.GetFloat("add_time");
         if (select_timer_min_max[0] < 0.75)
             select_timer_min_max[0] = 0.75f;
-        select_timer_min_max[1] = select_timer_min_max[1] - 0.2f * level;
+        select_timer_min_max[1] = select_timer_min_max[1] - 0.2f * level + PlayerPrefs.GetFloat("add_time");
         if (select_timer_min_max[1] < 1)
             select_timer_min_max[1] = 1f;
 
@@ -164,41 +164,46 @@ public class Enemy_controll : MonoBehaviour
             
             if(move && target != null)
             {
-                if(target.GetComponent<Button>().count != 0)
+                hand.transform.position = Vector3.MoveTowards(hand.transform.position, target.transform.position, hand_move_speed * Time.deltaTime);
+                if (hand.transform.position == target.transform.position)
                 {
-                    hand.transform.position = Vector3.MoveTowards(hand.transform.position, target.transform.position, hand_move_speed * Time.deltaTime);
-                    if(hand.transform.position == target.transform.position)
-                    {
-                        if (Sound.Instance != null)
-                            Sound.Instance.Play_Sound(0);
-                        hand.transform.position = hand_pos;
-                        //gate.Set_text(target.GetComponent<Button>().count);
-                        gate.Set_spawn(target.GetComponent<Button>().count);
+                    if (Sound.Instance != null)
+                        Sound.Instance.Play_Sound(0);
+                    hand.transform.position = hand_pos;
+                    //gate.Set_text(target.GetComponent<Button>().count);
 
-                        //target.GetComponent<Button>().Off();
+                    if(target.GetComponent<Button>().count != 0)
+                    {
+                        gate.Set_spawn(target.GetComponent<Button>().count);
                         target.GetComponent<Button>().Get();
                         StartCoroutine(Effect());
                         StartCoroutine(Freez_timer());
-                        move = false;
-                    }
+                    }                   
+                    //target.GetComponent<Button>().Off();
+                    move = false;
                 }
-                else
-                {
-                    target = Buttons_controll.Instance.Best();
-                    if(target != null)
-                    {
-                        if (target.GetComponent<Button>().count < gate.count)
-                        {
-                            move = false;
-                            select = true;
-                            hand.transform.position = hand_pos;
-                        }
-                    }
-                    else
-                    {
-                        hand.transform.position = hand_pos;
-                    }
-                }
+
+                //if (target.GetComponent<Button>().count != 0)
+                //{
+                    
+                //}
+                //else
+                //{
+                //    target = Buttons_controll.Instance.Best();
+                //    if(target != null)
+                //    {
+                //        if (target.GetComponent<Button>().count < gate.count)
+                //        {
+                //            move = false;
+                //            select = true;
+                //            hand.transform.position = hand_pos;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        hand.transform.position = hand_pos;
+                //    }
+                //}
             }
         }        
     }

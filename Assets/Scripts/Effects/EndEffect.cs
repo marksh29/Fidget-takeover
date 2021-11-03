@@ -55,14 +55,12 @@ public class EndEffect : MonoBehaviour
                 archers[r].GetComponent<Archer>().Win();
             }
             List<GameObject> list = new List<GameObject>(warriors);
-            print(end_count);
             for (int i = 0; i < end_count; i++)
             {
                 int r = Random.Range(0, list.Count);
                 list[r].SetActive(true);
                 list[r].GetComponent<Players>().Win();
                 list.Remove(list[r]);
-                print("+");
             }
 
             Camera.main.gameObject.GetComponent<Animator>().SetTrigger("win");
@@ -106,7 +104,7 @@ public class EndEffect : MonoBehaviour
     IEnumerator Effect()
     {
         GameObject obj = Instantiate(prefabs[Random.Range(0, prefabs.Length)]) as GameObject;
-        obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-20, 20), spawn_pos.transform.position.y + Random.Range(4, 6), spawn_pos.transform.position.z);
+        obj.transform.position = new Vector3(spawn_pos.transform.position.x + Random.Range(-20, 20), spawn_pos.transform.position.y + Random.Range(4, 30), spawn_pos.transform.position.z);
         DestroyObject(obj, 3);
         yield return new WaitForSeconds(0.8f);
         StartCoroutine(Effect());       

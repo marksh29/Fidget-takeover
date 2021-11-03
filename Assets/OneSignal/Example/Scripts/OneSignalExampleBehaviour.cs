@@ -58,8 +58,6 @@ public class OneSignalExampleBehaviour : MonoBehaviour {
     /// MonoBehaviour in your opening Scene
     /// </summary>
     private void Start() {
-
-        OneSignal.SetLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         _logMessage = null;
 
         // Enable line below to debug issues with OneSignal. (logLevel, visualLogLevel)
@@ -98,8 +96,6 @@ public class OneSignalExampleBehaviour : MonoBehaviour {
 
         OneSignalInAppMessageTriggerExamples();
         OneSignalOutcomeEventsExamples();
-
-        OneSignal.SetLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
     }
 
     /// <summary>

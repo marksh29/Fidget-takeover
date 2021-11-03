@@ -16,8 +16,14 @@ public class GameAnalityc : MonoBehaviour
     }
     void Start()
     {
-        
-    }  
+        //New_event("Test Figet");
+    }
+    public void New_event(string name)
+    {
+        GameAnalytics.NewDesignEvent(name);
+        Debug.Log("New event: " + name);
+    }
+
     public void Game_timer(float time)
     {
         GameAnalytics.NewDesignEvent("Game timer: ", time);
@@ -25,7 +31,7 @@ public class GameAnalityc : MonoBehaviour
     }
     public void Level_timer(int lvl, float time)
     {
-        GameAnalytics.NewDesignEvent("Timer for level " + (lvl +1).ToString(), time);
+        GameAnalytics.NewDesignEvent("Timer for level " + (lvl + 1).ToString(), time);
         Debug.Log("LevelTimer");
     }
 
