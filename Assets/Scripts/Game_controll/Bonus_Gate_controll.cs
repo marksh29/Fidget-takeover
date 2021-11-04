@@ -11,7 +11,7 @@ public class Bonus_Gate_controll : MonoBehaviour
     public int xx, count, rot;
     [SerializeField] float timer, speed;
     bool time_on;
-
+    int state;
     private void Awake()
     {
         if (Instance == null)
@@ -35,12 +35,13 @@ public class Bonus_Gate_controll : MonoBehaviour
         {            
             if(time_on)
             {              
-                timer = Random.Range(3, 5);                
+                timer = Random.Range(3, 5);
+                Drop();
                 time_on = false;
             }
             else
             {
-                timer = Random.Range(5, 10);
+                timer = Random.Range(3, 6);
                 Set_text();
                 time_on = true;
             }
