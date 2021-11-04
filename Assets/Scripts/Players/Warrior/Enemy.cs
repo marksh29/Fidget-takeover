@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
     [Header("Не трогать")]
     public Transform target;
     public int life;
-    public bool move, battle, spawn, end, gaint;
+    public bool move, battle,  end, gaint;
+    public bool spawn;
     [SerializeField] RigidbodyConstraints open, close;
     public GameObject body;
 

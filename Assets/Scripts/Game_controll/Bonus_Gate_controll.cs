@@ -20,9 +20,9 @@ public class Bonus_Gate_controll : MonoBehaviour
     private void OnEnable()
     {
         timer = Random.Range(3, 5);
-        int level = PlayerPrefs.GetInt("level");
-        int lvl = level - (5 * (int)(level / 5));
-        gameObject.SetActive(lvl != 4 ? false : true);
+        //int level = PlayerPrefs.GetInt("level");
+        //int lvl = level - (5 * (int)(level / 5));
+        //gameObject.SetActive(lvl != 4 ? false : true);
     }
     void Start()
     {

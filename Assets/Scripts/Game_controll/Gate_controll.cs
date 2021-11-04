@@ -63,16 +63,19 @@ public class Gate_controll : MonoBehaviour
         {
             Spawn_obj();
             id--;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
         Drop();
         yield return null;               
     }
     void Spawn_obj()
     {
-        sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);
+        sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);      
         sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
         sp.transform.rotation = transform.rotation;
+       
+        //if(sp.GetComponent<Enemy>() != null)
+        //    sp.GetComponent<Enemy>().spawn = true;
     }
 
     public void Drop()

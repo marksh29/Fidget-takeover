@@ -23,7 +23,7 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
-            Buttons_controll.Instance.Drop();
+            //Buttons_controll.Instance.Drop();
             ability_panel.SetActive(false);
 
             Game_Controll.Instance.end = true;
@@ -36,10 +36,11 @@ public class EndEffect : MonoBehaviour
             end = true;
             
             PoolControll.Instance.Win();
-            for (int i = 0; i < end_object.Length; i++)
-            {
-                end_object[i].SetActive(false);
-            }
+            //for (int i = 0; i < end_object.Length; i++)
+            //{
+            //    end_object[i].SetActive(false);
+            //}
+
             if (PlayerPrefs.GetInt("buy_Gaint") == 1)
             {
                 end_count--;
@@ -96,8 +97,8 @@ public class EndEffect : MonoBehaviour
     }
     void Effect_on()
     {
-        boss.SetActive(false);
-        boss_effeect.SetActive(true);
+        //boss.SetActive(false);
+        //boss_effeect.SetActive(true);
         Game_Controll.Instance.Win();
         StartCoroutine(Effect());        
     }
@@ -110,7 +111,7 @@ public class EndEffect : MonoBehaviour
         StartCoroutine(Effect());       
     }
     public void Play_game()
-    {       
+    {
         for (int i = 0; i < end_object.Length; i++)
         {
             end_object[i].SetActive(true);
@@ -118,8 +119,8 @@ public class EndEffect : MonoBehaviour
     }
     public void Off_all()
     {
-        boss.SetActive(true);
-        boss_effeect.SetActive(false);
+        //boss.SetActive(true);
+        //boss_effeect.SetActive(false);
         for (int i = 0; i < end_object.Length; i++)
         {
             if (end_object[i].GetComponent<Gate_controll>() != null)

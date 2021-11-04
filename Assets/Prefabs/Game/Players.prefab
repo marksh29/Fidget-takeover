@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3215504529709031399}
   - component: {fileID: 4837501102324741823}
   - component: {fileID: 3697716873473237056}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: -5582938037056289269}
   - component: {fileID: 7963530385945735685}
   - component: {fileID: 3499942712798039765}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Players
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -125,9 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   start_life: 1
-  dop_attack: 1
   speed: 5
-  force_speed: 50
+  force: 5
   life: 1
   target: {fileID: 0}
   gaint: 0
@@ -137,6 +136,10 @@ MonoBehaviour:
   end: 0
   open: 0
   close: 126
+  skin: {fileID: 5440628669648171422}
+  mater:
+  - {fileID: 2100000, guid: e16c753fdb54bb54faf7af68bef6dd17, type: 2}
+  - {fileID: 2100000, guid: 7ca4ee92f12d222409f4740db3dc5152, type: 2}
 --- !u!54 &7963530385945735685
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,7 +154,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &3499942712798039765
 CapsuleCollider:
@@ -163,10 +166,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.84
-  m_Height: 4.63
+  m_Radius: 1
+  m_Height: 5.46
   m_Direction: 1
-  m_Center: {x: 0, y: 2.46, z: 0}
+  m_Center: {x: 0, y: 2.81, z: 0}
 --- !u!1001 &7685097533902667543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,7 +236,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7ca4ee92f12d222409f4740db3dc5152, type: 2}
+      objectReference: {fileID: 2100000, guid: e16c753fdb54bb54faf7af68bef6dd17, type: 2}
     - target: {fileID: 919132149155446097, guid: 65032e8d37cbd074fae381ea1f69b9db,
         type: 3}
       propertyPath: m_Name
@@ -249,6 +252,12 @@ PrefabInstance:
 --- !u!4 &7866744013553064188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65032e8d37cbd074fae381ea1f69b9db,
+    type: 3}
+  m_PrefabInstance: {fileID: 7685097533902667543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5440628669648171422 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6834760479520272759, guid: 65032e8d37cbd074fae381ea1f69b9db,
     type: 3}
   m_PrefabInstance: {fileID: 7685097533902667543}
   m_PrefabAsset: {fileID: 0}

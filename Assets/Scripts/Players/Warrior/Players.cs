@@ -6,22 +6,32 @@ public class Players : MonoBehaviour
 {
     [Header("Настраиваемое")]
     public int damage;
-    [SerializeField] int start_life, dop_attack;
-    [SerializeField] float speed, force_speed;
+    [SerializeField] int start_life;
+    [SerializeField] float speed, force;
 
     [Header("Не трогать")]
     [SerializeField] int life;
     public Transform target;
     public bool gaint, spawn, move, battle, end;
     [SerializeField] RigidbodyConstraints open, close;
-
+    [SerializeField] SkinnedMeshRenderer skin;
+    [SerializeField] Material[] mater;
     void OnEnable()
     {
-        end = false;
+        end = false;        
         life = start_life;
         //damage = damage + PlayerPrefs.GetInt("Upgrade1");
         speed = 5 + (0.2f * PlayerPrefs.GetInt("Upgrade1"));
         Enable_param();
+        skin.sharedMaterial = mater[0];
+        Jump();
+    }
+    public void Jump()
+    {
+        move = false;
+        spawn = true;
+        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 5, 5) * force, ForceMode.Impulse);
     }
     private void Update()
     {
@@ -52,25 +62,20 @@ public class Players : MonoBehaviour
     }
 
     void Enable_param()
-    {      
+    {
         gameObject.tag = "Player";
 
-        GetComponent<Rigidbody>().constraints = close;
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);        
-        transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
+
         target = null;
-        move = true;
         battle = false;
 
         transform.GetChild(1).gameObject.GetComponent<Battle_collision>().on = false;
 
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<CapsuleCollider>().isTrigger = false;
-        
+
         transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
-        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
     }
     public void Set_target(Transform obj)
     {
@@ -180,6 +185,9 @@ public class Players : MonoBehaviour
         if (target != null && target.GetComponent<Enemy>() != null)
             target.GetComponent<Enemy>().target = null;
         PoolControll.Instance.Visual();
+
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
         gameObject.SetActive(false);
     }
 
@@ -203,6 +211,18 @@ public class Players : MonoBehaviour
     {
         StopAllCoroutines();
     }
+
+    public void Start_move()
+    {
+        skin.sharedMaterial = mater[1];
+        GetComponent<Rigidbody>().constraints = close;
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z); 
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+        move = true;
+    }
+
+
     //void Add_force()
     //{
     //    if (target != null && target.GetComponent<Enemy>() != null)

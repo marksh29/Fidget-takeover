@@ -87,7 +87,7 @@ public class Game_Controll : MonoBehaviour
         FBsdk.Instance.End_level_fb();
 
         PlayerPrefs.SetFloat("add_time", 0);
-        PlayerPrefs.SetInt("level", level + 1);
+        //PlayerPrefs.SetInt("level", level + 1);
         StartCoroutine(Open_panel("Win"));
     }
     public void Lose()
@@ -155,7 +155,7 @@ public class Game_Controll : MonoBehaviour
         butt_ability.SetActive(level >= 5 ? true : false);
         butt_shop.SetActive(level >= 1 ? true : false);
 
-        Buttons_controll.Instance.Start_game();
+        //Buttons_controll.Instance.Start_game();
 
         Camera.main.gameObject.GetComponent<Animator>().SetTrigger("stay");
         for (int i = 0; i < list_random.Count; i++)

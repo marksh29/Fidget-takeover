@@ -17,7 +17,8 @@ public class Player_controll : MonoBehaviour
     bool freez_on, hand_move, end;
     float timer, gaint_timer, sp_upgrade;
     Vector3 hand_pos;
-    GameObject sp;
+    Vector3 start_mouse_pos;
+    [SerializeField] GameObject sp, cur_player;
 
     private void Awake()
     {
@@ -50,20 +51,37 @@ public class Player_controll : MonoBehaviour
     {
         if (Game_Controll.Instance.game)
         {
-            if (Input.GetMouseButtonDown(0) && !freez_on && !hand_move)
+            if (Input.GetMouseButtonDown(0))// && !freez_on && !hand_move)
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
+                    //if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
+                    //{
+                    //    hand_move = true;
+                    //    StartCoroutine(DoMove(0.5f, hit.collider.gameObject));
+                    //}
+                    print(hit.collider.gameObject.tag);
+                    start_mouse_pos = Input.mousePosition;
+                    if (hit.collider != null && hit.collider.gameObject.tag == "Player")
                     {
-                        hand_move = true;
-                        StartCoroutine(DoMove(0.5f, hit.collider.gameObject));                       
+                        cur_player = hit.collider.gameObject;
                     }
                 }
             }
+            if (Input.GetMouseButtonUp(0))
+            {
+                //print((start_mouse_pos - Input.mousePosition).magnitude);
+                if(cur_player != null && (start_mouse_pos - Input.mousePosition).magnitude >= 100)
+                {
+                    cur_player.GetComponent<Players>().Start_move();
+                    cur_player = null;
+                }                
+            }
+
+
             if (warrior)
             {
                 timer -= Time.deltaTime;
@@ -119,7 +137,8 @@ public class Player_controll : MonoBehaviour
         {
             case (0):
                 sp = PoolControll.Instance.Spawn("pl_warrior", 0);
-                sp.GetComponent<Players>().spawn = true;
+                //sp.GetComponent<Players>().spawn = true;
+                sp.GetComponent<Players>().Jump();
                 break;
             case (1):
                 sp = PoolControll.Instance.Spawn("pl_gaint", 0);
@@ -128,7 +147,7 @@ public class Player_controll : MonoBehaviour
                 sp = PoolControll.Instance.Spawn("pl_archer", 0);
                 break;
         }
-        sp.transform.position = new Vector3(transform.position.x + Random.Range(-5,5), 0, transform.position.z);
+        sp.transform.position = new Vector3(transform.position.x + Random.Range(-5,5), 5, transform.position.z);
         sp.transform.rotation = transform.rotation;
     }
     private IEnumerator DoMove(float time, GameObject target)

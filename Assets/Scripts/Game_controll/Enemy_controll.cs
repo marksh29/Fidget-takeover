@@ -6,8 +6,9 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct Stage
 {
-    public int life, win_money;
+    public int life, win_money, max_enemy_unit;
     public float warrior_spawn_timer;
+   
     public float gaint_spawn_timer;
     public float move_speed;   
     public float frize_timer;
@@ -17,7 +18,7 @@ public struct Stage
     public bool archer;
 
     public float[] select_timer_min_max;  
-    public int[] boost_variant;   
+    public int[] boost_variant, enemy_spawn_random;   
 }
 
 public class Enemy_controll : MonoBehaviour
@@ -29,11 +30,11 @@ public class Enemy_controll : MonoBehaviour
 
     [Header("Не трогать")]    
     public float move_speed;
-    public int skin_id, stickman_id;
+    public int skin_id, stickman_id, max_unit;
     [SerializeField] Gate_controll gate;
     [SerializeField] GameObject hand, target, effect;
     float[] select_timer_min_max;    
-    int level, life;
+    int level, life, new_random;
     bool select, frize_on, move, warrior, gaint, archer, end;
     [SerializeField] float timer, select_timer, gaint_timer, warrior_spawn_time, freez_timer, gaint_spawn_timer;
     GameObject sp;
@@ -58,34 +59,17 @@ public class Enemy_controll : MonoBehaviour
         move = false;
         select = false;
 
-        if (level < stages.Count)
-        {
-            life = stages[level].life;
-            freez_timer = stages[level].frize_timer;
-            move_speed = stages[level].move_speed;
-            warrior_spawn_time = stages[level].warrior_spawn_timer;
-            gaint_spawn_timer = stages[level].gaint_spawn_timer;
+        new_random = Random.Range(stages[Set_level_id()].enemy_spawn_random[0], stages[Set_level_id()].enemy_spawn_random[1]);
 
-            warrior = stages[level].warrior;
-            gaint = stages[level].gaint;
-            archer = stages[level].archer;
-
-            select_timer_min_max = stages[level].select_timer_min_max;
-        }
-        else
-        {
-            life = stages[stages.Count - 1].life;
-            freez_timer = stages[stages.Count - 1].frize_timer;
-            move_speed = stages[stages.Count - 1].move_speed;
-            warrior_spawn_time = stages[stages.Count - 1].warrior_spawn_timer;
-            gaint_spawn_timer = stages[stages.Count - 1].gaint_spawn_timer;
-
-            warrior = stages[stages.Count - 1].warrior;
-            gaint = stages[stages.Count - 1].gaint;
-            archer = stages[stages.Count - 1].archer;
-
-            select_timer_min_max = stages[stages.Count - 1].select_timer_min_max;
-        }
+        life = stages[Set_level_id()].life;
+        freez_timer = stages[Set_level_id()].frize_timer;
+        move_speed = stages[Set_level_id()].move_speed;
+        warrior_spawn_time = stages[Set_level_id()].warrior_spawn_timer;
+        gaint_spawn_timer = stages[Set_level_id()].gaint_spawn_timer;
+        warrior = stages[Set_level_id()].warrior;
+        gaint = stages[Set_level_id()].gaint;
+        archer = stages[Set_level_id()].archer;
+        select_timer_min_max = stages[Set_level_id()].select_timer_min_max;
 
         select_timer_min_max[0] = select_timer_min_max[0] - 0.065f * level + PlayerPrefs.GetFloat("add_time");
         if (select_timer_min_max[0] < 0.75)
@@ -100,6 +84,11 @@ public class Enemy_controll : MonoBehaviour
         gaint_timer = gaint_spawn_timer;
         if (archer)
             Spawn(2);
+    }
+    int Set_level_id()
+    {
+        int id = level < stages.Count ? level : stages.Count - 1;
+        return id;
     }
 
     public int[] Get_count()
@@ -139,7 +128,8 @@ public class Enemy_controll : MonoBehaviour
                 if (timer <= 0)
                 {
                     timer = warrior_spawn_time;
-                    Spawn(0);
+                    //Spawn(0);
+                    gate.Set_spawn(new_random);
                 }
             }
 
@@ -153,61 +143,38 @@ public class Enemy_controll : MonoBehaviour
                 }
             }
 
-            if (select && !frize_on)
-            {
-                select_timer -= Time.deltaTime;
-                if(select_timer <= 0)
-                {
-                    Hand_move();
-                }
-            }  
+            //if (select && !frize_on)
+            //{
+            //    select_timer -= Time.deltaTime;
+            //    if(select_timer <= 0)
+            //    {
+            //        Hand_move();
+            //    }
+            //}  
             
-            if(move && target != null)
-            {
-                hand.transform.position = Vector3.MoveTowards(hand.transform.position, target.transform.position, hand_move_speed * Time.deltaTime);
-                if (hand.transform.position == target.transform.position)
-                {
-                    if (Sound.Instance != null)
-                        Sound.Instance.Play_Sound(0);
-                    hand.transform.position = hand_pos;
-                    //gate.Set_text(target.GetComponent<Button>().count);
+            //if(move && target != null)
+            //{
+            //    hand.transform.position = Vector3.MoveTowards(hand.transform.position, target.transform.position, hand_move_speed * Time.deltaTime);
+            //    if (hand.transform.position == target.transform.position)
+            //    {
+            //        if (Sound.Instance != null)
+            //            Sound.Instance.Play_Sound(0);
+            //        hand.transform.position = hand_pos;
+            //        //gate.Set_text(target.GetComponent<Button>().count);
 
-                    if(target.GetComponent<Button>().count != 0)
-                    {
-                        gate.Set_spawn(target.GetComponent<Button>().count);
-                        target.GetComponent<Button>().Get();
-                        StartCoroutine(Effect());
-                        StartCoroutine(Freez_timer());
-                    }                   
-                    //target.GetComponent<Button>().Off();
-                    move = false;
-                }
-
-                //if (target.GetComponent<Button>().count != 0)
-                //{
-                    
-                //}
-                //else
-                //{
-                //    target = Buttons_controll.Instance.Best();
-                //    if(target != null)
-                //    {
-                //        if (target.GetComponent<Button>().count < gate.count)
-                //        {
-                //            move = false;
-                //            select = true;
-                //            hand.transform.position = hand_pos;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        hand.transform.position = hand_pos;
-                //    }
-                //}
-            }
+            //        if(target.GetComponent<Button>().count != 0)
+            //        {
+            //            gate.Set_spawn(target.GetComponent<Button>().count);
+            //            target.GetComponent<Button>().Get();
+            //            StartCoroutine(Effect());
+            //            StartCoroutine(Freez_timer());
+            //        }                   
+            //        //target.GetComponent<Button>().Off();
+            //        move = false;
+            //    }              
+            //}
         }        
-    }
-   
+    }   
     public void Start_select()
     {
         select_timer = Random.Range(select_timer_min_max[0], select_timer_min_max[1]);
@@ -229,7 +196,7 @@ public class Enemy_controll : MonoBehaviour
         {
             case (0):
                 sp = PoolControll.Instance.Spawn("en_warrior", 0);
-                sp.GetComponent<Enemy>().spawn = true;
+                //sp.GetComponent<Enemy>().spawn = true;
                 break;
             case (1):
                 sp = PoolControll.Instance.Spawn("en_gaint", 0);
@@ -241,8 +208,8 @@ public class Enemy_controll : MonoBehaviour
 
         sp.transform.position = new Vector3(transform.position.x + Random.Range(-5, 5), 0, transform.position.z -5);
         sp.transform.rotation = transform.rotation;        
-        if(sp.GetComponent<Enemy>() != null)
-            sp.GetComponent<Enemy>().spawn = true;
+        //if(sp.GetComponent<Enemy>() != null)
+        //    sp.GetComponent<Enemy>().spawn = true;
     }  
     public void Damage(int id)
     {
@@ -251,9 +218,9 @@ public class Enemy_controll : MonoBehaviour
         {
             end = true;
             EndEffect.Instance.Win();
-            //Game_Controll.Instance.Win();
         }
-    }   
+    } 
+    
     IEnumerator Freez_timer()
     {
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 150);
@@ -263,11 +230,7 @@ public class Enemy_controll : MonoBehaviour
         frize_on = false;
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = new Color32(231, 155, 155, 255);
         hand.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().materials[1].color = new Color32(231, 0, 0, 255);
-    }
-    public void New_level()
-    {
-
-    }
+    }  
     IEnumerator Effect()
     {
         effect.SetActive(true);
