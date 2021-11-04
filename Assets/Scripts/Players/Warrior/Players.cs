@@ -31,6 +31,7 @@ public class Players : MonoBehaviour
     {
         if (!end)
         {
+            transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("jump");
             jump = true;
             move = false;
             spawn = true;

@@ -71,7 +71,7 @@ public class Bonus_Gate_controll : MonoBehaviour
     }
     IEnumerator Effect()
     {
-        effect.SetActive(true);
+        //effect.SetActive(true);
             yield return new WaitForSeconds(1f);
         effect.SetActive(false);
     }
