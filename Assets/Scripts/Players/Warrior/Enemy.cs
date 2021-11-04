@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public int life;
     public bool move, battle,  end, gaint;
-    public bool spawn;
+    //public bool spawn;
     [SerializeField] RigidbodyConstraints open, close;
     public GameObject body;
 
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
         target = null;
         move = true;
         battle = false;
-        spawn = false;
+        //spawn = false;
     }
     public void Set_battle(Transform obj)
     {
@@ -82,10 +82,10 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Gate" && !gaint)
-        {
-            other.gameObject.GetComponent<Bonus_Gate_controll>().Set_spawn(1);
-        }
+        //if (other.gameObject.tag == "Gate" && !gaint && spawn)
+        //{
+        //    other.gameObject.GetComponent<Bonus_Gate_controll>().Set_spawn(1);
+        //}
         if (other.gameObject.tag == "Pfinish")
         {
             Player_controll.Instance.Damage(damage);

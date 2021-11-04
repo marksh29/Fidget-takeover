@@ -40,6 +40,8 @@ public class Enemy_controll : MonoBehaviour
     GameObject sp;
     Vector3 hand_pos;
 
+    [SerializeField] Text enemy_count;
+
     private void Awake()
     {
         if (Instance == null)
@@ -58,6 +60,9 @@ public class Enemy_controll : MonoBehaviour
         level = PlayerPrefs.GetInt("level", 0);
         move = false;
         select = false;
+
+        max_unit = stages[Set_level_id()].max_enemy_unit;
+        enemy_count.text = max_unit.ToString();
 
         new_random = Random.Range(stages[Set_level_id()].enemy_spawn_random[0], stages[Set_level_id()].enemy_spawn_random[1]);
 
@@ -82,6 +87,7 @@ public class Enemy_controll : MonoBehaviour
         skin_id = Random.Range(0, 5);
         hand.transform.position = hand_pos;
         gaint_timer = gaint_spawn_timer;
+       
         if (archer)
             Spawn(2);
     }
@@ -122,26 +128,28 @@ public class Enemy_controll : MonoBehaviour
     {
         if (Game_Controll.Instance.game && !EndEffect.Instance.end)
         {
-            if (warrior)
+            if (warrior && max_unit > 0)
             {
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
                     timer = warrior_spawn_time;
-                    //Spawn(0);
-                    gate.Set_spawn(new_random);
+
+                    int ct = max_unit >= new_random ? new_random : new_random - max_unit;
+                    gate.Set_spawn(ct);
+                    Enemy_unit_change(ct);
                 }
             }
 
-            if (gaint)
-            {
-                gaint_timer -= Time.deltaTime;
-                if (gaint_timer <= 0)
-                {
-                    gaint_timer = gaint_spawn_timer;
-                    Spawn(1);
-                }
-            }
+            //if (gaint)
+            //{
+            //    gaint_timer -= Time.deltaTime;
+            //    if (gaint_timer <= 0)
+            //    {
+            //        gaint_timer = gaint_spawn_timer;
+            //        Spawn(1);
+            //    }
+            //}
 
             //if (select && !frize_on)
             //{
@@ -236,6 +244,11 @@ public class Enemy_controll : MonoBehaviour
         effect.SetActive(true);
         yield return new WaitForSeconds(0.6f);
         effect.SetActive(false);
+    }
+    public void Enemy_unit_change(int id)
+    {
+        max_unit -= id;
+        enemy_count.text = max_unit.ToString();
     }
 }
 

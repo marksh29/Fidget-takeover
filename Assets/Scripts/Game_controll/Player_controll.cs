@@ -24,9 +24,11 @@ public class Player_controll : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
     }
     void Start()
-    {                   
+    {
+        PlayerPrefs.SetInt("tutorial", 0);
     }
 
     public void Set_level()
@@ -63,9 +65,8 @@ public class Player_controll : MonoBehaviour
                     //    hand_move = true;
                     //    StartCoroutine(DoMove(0.5f, hit.collider.gameObject));
                     //}
-                    print(hit.collider.gameObject.tag);
                     start_mouse_pos = Input.mousePosition;
-                    if (hit.collider != null && hit.collider.gameObject.tag == "Player")
+                    if (hit.collider != null && hit.collider.gameObject.tag == "Player" && !hit.collider.gameObject.GetComponent<Players>().jump)
                     {
                         cur_player = hit.collider.gameObject;
                     }
@@ -137,7 +138,6 @@ public class Player_controll : MonoBehaviour
         {
             case (0):
                 sp = PoolControll.Instance.Spawn("pl_warrior", 0);
-                //sp.GetComponent<Players>().spawn = true;
                 sp.GetComponent<Players>().Jump();
                 break;
             case (1):

@@ -198,6 +198,6 @@ public class PoolControll : MonoBehaviour
                 enemy_count++;
         }
         pl_count_text.text = count.ToString();
-        en_count_text.text = enemy_count.ToString();
+        //en_count_text.text = enemy_count.ToString();
     }
 }

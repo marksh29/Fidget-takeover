@@ -12,10 +12,12 @@ public class Players : MonoBehaviour
     [Header("Не трогать")]
     [SerializeField] int life;
     public Transform target;
-    public bool gaint, spawn, move, battle, end;
-    [SerializeField] RigidbodyConstraints open, close;
+    public bool gaint, spawn, move, battle, end, jump;
+   // [SerializeField] RigidbodyConstraints open, close;
     [SerializeField] SkinnedMeshRenderer skin;
     [SerializeField] Material[] mater;
+    [SerializeField] GameObject tutor;
+
     void OnEnable()
     {
         end = false;        
@@ -24,14 +26,17 @@ public class Players : MonoBehaviour
         speed = 5 + (0.2f * PlayerPrefs.GetInt("Upgrade1"));
         Enable_param();
         skin.sharedMaterial = mater[0];
-        Jump();
     }
     public void Jump()
     {
-        move = false;
-        spawn = true;
-        transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 5, 5) * force, ForceMode.Impulse);
+        if (!end)
+        {
+            jump = true;
+            move = false;
+            spawn = true;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 5, 5) * force, ForceMode.Impulse);
+        }       
     }
     private void Update()
     {
@@ -65,8 +70,6 @@ public class Players : MonoBehaviour
     {
         gameObject.tag = "Player";
 
-        transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
-
         target = null;
         battle = false;
 
@@ -89,6 +92,22 @@ public class Players : MonoBehaviour
             target.GetComponent<Enemy>().Set_battle(gameObject.transform);            
         }               
         move = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Path" && !end)
+        {
+            if(PlayerPrefs.GetInt("tutorial") == 0)
+            {
+                tutor.SetActive(true);
+                PlayerPrefs.SetInt("tutorial", 1);
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
+            //GetComponent<Rigidbody>().constraints = close;
+            jump = false;
+        }        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -188,6 +207,10 @@ public class Players : MonoBehaviour
 
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
+
+        //GetComponent<Rigidbody>().constraints = open;
         gameObject.SetActive(false);
     }
 
@@ -206,6 +229,7 @@ public class Players : MonoBehaviour
         end = true;
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("win");
         transform.rotation = Quaternion.Euler(0, 180, 0);
+        skin.sharedMaterial = mater[1];
     }    
     private void OnDisable()
     {
@@ -214,10 +238,14 @@ public class Players : MonoBehaviour
 
     public void Start_move()
     {
-        skin.sharedMaterial = mater[1];
-        GetComponent<Rigidbody>().constraints = close;
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z); 
+        //GetComponent<Rigidbody>().constraints = close;
+        tutor.SetActive(false);
+
         transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
+
+        skin.sharedMaterial = mater[1];
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z); 
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
         move = true;
     }

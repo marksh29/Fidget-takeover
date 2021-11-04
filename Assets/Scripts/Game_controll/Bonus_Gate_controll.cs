@@ -88,7 +88,12 @@ public class Bonus_Gate_controll : MonoBehaviour
         sp = PoolControll.Instance.Spawn(rot == 1 ? "en_warrior" : "pl_warrior", 0);
         sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z);
         sp.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + (rot == 0 ? 0 : 180), transform.rotation.z);
+        if(rot == 0)
+        {
+            sp.GetComponent<Players>().Start_move();
+        }
     }
+
     public void Drop()
     {
         count = 0;
