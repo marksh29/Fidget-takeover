@@ -9,7 +9,7 @@ public class Bonus_Gate_controll : MonoBehaviour
     [SerializeField] Text count_text;
     [SerializeField] GameObject gate_wall, sp, effect;
     public int xx, count, rot;
-    [SerializeField] float timer;
+    [SerializeField] float timer, speed;
     bool time_on;
 
     private void Awake()
@@ -57,10 +57,11 @@ public class Bonus_Gate_controll : MonoBehaviour
         time_on = true;
     }
 
-    public void Set_spawn(int id)
+    public void Set_spawn(int id, float sp)
     {
         if (time_on)
         {
+            speed = sp;
             rot = id;
             StartCoroutine(Effect());
             StartCoroutine(Spawn(count));
@@ -90,7 +91,7 @@ public class Bonus_Gate_controll : MonoBehaviour
         sp.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + (rot == 0 ? 0 : 180), transform.rotation.z);
         if(rot == 0)
         {
-            sp.GetComponent<Players>().Start_move();
+            sp.GetComponent<Players>().Start_move(speed);
         }
     }
 

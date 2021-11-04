@@ -8,7 +8,7 @@ public class Player_controll : MonoBehaviour
     public static Player_controll Instance;
     [Header("Настраиваемое")]
     [SerializeField] int life;
-    [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer, spawn_timer_upgrade;
+    [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer, spawn_timer_upgrade, speed_booster;
 
     [Header("Не трогать")]
     [SerializeField] GameObject hand, effect;
@@ -19,6 +19,7 @@ public class Player_controll : MonoBehaviour
     Vector3 hand_pos;
     Vector3 start_mouse_pos;
     [SerializeField] GameObject sp, cur_player;
+
 
     private void Awake()
     {
@@ -77,7 +78,9 @@ public class Player_controll : MonoBehaviour
                 //print((start_mouse_pos - Input.mousePosition).magnitude);
                 if(cur_player != null && (start_mouse_pos - Input.mousePosition).magnitude >= 100)
                 {
-                    cur_player.GetComponent<Players>().Start_move();
+                    float speed = speed_booster * (start_mouse_pos - Input.mousePosition).magnitude * Time.deltaTime;
+                    print(speed);
+                    cur_player.GetComponent<Players>().Start_move(speed);
                     cur_player = null;
                 }                
             }

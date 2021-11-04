@@ -7,7 +7,7 @@ public class Players : MonoBehaviour
     [Header("Настраиваемое")]
     public int damage;
     [SerializeField] int start_life;
-    [SerializeField] float speed, force;
+    [SerializeField] float speed, force, max_speed;
 
     [Header("Не трогать")]
     [SerializeField] int life;
@@ -35,7 +35,7 @@ public class Players : MonoBehaviour
             move = false;
             spawn = true;
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 5, 5) * force, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 8, 10) * force, ForceMode.Impulse);
         }       
     }
     private void Update()
@@ -113,7 +113,7 @@ public class Players : MonoBehaviour
     {
         if (other.gameObject.tag == "Gate" && !gaint)
         {
-            other.gameObject.GetComponent<Bonus_Gate_controll>().Set_spawn(0);
+            other.gameObject.GetComponent<Bonus_Gate_controll>().Set_spawn(0, speed);
         }
         if (other.gameObject.tag == "Finish")
         {
@@ -236,8 +236,9 @@ public class Players : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public void Start_move()
+    public void Start_move(float spd)
     {
+        speed = (spd < max_speed ? spd : max_speed);
         //GetComponent<Rigidbody>().constraints = close;
         tutor.SetActive(false);
 
