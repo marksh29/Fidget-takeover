@@ -36,10 +36,10 @@ public class EndEffect : MonoBehaviour
             end = true;
             
             PoolControll.Instance.Win();
-            //for (int i = 0; i < end_object.Length; i++)
-            //{
-            //    end_object[i].SetActive(false);
-            //}
+            for (int i = 0; i < end_object.Length; i++)
+            {
+                end_object[i].SetActive(false);
+            }
 
             if (PlayerPrefs.GetInt("buy_Gaint") == 1)
             {

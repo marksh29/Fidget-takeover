@@ -64,8 +64,6 @@ public class Enemy_controll : MonoBehaviour
         max_unit = stages[Set_level_id()].max_enemy_unit;
         enemy_count.text = max_unit.ToString();
 
-        new_random = Random.Range(stages[Set_level_id()].enemy_spawn_random[0], stages[Set_level_id()].enemy_spawn_random[1]);
-
         life = stages[Set_level_id()].life;
         freez_timer = stages[Set_level_id()].frize_timer;
         move_speed = stages[Set_level_id()].move_speed;
@@ -133,11 +131,14 @@ public class Enemy_controll : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
+                    new_random = Random.Range(stages[Set_level_id()].enemy_spawn_random[0], stages[Set_level_id()].enemy_spawn_random[1]);
+                    int ct = new_random > max_unit ? new_random - max_unit : new_random;
+                    if (max_unit > 0)
+                    {
+                        gate.Set_spawn(ct);
+                        Enemy_unit_change(ct);
+                    }
                     timer = warrior_spawn_time;
-
-                    int ct = max_unit >= new_random ? new_random : new_random - max_unit;
-                    gate.Set_spawn(ct);
-                    Enemy_unit_change(ct);
                 }
             }
 
@@ -221,8 +222,10 @@ public class Enemy_controll : MonoBehaviour
     }  
     public void Damage(int id)
     {
-        life -=id;
-        if (life <= 0 && !end)
+        Enemy_unit_change(1);
+        //max_unit -= id;
+        //enemy_count.text = max_unit.ToString();
+        if (max_unit <= 0 && !end)
         {
             end = true;
             EndEffect.Instance.Win();

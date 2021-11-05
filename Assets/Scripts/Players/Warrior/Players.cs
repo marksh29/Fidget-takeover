@@ -86,12 +86,16 @@ public class Players : MonoBehaviour
         if(target == null)
             target = obj;
         GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<CapsuleCollider>().isTrigger = true;   
-        
+        GetComponent<CapsuleCollider>().isTrigger = true;  
+                
         if(target.GetComponent<Enemy>() != null)
         {
             target.GetComponent<Enemy>().Set_battle(gameObject.transform);            
-        }               
+        }
+
+        skin.sharedMaterial = mater[1];
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");
+
         move = false;
     }
     private void OnCollisionEnter(Collision collision)
@@ -103,7 +107,6 @@ public class Players : MonoBehaviour
                 tutor.SetActive(true);
                 PlayerPrefs.SetInt("tutorial", 1);
             }
-
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
             //GetComponent<Rigidbody>().constraints = close;

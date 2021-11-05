@@ -23,11 +23,7 @@ public class Gate_controll : MonoBehaviour
     void Start()
     {
         
-    }
-    private void OnEnable()
-    {
-        
-    }
+    }   
     private void Update()
     {
         if(time_on)
