@@ -67,7 +67,7 @@ public class Gate_controll : MonoBehaviour
     void Spawn_obj()
     {
         sp = PoolControll.Instance.Spawn(enemy ? "en_warrior" : "pl_warrior", 0);      
-        sp.transform.position = new Vector3(Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
+        sp.transform.position = new Vector3(transform.position.x + Random.Range(-xx, xx), 0, transform.position.z + Random.Range(1.5f, 3));
         sp.transform.rotation = transform.rotation;
         //if(sp.GetComponent<Enemy>() != null)
         //    sp.GetComponent<Enemy>().spawn = true;

@@ -31,7 +31,7 @@ public class Enemy_controll : MonoBehaviour
     [Header("Не трогать")]    
     public float move_speed;
     public int skin_id, stickman_id, max_unit;
-    [SerializeField] Gate_controll gate;
+    [SerializeField] Gate_controll[] gate;
     [SerializeField] GameObject hand, target, effect;
     float[] select_timer_min_max;    
     int level, life, new_random;
@@ -131,12 +131,17 @@ public class Enemy_controll : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
-                    new_random = Random.Range(stages[Set_level_id()].enemy_spawn_random[0], stages[Set_level_id()].enemy_spawn_random[1]);
-                    int ct = new_random > max_unit ? new_random - max_unit : new_random;
-                    if (max_unit > 0)
+                    for(int i =0; i < gate.Length; i++)
                     {
-                        gate.Set_spawn(ct);
-                        Enemy_unit_change(ct);
+                        new_random = Random.Range(stages[Set_level_id()].enemy_spawn_random[0], stages[Set_level_id()].enemy_spawn_random[1]);
+                        int ct = new_random > max_unit ? new_random - max_unit : new_random;
+                        if (max_unit > 0)
+                        {
+                            gate[i].Set_spawn(ct);
+                            Enemy_unit_change(ct);
+                        }
+                        else
+                            break;
                     }
                     timer = warrior_spawn_time;
                 }
@@ -189,15 +194,15 @@ public class Enemy_controll : MonoBehaviour
         select_timer = Random.Range(select_timer_min_max[0], select_timer_min_max[1]);
         select = true;
     }
-    void Hand_move()
-    {
-        if(Buttons_controll.Instance.Best() != null && gate.count < Buttons_controll.Instance.Best().GetComponent<Button>().count)
-        {
-            target = Buttons_controll.Instance.Best();
-            select = false;
-            move = true;
-        }        
-    }
+    //void Hand_move()
+    //{
+    //    if(Buttons_controll.Instance.Best() != null && gate.count < Buttons_controll.Instance.Best().GetComponent<Button>().count)
+    //    {
+    //        target = Buttons_controll.Instance.Best();
+    //        select = false;
+    //        move = true;
+    //    }        
+    //}
 
     void Spawn(int id)
     {

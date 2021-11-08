@@ -1,29 +1,23 @@
 fileFormatVersion: 2
-guid: 3670cb6fe77355841b8c301f7aeab797
+guid: e91d0aaadb9da4f4db2a90b858d454e4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -6842666708266138392
-    second: Drop
+      74: 156964476166669451
+    second: Armature|Dancing
   - first:
-      74: -8485029357406833155
-    second: Armature|Armature|Armature|Dancing running|Armature|Dancing running
+      74: 6881873686158965456
+    second: Armature|Falling
   - first:
-      74: 4148991992217005266
-    second: Armature|Armature|Armature|Dancing|Armature|Dancing
+      74: 4682765751262850392
+    second: Armature|Fight
   - first:
-      74: 3535801688728136398
-    second: Armature|Armature|Armature|Fight|Armature|Fight
-  - first:
-      74: -7968214994891853632
-    second: Armature|Armature|Armature|Moonwalk|Armature|Moonwalk
-  - first:
-      74: 8791526243975580594
-    second: Armature|Armature|Armature|Running|Armature|Running
+      74: -3828583913261678786
+    second: Armature|Running
   - first:
       74: -4728361552675377119
-    second: Armature|Standing
+    second: stay
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -53,66 +47,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Drop
-      takeName: Armature|Armature.001|mixamo.com|Layer0
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|Dancing running|Armature|Dancing running
-      takeName: Armature|Armature|Armature|Dancing running|Armature|Dancing running
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 325
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|Dancing|Armature|Dancing
-      takeName: Armature|Armature|Armature|Dancing|Armature|Dancing
+      name: Armature|Dancing
+      takeName: Armature|Dancing
       internalID: 0
       firstFrame: 0
       lastFrame: 371
@@ -140,8 +76,37 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Armature|Armature|Fight|Armature|Fight
-      takeName: Armature|Armature|Armature|Fight|Armature|Fight
+      name: Armature|Falling
+      takeName: Armature|Falling
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 135
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Fight
+      takeName: Armature|Fight
       internalID: 0
       firstFrame: 0
       lastFrame: 140
@@ -169,11 +134,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Armature|Armature|Moonwalk|Armature|Moonwalk
-      takeName: Armature|Armature|Armature|Moonwalk|Armature|Moonwalk
+      name: Armature|Running
+      takeName: Armature|Running
       internalID: 0
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -198,40 +163,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Armature|Armature|Running|Armature|Running
-      takeName: Armature|Armature|Armature|Running|Armature|Running
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 19
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Standing
+      name: stay
       takeName: Armature|Standing
       internalID: 0
       firstFrame: 0
-      lastFrame: 344
+      lastFrame: 418
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

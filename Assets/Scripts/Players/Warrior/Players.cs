@@ -16,8 +16,12 @@ public class Players : MonoBehaviour
    // [SerializeField] RigidbodyConstraints open, close;
     [SerializeField] SkinnedMeshRenderer skin;
     [SerializeField] Material[] mater;
-    [SerializeField] GameObject tutor;
+    [SerializeField] GameObject tutor, vect;
 
+    void Start()
+    {
+        Vect_spawn();
+    }
     void OnEnable()
     {
         end = false;        
@@ -31,12 +35,13 @@ public class Players : MonoBehaviour
     {
         if (!end)
         {
+            GetComponent<Rigidbody>().mass = 30;
             transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("jump");
             jump = true;
             move = false;
             spawn = true;
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 8, 10) * force, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-3, 3), 8, 120) * force, ForceMode.Impulse);
         }       
     }
     private void Update()
@@ -102,17 +107,22 @@ public class Players : MonoBehaviour
     {
         if (collision.gameObject.tag == "Path" && !end)
         {
-            if(PlayerPrefs.GetInt("tutorial") == 0)
+            if (PlayerPrefs.GetInt("tutorial") == 0)
             {
                 tutor.SetActive(true);
                 PlayerPrefs.SetInt("tutorial", 1);
             }
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
-            //GetComponent<Rigidbody>().constraints = close;
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.GetChild(0).rotation = transform.rotation;
+            GetComponent<Rigidbody>().mass = 3;
             jump = false;
         }        
     }
+    public void ArrowOn()
+    {
+        vect.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Gate" && !gaint)
@@ -182,7 +192,8 @@ public class Players : MonoBehaviour
         }
         else
         {
-            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
+            //transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
+            transform.GetChild(0).rotation = transform.parent.rotation;
             transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("move");            
             Enable_param();
         }       
@@ -245,8 +256,8 @@ public class Players : MonoBehaviour
         speed = (spd < max_speed ? spd : max_speed);
         //GetComponent<Rigidbody>().constraints = close;
         tutor.SetActive(false);
-
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        vect.SetActive(false);
+        //transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
 
         skin.sharedMaterial = mater[1];
@@ -266,5 +277,16 @@ public class Players : MonoBehaviour
     //    GetComponent<CapsuleCollider>().isTrigger = true;
     //    transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = false;
     //    GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2, 2), 2, Random.Range(-2, -1)) * force_speed, ForceMode.Impulse);
-    //}    
+    //}  
+    
+    void Vect_spawn()
+    {
+        for(int i = 0; i < 20; i++)
+        {
+            int ct = 255 - (i * 10);
+            GameObject obj = Instantiate(vect.transform.GetChild(0).gameObject, vect.transform) as GameObject;
+            obj.transform.localPosition = new Vector3(0, 0, vect.transform.GetChild(0).localPosition.z * (i + 1));
+            obj.GetComponent<SpriteRenderer>().color = new Color32(255,255,255, (byte)ct);
+        }
+    }
 }

@@ -7,7 +7,7 @@ public class Player_controll : MonoBehaviour
 {    
     public static Player_controll Instance;
     [Header("Настраиваемое")]
-    [SerializeField] int life;
+    [SerializeField] int life, move_distance, max_distance;
     [SerializeField] float spawn_time, freez_timer, gaint_spawn_timer, spawn_timer_upgrade, speed_booster;
 
     [Header("Не трогать")]
@@ -20,6 +20,7 @@ public class Player_controll : MonoBehaviour
     Vector3 start_mouse_pos;
     [SerializeField] GameObject sp, cur_player;
 
+    public Transform pricel;
 
     private void Awake()
     {
@@ -60,26 +61,34 @@ public class Player_controll : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit))
-                {
-                    //if (hit.collider != null && hit.collider.gameObject.tag == "Button" && hit.collider.gameObject.GetComponent<Button>().On())
-                    //{
-                    //    hand_move = true;
-                    //    StartCoroutine(DoMove(0.5f, hit.collider.gameObject));
-                    //}
+                {                   
                     start_mouse_pos = Input.mousePosition;
                     if (hit.collider != null && hit.collider.gameObject.tag == "Player" && !hit.collider.gameObject.GetComponent<Players>().jump)
                     {
                         cur_player = hit.collider.gameObject;
+                        cur_player.GetComponent<Players>().ArrowOn();
                     }
                 }
+            }
+            if (Input.GetMouseButton(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider != null && cur_player != null)
+                    {
+                        cur_player.transform.LookAt(new Vector3(hit.point.x, 0, hit.point.z));
+                    }
+                }                
             }
             if (Input.GetMouseButtonUp(0))
             {
                 //print((start_mouse_pos - Input.mousePosition).magnitude);
-                if(cur_player != null && (start_mouse_pos - Input.mousePosition).magnitude >= 100)
+                if(cur_player != null)// && (start_mouse_pos - Input.mousePosition).magnitude >= 100)
                 {
+                    //cur_player.transform.position = new Vector3(cur_player.transform.position.x, 0, cur_player.transform.position.z);
                     float speed = speed_booster * (start_mouse_pos - Input.mousePosition).magnitude * Time.deltaTime;
-                    print(speed);
                     cur_player.GetComponent<Players>().Start_move(speed);
                     cur_player = null;
                 }                
