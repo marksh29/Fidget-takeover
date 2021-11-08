@@ -73,7 +73,7 @@ public class EndEffect : MonoBehaviour
     {
         if (!end)
         {
-            Buttons_controll.Instance.Drop();
+            //Buttons_controll.Instance.Drop();
             ability_panel.SetActive(false);
 
             end = true;
