@@ -121,6 +121,7 @@ public class Players : MonoBehaviour
     public void ArrowOn()
     {
         vect.SetActive(true);
+        tutor.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
